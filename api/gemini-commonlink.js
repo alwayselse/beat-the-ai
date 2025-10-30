@@ -1,6 +1,6 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
+const { GoogleGenerativeAI } = require("@google/generative-ai");
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   // Set CORS headers
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -63,6 +63,6 @@ Return ONLY valid JSON in this EXACT format (no markdown, no extra text):
     res.status(200).json(puzzle);
   } catch (error) {
     console.error('Gemini API Error:', error);
-    res.status(500).json({ error: 'Failed to generate puzzle' });
+    res.status(500).json({ error: 'Failed to generate puzzle', details: error.message });
   }
-}
+};
