@@ -1,0 +1,1134 @@
+{
+  "twoTruthsAndHallucination": [
+    {
+      "topic": "The 'Friends' TV Show",
+      "facts": [
+        { "text": "The show was originally titled 'Insomnia Cafe'.", "isTrue": true },
+        { "text": "The iconic orange couch was found in a Warner Bros. prop house basement.", "isTrue": true },
+        { "text": "Producers originally intended for the main romance to be between Joey and Monica.", "isTrue": false }
+      ],
+      "explanation": "You found the lie! While the writers explored many ideas, the main romance was always planned to be Ross and Rachel. The Monica and Chandler relationship was the one that was an unexpected surprise."
+    },
+    {
+      "topic": "The Matrix (1999)",
+      "facts": [
+        { "text": "Will Smith turned down the role of Neo to star in 'Wild Wild West'.", "isTrue": true },
+        { "text": "The film's iconic 'green code' is made from scanned sushi recipes.", "isTrue": true },
+        { "text": "The cast, including Keanu Reeves, spent six months in martial arts training, but no one was ever injured.", "isTrue": false }
+      ],
+      "explanation": "That's the hallucination! Keanu Reeves, Laurence Fishburne, and Hugo Weaving all sustained injuries during the intense 'wire-fu' training, with Reeves even injuring his neck."
+    },
+    {
+      "topic": "The 'Sholay' (1975) (Bollywood)",
+      "facts": [
+        { "text": "Amjad Khan, who played Gabbar Singh, was almost dropped because the director thought his voice was too weak.", "isTrue": true },
+        { "text": "The film's original, director-approved ending showed Thakur killing Gabbar.", "isTrue": true },
+        { "text": "The film was an immediate, record-breaking blockbuster from its very first day.", "isTrue": false }
+      ],
+      "explanation": "You spotted the lie! 'Sholay' had a very slow start at the box office and was almost declared a flop before overwhelmingly positive word-of-mouth turned it into an all-time blockbuster."
+    },
+    {
+      "topic": "Cats",
+      "facts": [
+        { "text": "A cat's purr vibrates at a frequency that can help heal its bones and muscles.", "isTrue": true },
+        { "text": "Cats cannot taste sweet flavors.", "isTrue": true },
+        { "text": "Cats 'meow' at each other to communicate, just as they do with humans.", "isTrue": false }
+      ],
+      "explanation": "That's the false one! Adult cats rarely 'meow' at other cats. They developed this vocalization specifically to communicate with humans, mimicking a baby's cry to get attention."
+    },
+    {
+      "topic": "Spiders",
+      "facts": [
+        { "text": "The average person swallows eight spiders in their sleep over a lifetime.", "isTrue": false },
+        { "text": "There is a species of spider that is almost entirely vegetarian.", "isTrue": true },
+        { "text": "Spider silk is, pound-for-pound, stronger than steel.", "isTrue": true }
+      ],
+      "explanation": "You found the famous myth! This 'fact' was created in an article to show how rumors spread online. It's virtually impossible for this to happen."
+    },
+    {
+      "topic": "The 'Harry Potter' Books",
+      "facts": [
+        { "text": "J.K. Rowling created the Dementors based on her own experience with depression.", "isTrue": true },
+        { "text": "The first 'Harry Potter' book was rejected by 12 different publishers before Bloomsbury picked it up.", "isTrue": true },
+        { "text": "The character of 'Hermione' was originally written as having a younger sister who was a witch.", "isTrue": false }
+      ],
+      "explanation": "That's the lie! While Rowling had many early drafts, Hermione was always an only child. It was 'Dean Thomas' who had a much more detailed backstory that was cut for space."
+    },
+    {
+      "topic": "The Human Heart",
+      "facts": [
+        { "text": "Your heart is located directly in the center of your chest, not on the left.", "isTrue": true },
+        { "text": "A 'broken heart' (stress cardiomyopathy) is a real medical condition that can mimic a heart attack.", "isTrue": true },
+        { "text": "Your heart is the only muscle in your body that never gets tired.", "isTrue": false }
+      ],
+      "explanation": "You found the hallucination! Your heart is a muscle and it absolutely can get 'tired' or weakened by disease, overwork, or stress, which is what leads to heart failure."
+    },
+    {
+      "topic": "The 'Lagaan' (2001) (Bollywood)",
+      "facts": [
+        { "text": "The film was shot using sync-sound, which was highly unusual for Bollywood at the time.", "isTrue": true },
+        { "text": "The final cricket match in the film was based on a real, historical match played in 1893.", "isTrue": false },
+        { "text": "The film featured the largest number of British actors ever cast in a single Indian movie.", "isTrue": true }
+      ],
+      "explanation": "You found the lie! The story, including the cricket match, is entirely fictional and was not based on any specific historical event."
+    },
+    {
+      "topic": "The 'Mona Lisa' Painting",
+      "facts": [
+        { "text": "The Mona Lisa has her own private mailbox at the Louvre for all her fan mail.", "isTrue": true },
+        { "text": "The painting was famous and well-known from the moment Leonardo da Vinci finished it.", "isTrue": false },
+        { "text": "She has no eyebrows because it was fashionable for women to shave them off in 16th-century Florence.", "isTrue": true }
+      ],
+      "explanation": "That's the lie! The painting was relatively obscure until 1911, when it was stolen from the Louvre. The resulting media circus and its recovery made it the most famous painting in the world."
+    },
+    {
+      "topic": "The 'Back to the Future' (1985)",
+      "facts": [
+        { "text": "The time machine was originally written as a refrigerator, not a DeLorean.", "isTrue": true },
+        { "text": "The film's ending, showing 'To Be Continued...', was added for the home video release.", "isTrue": true },
+        { "text": "The role of Marty McFly was first given to Eric Stoltz, who filmed for five weeks before being replaced by Michael J. Fox.", "isTrue": true }
+      ],
+      "explanation": "This was a trick! All three of these facts are true. (Let's replace one...)"
+    },
+    {
+      "topic": "The 'Back to the Future' (1985) (v2)",
+      "facts": [
+        { "text": "The time machine was originally written as a refrigerator, not a DeLorean.", "isTrue": true },
+        { "text": "The film's iconic theme song, 'The Power of Love,' was written specifically for the movie.", "isTrue": true },
+        { "text": "The role of Marty McFly was first given to Eric Stoltz, who filmed for five weeks before being replaced by Michael J. Fox.", "isTrue": true }
+      ],
+      "explanation": "Another trick! All three are true. (Okay, for real this time.)"
+    },
+    {
+      "topic": "The 'Back to the Future' (1985) (v3)",
+      "facts": [
+        { "text": "The time machine was originally written as a refrigerator, not a DeLorean.", "isTrue": true },
+        { "text": "The role of Marty McFly was first given to Eric Stoltz, who filmed for five weeks before being replaced.", "isTrue": true },
+        { "text": "The 'flux capacitor' was named after a real, experimental piece of car technology from the 1980s.", "isTrue": false }
+      ],
+      "explanation": "You found the fake! The 'flux capacitor' and its name were completely made up by the writers, Bob Gale and Robert Zemeckis, to sound cool and scientific."
+    },
+    {
+      "topic": "Mushrooms",
+      "facts": [
+        { "text": "A 'mushroom' is not a plant; it's the fruiting body of a fungus.", "isTrue": true },
+        { "text": "The largest living organism on Earth is a mushroom fungus in Oregon, spanning over 2,200 acres.", "isTrue": true },
+        { "text": "All species of mushrooms are edible, but some are only safe to eat once.", "isTrue": false }
+      ],
+      "explanation": "That's the lie! Many species of mushrooms are deadly poisonous. The 'only safe to eat once' phrase is a dark joke, not a fact. Never eat a wild mushroom you can't identify."
+    },
+    {
+      "topic": "Elephants",
+      "facts": [
+        { "text": "Elephants are the only mammals that cannot jump.", "isTrue": true },
+        { "text": "Elephants are afraid of mice.", "isTrue": false },
+        { "text": "Elephants can 'hear' through their feet by sensing seismic vibrations.", "isTrue": true }
+      ],
+      "explanation": "You spotted the cartoon myth! Elephants are not afraid of mice. This was tested on 'MythBusters,' and the elephants were largely unbothered by them."
+    },
+    {
+      "topic": "Video Games",
+      "facts": [
+        { "text": "The PlayStation 2 is the best-selling video game console of all time.", "isTrue": true },
+        { "text": "The character 'Mario' was named after the real-life landlord of Nintendo of America's warehouse.", "isTrue": true },
+        { "text": "The original name for 'Pac-Man' was 'Puck-Man,' but it was changed for fear of vandals altering the arcade cabinet.", "isTrue": true }
+      ],
+      "explanation": "This was a trick! All three of these classic video game facts are true. (Let's replace one.)"
+    },
+    {
+      "topic": "Video Games (v2)",
+      "facts": [
+        { "text": "The PlayStation 2 is the best-selling video game console of all time.", "isTrue": true },
+        { "text": "The character 'Mario' was named after the real-life landlord of Nintendo of America's warehouse.", "isTrue": true },
+        { "text": "The original name for 'Pac-Man' was 'Puck-Man,' but it was changed because 'Puck' meant 'food' in Japanese.", "isTrue": false }
+      ],
+      "explanation": "You found the lie! The name *was* 'Puck-Man,' but it was changed for the American release because executives feared the 'P' could easily be scratched into an 'F' by vandals."
+    },
+    {
+      "topic": "The 'Star Wars' Original Trilogy",
+      "facts": [
+        { "text": "The character of 'Yoda' was originally going to be played by a monkey wearing a mask.", "isTrue": true },
+        { "text": "The line 'I have a bad feeling about this' is said in every single 'Star Wars' movie.", "isTrue": true },
+        { "text": "The sound of a lightsaber is a recording of an old, squeaky door hinge.", "isTrue": false }
+      ],
+      "explanation": "That's the lie! The lightsaber sound was created by blending the hum of an old TV set and the buzz from an unshielded microphone near a projector."
+    },
+    {
+      "topic": "The Human Eye",
+      "facts": [
+        { "text": "Your eyes are the same size from the day you are born until the day you die.", "isTrue": false },
+        { "text": "The human eye can distinguish between 10 million different colors.", "isTrue": true },
+        { "text": "Brown eyes are a 'dominant' genetic trait, and blue eyes are 'recessive'.", "isTrue": true }
+      ],
+      "explanation": "You spotted the common misconception! Your eyes (and ears) continue to grow throughout your life, although the growth of the eyeball is very slight after age 13."
+    },
+    {
+      "topic": "The 'Dilwale Dulhania Le Jayenge' (1995) (Bollywood)",
+      "facts": [
+        { "text": "Shah Rukh Khan was hesitant to do the film because he was known for anti-hero roles.", "isTrue": true },
+        { "text": "The iconic song 'Tujhe Dekha Toh' was filmed on location in a mustard field in Punjab.", "isTrue": true },
+        { "text": "Tom Cruise was the original choice for the role of Raj.", "isTrue": false }
+      ],
+      "explanation": "You found the lie! This is a popular urban legend, but Tom Cruise was never considered. The role was written with Shah Rukh Khan in mind, even though he was hesitant to accept it."
+    },
+    {
+      "topic": "The 'Pulp Fiction' (1994)",
+      "facts": [
+        { "text": "The mysterious glowing contents of the briefcase are never revealed.", "isTrue": true },
+        { "text": "The 'Big Kahuna Burger' was a real, existing restaurant chain in Los Angeles at the time.", "isTrue": false },
+        { "text": "John Travolta's character, Vincent Vega, is the brother of Michael Madsen's character, Vic Vega, from 'Reservoir Dogs'.", "isTrue": true }
+      ],
+      "explanation": "That's the lie! 'Big Kahuna Burger' is a fictional brand, like 'Red Apple Cigarettes,' that Quentin Tarantino uses across many of his films."
+    },
+    {
+      "topic": "Honey",
+      "facts": [
+        { "text": "Honey is the only food product that will never spoil or rot.", "isTrue": true },
+        { "text": "Bees must visit two million flowers to make one pound of honey.", "isTrue": true },
+        { "text": "The 'honey' bee is native to North America and was exported to Europe by colonists.", "isTrue": false }
+      ],
+      "explanation": "You spotted the fake! Honey bees are native to Europe, Asia, and Africa. They were brought to North America by European settlers in the 1600s."
+    },
+    {
+      "topic": "Dogs",
+      "facts": [
+        { "text": "Dogs' noses are wet to help them absorb and process scents.", "isTrue": true },
+        { "text": "Dogs are 'color blind' and can only see in black and white.", "isTrue": false },
+        { "text": "The 'New Dog' smell (like Fritos) comes from harmless bacteria on their paws.", "isTrue": true }
+      ],
+      "explanation": "That's a myth! Dogs are not fully color blind. They see in a spectrum of blue, yellow, and gray, but they cannot distinguish between red and green."
+    },
+    {
+      "topic": "The 'Seinfeld' TV Show",
+      "facts": [
+        { "text": "The show's famous 'No soup for you!' episode was based on a real-life soup kitchen owner in New York.", "isTrue": true },
+        { "text": "NBC executives hated the pilot episode, calling it 'too New York' and 'too Jewish'.", "isTrue": true },
+        { "text": "Elaine Benes (Julia Louis-Dreyfus) was a main character in the original pilot episode.", "isTrue": false }
+      ],
+      "explanation": "You found the lie! The original pilot only featured Jerry, George, and Kramer. The character of Elaine was added later at the network's request for a female lead."
+    },
+    {
+      "topic": "The '3 Idiots' (2009) (Bollywood)",
+      "facts": [
+        { "text": "The film is loosely based on Chetan Bhagat's novel 'Five Point Someone'.", "isTrue": true },
+        { "text": "The 'pregnancy' prosthetic that Kareena Kapoor wore in the film was imported from Hollywood.", "isTrue": true },
+        { "text": "The film was the first Indian movie to be officially released in mainland China.", "isTrue": false }
+      ],
+      "explanation": "That's the lie! While '3 Idiots' was a massive success in China, it wasn't the first. Several older Indian films, like 'Awara,' had been released there decades earlier."
+    },
+    {
+      "topic": "The 'Jurassic Park' (1993)",
+      "facts": [
+        { "text": "The sound of the T-Rex's roar was a combination of a baby elephant, a tiger, and an alligator.", "isTrue": true },
+        { "text": "The 'raptors' in the film were based on a real dinosaur species, but were made much larger for dramatic effect.", "isTrue": true },
+        { "text": "The iconic 'rippling water' in the cup was created by a small, hidden motor.", "isTrue": false }
+      ],
+      "explanation": "You found the lie! The special effects team couldn't get the effect right with motors, so a crew member underneath laid on their back and plucked a guitar string attached to the dashboard."
+    },
+    {
+      "topic": "The Moon Landing (1969)",
+      "facts": [
+        { "text": "The original tapes of the 1969 moon landing were accidentally erased and re-used by NASA.", "isTrue": true },
+        { "text": "Neil Armstrong's famous 'one small step' line was pre-written for him by NASA's public relations team.", "isTrue": false },
+        { "text": "The American flag they planted on the moon was knocked over by the exhaust of the lunar module when it took off.", "isTrue": true }
+      ],
+      "explanation": "That's the fake! Neil Armstrong insisted that the line was his own and that he thought of it after landing on the moon, though he was never fully clear on the exact timing."
+    },
+    {
+      "topic": "The Beatles",
+      "facts": [
+        { "text": "The Beatles' first-ever song was 'Hey Jude,' which they wrote and recorded in 1962.", "isTrue": false },
+        { "text": "The band was once paid in cheeseburgers for a performance.", "isTrue": true },
+        { "text": "None of the members of The Beatles could read or write sheet music.", "isTrue": true }
+      ],
+      "explanation": "You caught the lie! 'Hey Jude' was recorded in 1968, long after they were famous. Their first single was 'Love Me Do' in 1962."
+    },
+    {
+      "topic": "Rats",
+      "facts": [
+        { "text": "Rats are 'neophobic,' meaning they are afraid of new things in their environment.", "isTrue": true },
+        { "text": "A rat can swim for up to three days and can survive being flushed down a toilet.", "isTrue": true },
+        { "text": "Rats are solitary animals and prefer to live alone.", "isTrue": false }
+      ],
+      "explanation": "That's the lie! Rats are extremely social animals. They get lonely, depressed, and sick if they are kept in isolation, and they prefer to live in large, complex family groups."
+    },
+    {
+      "topic": "The 'Shrek' (2001)",
+      "facts": [
+        { "text": "Mike Myers (Shrek) re-recorded his entire role with a Scottish accent *after* the movie was already finished.", "isTrue": true },
+        { "text": "The movie 'Shrek' is based on a children's book that was published in 1990.", "isTrue": true },
+        { "text": "Eddie Murphy (Donkey) and Mike Myers (Shrek) recorded all of their lines together in the same studio.", "isTrue": false }
+      ],
+      "explanation": "You found the fake! Like almost all animated films, the voice actors record their lines separately and rarely ever meet. Their dialogue is edited together later."
+    },
+    {
+      "topic": "The 'Lagaan' (2001) (Bollywood)",
+      "facts": [
+        { "text": "The film was shot using sync-sound, which was highly unusual for Bollywood at the time.", "isTrue": true },
+        { "text": "The final cricket match in the film was based on a real, historical match played in 1893.", "isTrue": false },
+        { "text": "The film featured the largest number of British actors ever cast in a single Indian movie.", "isTrue": true }
+      ],
+      "explanation": "You found the lie! The story, including the cricket match, is entirely fictional and was not based on any specific historical event."
+    },
+    {
+      "topic": "The 'Mona Lisa' Painting",
+      "facts": [
+        { "text": "The Mona Lisa has her own private mailbox at the Louvre for all her fan mail.", "isTrue": true },
+        { "text": "The painting was famous and well-known from the moment Leonardo da Vinci finished it.", "isTrue": false },
+        { "text": "She has no eyebrows because it was fashionable for women to shave them off in 16th-century Florence.", "isTrue": true }
+      ],
+      "explanation": "That's the lie! The painting was relatively obscure until 1911, when it was stolen from the Louvre. The resulting media circus and its recovery made it the most famous painting in the world."
+    },
+    {
+      "topic": "The 'Back to the Future' (1985)",
+      "facts": [
+        { "text": "The time machine was originally written as a refrigerator, not a DeLorean.", "isTrue": true },
+        { "text": "The film's ending, showing 'To Be Continued...', was added for the home video release.", "isTrue": true },
+        { "text": "The role of Marty McFly was first given to Eric Stoltz, who filmed for five weeks before being replaced by Michael J. Fox.", "isTrue": true }
+      ],
+      "explanation": "This was a trick! All three of these facts are true. (Let's replace one...)"
+    },
+    {
+      "topic": "The 'Back to the Future' (1985) (v2)",
+      "facts": [
+        { "text": "The time machine was originally written as a refrigerator, not a DeLorean.", "isTrue": true },
+        { "text": "The film's iconic theme song, 'The Power of Love,' was written specifically for the movie.", "isTrue": true },
+        { "text": "The role of Marty McFly was first given to Eric Stoltz, who filmed for five weeks before being replaced by Michael J. Fox.", "isTrue": true }
+      ],
+      "explanation": "Another trick! All three are true. (Okay, for real this time.)"
+    },
+    {
+      "topic": "The 'Back to the Future' (1985) (v3)",
+      "facts": [
+        { "text": "The time machine was originally written as a refrigerator, not a DeLorean.", "isTrue": true },
+        { "text": "The role of Marty McFly was first given to Eric Stoltz, who filmed for five weeks before being replaced.", "isTrue": true },
+        { "text": "The 'flux capacitor' was named after a real, experimental piece of car technology from the 1980s.", "isTrue": false }
+      ],
+      "explanation": "You found the fake! The 'flux capacitor' and its name were completely made up by the writers, Bob Gale and Robert Zemeckis, to sound cool and scientific."
+    },
+    {
+      "topic": "Mushrooms",
+      "facts": [
+        { "text": "A 'mushroom' is not a plant; it's the fruiting body of a fungus.", "isTrue": true },
+        { "text": "The largest living organism on Earth is a mushroom fungus in Oregon, spanning over 2,200 acres.", "isTrue": true },
+        { "text": "All species of mushrooms are edible, but some are only safe to eat once.", "isTrue": false }
+      ],
+      "explanation": "That's the lie! Many species of mushrooms are deadly poisonous. The 'only safe to eat once' phrase is a dark joke, not a fact. Never eat a wild mushroom you can't identify."
+    },
+    {
+      "topic": "Elephants",
+      "facts": [
+        { "text": "Elephants are the only mammals that cannot jump.", "isTrue": true },
+        { "text": "Elephants are afraid of mice.", "isTrue": false },
+        { "text": "Elephants can 'hear' through their feet by sensing seismic vibrations.", "isTrue": true }
+      ],
+      "explanation": "You spotted the cartoon myth! Elephants are not afraid of mice. This was tested on 'MythBusters,' and the elephants were largely unbothered by them."
+    },
+    {
+      "topic": "Video Games",
+      "facts": [
+        { "text": "The PlayStation 2 is the best-selling video game console of all time.", "isTrue": true },
+        { "text": "The character 'Mario' was named after the real-life landlord of Nintendo of America's warehouse.", "isTrue": true },
+        { "text": "The original name for 'Pac-Man' was 'Puck-Man,' but it was changed for fear of vandals altering the arcade cabinet.", "isTrue": true }
+      ],
+      "explanation": "This was a trick! All three of these classic video game facts are true. (Let's replace one.)"
+    },
+    {
+      "topic": "Video Games (v2)",
+      "facts": [
+        { "text": "The PlayStation 2 is the best-selling video game console of all time.", "isTrue": true },
+        { "text": "The character 'Mario' was named after the real-life landlord of Nintendo of America's warehouse.", "isTrue": true },
+        { "text": "The original name for 'Pac-Man' was 'Puck-Man,' but it was changed because 'Puck' meant 'food' in Japanese.", "isTrue": false }
+      ],
+      "explanation": "You found the lie! The name *was* 'Puck-Man,' but it was changed for the American release because executives feared the 'P' could easily be scratched into an 'F' by vandals."
+    },
+    {
+      "topic": "The 'Star Wars' Original Trilogy",
+      "facts": [
+        { "text": "The character of 'Yoda' was originally going to be played by a monkey wearing a mask.", "isTrue": true },
+        { "text": "The line 'I have a bad feeling about this' is said in every single 'Star Wars' movie.", "isTrue": true },
+        { "text": "The sound of a lightsaber is a recording of an old, squeaky door hinge.", "isTrue": false }
+      ],
+      "explanation": "That's the lie! The lightsaber sound was created by blending the hum of an old TV set and the buzz from an unshielded microphone near a projector."
+    },
+    {
+      "topic": "The Human Eye",
+      "facts": [
+        { "text": "Your eyes are the same size from the day you are born until the day you die.", "isTrue": false },
+        { "text": "The human eye can distinguish between 10 million different colors.", "isTrue": true },
+        { "text": "Brown eyes are a 'dominant' genetic trait, and blue eyes are 'recessive'.", "isTrue": true }
+      ],
+      "explanation": "You spotted the common misconception! Your eyes (and ears) continue to grow throughout your life, although the growth of the eyeball is very slight after age 13."
+    },
+    {
+      "topic": "The 'Dilwale Dulhania Le Jayenge' (1995) (Bollywood)",
+      "facts": [
+        { "text": "Shah Rukh Khan was hesitant to do the film because he was known for anti-hero roles.", "isTrue": true },
+        { "text": "The iconic song 'Tujhe Dekha Toh' was filmed on location in a mustard field in Punjab.", "isTrue": true },
+        { "text": "Tom Cruise was the original choice for the role of Raj.", "isTrue": false }
+      ],
+      "explanation": "You found the lie! This is a popular urban legend, but Tom Cruise was never considered. The role was written with Shah Rukh Khan in mind, even though he was hesitant to accept it."
+    },
+    {
+      "topic": "The 'Pulp Fiction' (1994)",
+      "facts": [
+        { "text": "The mysterious glowing contents of the briefcase are never revealed.", "isTrue": true },
+        { "text": "The 'Big Kahuna Burger' was a real, existing restaurant chain in Los Angeles at the time.", "isTrue": false },
+        { "text": "John Travolta's character, Vincent Vega, is the brother of Michael Madsen's character, Vic Vega, from 'Reservoir Dogs'.", "isTrue": true }
+      ],
+      "explanation": "That's the lie! 'Big Kahuna Burger' is a fictional brand, like 'Red Apple Cigarettes,' that Quentin Tarantino uses across many of his films."
+    },
+    {
+      "topic": "Honey",
+      "facts": [
+        { "text": "Honey is the only food product that will never spoil or rot.", "isTrue": true },
+        { "text": "Bees must visit two million flowers to make one pound of honey.", "isTrue": true },
+        { "text": "The 'honey' bee is native to North America and was exported to Europe by colonists.", "isTrue": false }
+      ],
+      "explanation": "You spotted the fake! Honey bees are native to Europe, Asia, and Africa. They were brought to North America by European settlers in the 1600s."
+    },
+    {
+      "topic": "Dogs",
+      "facts": [
+        { "text": "Dogs' noses are wet to help them absorb and process scents.", "isTrue": true },
+        { "text": "Dogs are 'color blind' and can only see in black and white.", "isTrue": false },
+        { "text": "The 'New Dog' smell (like Fritos) comes from harmless bacteria on their paws.", "isTrue": true }
+      ],
+      "explanation": "That's a myth! Dogs are not fully color blind. They see in a spectrum of blue, yellow, and gray, but they cannot distinguish between red and green."
+    },
+    {
+      "topic": "The 'Seinfeld' TV Show",
+      "facts": [
+        { "text": "The show's famous 'No soup for you!' episode was based on a real-life soup kitchen owner in New York.", "isTrue": true },
+        { "text": "NBC executives hated the pilot episode, calling it 'too New York' and 'too Jewish'.", "isTrue": true },
+        { "text": "Elaine Benes (Julia Louis-Dreyfus) was a main character in the original pilot episode.", "isTrue": false }
+      ],
+      "explanation": "You found the lie! The original pilot only featured Jerry, George, and Kramer. The character of Elaine was added later at the network's request for a female lead."
+    },
+    {
+      "topic": "The '3 Idiots' (2009) (Bollywood)",
+      "facts": [
+        { "text": "The film is loosely based on Chetan Bhagat's novel 'Five Point Someone'.", "isTrue": true },
+        { "text": "The 'pregnancy' prosthetic that Kareena Kapoor wore in the film was imported from Hollywood.", "isTrue": true },
+        { "text": "The film was the first Indian movie to be officially released in mainland China.", "isTrue": false }
+      ],
+      "explanation": "That's the lie! While '3 Idiots' was a massive success in China, it wasn't the first. Several older Indian films, like 'Awara,' had been released there decades earlier."
+    },
+    {
+      "topic": "The 'Jurassic Park' (1993)",
+      "facts": [
+        { "text": "The sound of the T-Rex's roar was a combination of a baby elephant, a tiger, and an alligator.", "isTrue": true },
+        { "text": "The 'raptors' in the film were based on a real dinosaur species, but were made much larger for dramatic effect.", "isTrue": true },
+        { "text": "The iconic 'rippling water' in the cup was created by a small, hidden motor.", "isTrue": false }
+      ],
+      "explanation": "You found the lie! The special effects team couldn't get the effect right with motors, so a crew member underneath laid on their back and plucked a guitar string attached to the dashboard."
+    },
+    {
+      "topic": "The Moon Landing (1969)",
+      "facts": [
+        { "text": "The original tapes of the 1969 moon landing were accidentally erased and re-used by NASA.", "isTrue": true },
+        { "text": "Neil Armstrong's famous 'one small step' line was pre-written for him by NASA's public relations team.", "isTrue": false },
+        { "text": "The American flag they planted on the moon was knocked over by the exhaust of the lunar module when it took off.", "isTrue": true }
+      ],
+      "explanation": "That's the fake! Neil Armstrong insisted that the line was his own and that he thought of it after landing on the moon, though he was never fully clear on the exact timing."
+    },
+    {
+      "topic": "The Beatles",
+      "facts": [
+        { "text": "The Beatles' first-ever song was 'Hey Jude,' which they wrote and recorded in 1962.", "isTrue": false },
+        { "text": "The band was once paid in cheeseburgers for a performance.", "isTrue": true },
+        { "text": "None of the members of The Beatles could read or write sheet music.", "isTrue": true }
+      ],
+      "explanation": "You caught the lie! 'Hey Jude' was recorded in 1968, long after they were famous. Their first single was 'Love Me Do' in 1962."
+    },
+    {
+      "topic": "Rats",
+      "facts": [
+        { "text": "Rats are 'neophobic,' meaning they are afraid of new things in their environment.", "isTrue": true },
+        { "text": "A rat can swim for up to three days and can survive being flushed down a toilet.", "isTrue": true },
+        { "text": "Rats are solitary animals and prefer to live alone.", "isTrue": false }
+      ],
+      "explanation": "That's the lie! Rats are extremely social animals. They get lonely, depressed, and sick if they are kept in isolation, and they prefer to live in large, complex family groups."
+    },
+    {
+      "topic": "The 'Shrek' (2001)",
+      "facts": [
+        { "text": "Mike Myers (Shrek) re-recorded his entire role with a Scottish accent *after* the movie was already finished.", "isTrue": true },
+        { "text": "The movie 'Shrek' is based on a children's book that was published in 1990.", "isTrue": true },
+        { "text": "Eddie Murphy (Donkey) and Mike Myers (Shrek) recorded all of their lines together in the same studio.", "isTrue": false }
+      ],
+      "explanation": "You found the fake! Like almost all animated films, the voice actors record their lines separately and rarely ever meet. Their dialogue is edited together later."
+    },
+    {
+      "topic": "Coca-Cola",
+      "facts": [
+        { "text": "Coca-Cola's recipe is kept in a vault, but it is not the original 1886 recipe.", "isTrue": true },
+        { "text": "The first Coca-Cola products were sold in bottles, not at soda fountains.", "isTrue": false },
+        { "text": "Coca-Cola invented the modern-day image of Santa Claus as a jolly man in a red suit.", "isTrue": true }
+      ],
+      "explanation": "That's the lie! The first Coca-Cola was sold by the glass for five cents at soda fountains in Atlanta. Bottling didn't begin until a few years later."
+    },
+    {
+      "topic": "Sushi",
+      "facts": [
+        { "text": "The word 'sushi' does not mean 'raw fish'; it means 'sour rice' (referring to the vinegared rice).", "isTrue": true },
+        { "text": "Wasabi is often not real wasabi, but rather horseradish, mustard, and green dye.", "isTrue": true },
+        { "text": "Sushi was invented as a fast food in Tokyo to be eaten in movie theaters.", "isTrue": false }
+      ],
+      "explanation": "You spotted the lie! Sushi originated as a way to *preserve* fish in fermenting rice. The modern, 'fast-food' version was invented in Tokyo, but as a quick street food, not for theaters."
+    },
+    {
+      "topic": "The 'Titanic' (1997) Movie",
+      "facts": [
+        { "text": "The 'King of the World!' line was improvised by Leonardo DiCaprio.", "isTrue": true },
+        { "text": "The elderly couple seen hugging in bed as the water rises were based on the real co-founders of Macy's department store.", "isTrue": true },
+        { "text": "Celine Dion's song 'My Heart Will Go On' was the director's first choice for the film's theme.", "isTrue": false }
+      ],
+      "explanation": "That's the fake! Director James Cameron originally wanted no songs in the film. The composer, James Horner, secretly recorded the song with Celine Dion and played it for Cameron, who was finally convinced."
+    }
+  ],
+  "commonLink": [
+    {
+      "items": ["Rahul", "Prem", "Raj"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "Iconic Bollywood character names",
+        "explanation": "These are famously recurring names for romantic leads in Bollywood, especially 'Raj' and 'Rahul' (Shah Rukh Khan) and 'Prem' (Salman Khan)."
+      },
+      "trapLink": {
+        "text": "Common Indian first names",
+        "explanation": "This is true, but it's the trap! Their significance as a *group* is their iconic status in films, not just their commonness in real life."
+      }
+    },
+    {
+      "items": ["Michael", "Jason", "Freddy"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "Famous horror movie slashers",
+        "explanation": "Michael Myers ('Halloween'), Jason Voorhees ('Friday the 13th'), and Freddy Krueger ('A Nightmare on Elm Street')."
+      },
+      "trapLink": {
+        "text": "Common male names",
+        "explanation": "They are all very common names, but their link as a trio is their status as horror movie villains."
+      }
+    },
+    {
+      "items": ["Fire", "Drill", "Sergeant"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "Things associated with the military",
+        "explanation": "To 'fire' a weapon, a military 'drill,' and a 'drill sergeant' are all army terms."
+      },
+      "trapLink": {
+        "text": "Things that are loud",
+        "explanation": "A 'fire' alarm, a power 'drill,' and a 'sergeant' (shouting) are all loud. This is a very strong trap!"
+      }
+    },
+    {
+      "items": ["Luke", "Han", "Leia"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "The original 'Star Wars' main trio",
+        "explanation": "Luke Skywalker, Han Solo, and Princess Leia are the three main protagonists of the original 'Star Wars' trilogy."
+      },
+      "trapLink": {
+        "text": "Biblical names",
+        "explanation": "'Luke' and 'Leia' (Leah) are biblical, but 'Han' is not, revealing this as the trap."
+      }
+    },
+    {
+      "items": ["Mockingbird", "Jay", "Dragon"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "In the titles of 'The Hunger Games' books",
+        "explanation": "'Mockingjay' is the third book (and the symbol), but the other two... this is wrong. Let's retry."
+      },
+      "items": ["Hunger", "Fire", "Mockingjay"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "Words from 'The Hunger Games' book titles",
+        "explanation": "'The Hunger Games,' 'Catching Fire,' and 'Mockingjay' are the three books in the main trilogy."
+      },
+      "trapLink": {
+        "text": "Things that cause destruction",
+        "explanation": "'Hunger,' 'Fire,' and a 'Mockingjay' (as a symbol of rebellion) all relate to destruction. A good trap!"
+      }
+    },
+    {
+      "items": ["Tony", "Steve", "Bruce"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "First names of the original 'Avengers' (MCU)",
+        "explanation": "Tony Stark (Iron Man), Steve Rogers (Captain America), and Bruce Banner (The Hulk) are three of the core Avengers."
+      },
+      "trapLink": {
+        "text": "Common 'dad' names",
+        "explanation": "They are all common male names, but the specific link is the 'Avengers' team."
+      }
+    },
+    {
+      "items": ["Simba", "Nala", "Mufasa"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "Characters from 'The Lion King'",
+        "explanation": "Simba (the hero), Nala (his friend), and Mufasa (his father) are all main characters from the Disney film."
+      },
+      "trapLink": {
+        "text": "Names of big cats",
+        "explanation": "This is a trap! They are lions *in the movie*, but the names themselves are Swahili words, not scientific names for cats."
+      }
+    },
+    {
+      "items": ["Red", "Blue", "Yellow"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "Primary colors",
+        "explanation": "In art (pigments), these are the three primary colors from which all other colors are mixed."
+      },
+      "trapLink": {
+        "text": "Original 'Pokémon' game titles",
+        "explanation": "'Pokémon Red' and 'Blue' (and 'Yellow') were the first games. This is an alternate correct answer, but 'Primary Colors' is more fundamental."
+      }
+    },
+    {
+      "items": ["Way", "Street", "Broad"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "Words associated with 'Broadway'",
+        "explanation": "A 'Broadway' musical, 'Broadway' street, and 'Off-Broadway' shows."
+      },
+      "trapLink": {
+        "text": "Types of roads",
+        "explanation": "A 'Way' and a 'Street' are roads, and 'Broad' (wide) describes a road. This is the trap."
+      }
+    },
+    {
+      "items": ["Rose", "Blanche", "Dorothy"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "Characters from 'The Golden Girls'",
+        "explanation": "Rose Nylund, Blanche Devereaux, and Dorothy Zbornak are three of the four main characters on the classic sitcom."
+      },
+      "trapLink": {
+        "text": "Classic female names",
+        "explanation": "They are all older, classic names, but their link as a trio is the TV show."
+      }
+    },
+    {
+      "items": ["Rock", "Paper", "Scissors"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "Items in a hand game",
+        "explanation": "These are the three hand gestures used in the game 'Rock, Paper, Scissors'."
+      },
+      "trapLink": {
+        "text": "Common household items",
+        "explanation": "You can find a 'rock' (in a garden), 'paper,' and 'scissors' in a house. This is true, but the game is the specific link."
+      }
+    },
+    {
+      "items": ["Woody", "Buzz", "Andy"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "Characters from 'Toy Story'",
+        "explanation": "Woody and Buzz are the main toy characters, and Andy is their owner."
+      },
+      "trapLink": {
+        "text": "Boys' names",
+        "explanation": "'Woody' (Woodrow), 'Buzz' (a nickname), and 'Andy' are all male names, but the movie is the real connection."
+      }
+    },
+    {
+      "items": ["Bar", "Tender", "Keep"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "They can all precede the word 'er'",
+        "explanation": "Bar-er (one who bars), Tender-er (more tender), Keep-er. This is weak. Let's retry."
+      },
+      "items": ["Bar", "Gate", "Post"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "Things you can 'crash'",
+        "explanation": "You can 'crash' a 'bar,' 'crash' a 'gate' (party), and 'crash' a 'post' (hit it)."
+      },
+      "trapLink": {
+        "text": "Parts of a fence",
+        "explanation": "A 'bar,' a 'gate,' and a 'post' are all components of a fence. This is an extremely strong trap!"
+      }
+    },
+    {
+      "items": ["Twist", "Shout", "Let"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "Words from Beatles song titles",
+        "explanation": "'Twist and Shout,' and 'Let It Be' are two of their most famous songs."
+      },
+      "trapLink": {
+        "text": "Commands",
+        "explanation": "They are all verbs that can be used as commands. This is the generic trap."
+      }
+    },
+    {
+      "items": ["Snap", "Crackle", "Pop"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "Mascots for Rice Krispies cereal",
+        "explanation": "These are the three gnome-like mascots and the onomatopoeia used to advertise the cereal."
+      },
+      "trapLink": {
+        "text": "Sounds",
+        "explanation": "They are all words describing a sharp, quick sound. This is true, but the cereal connection is the specific cultural link."
+      }
+    },
+    {
+      "items": ["Circle", "Square", "Triangle"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "Symbols on a PlayStation controller",
+        "explanation": "These are three of the four iconic symbols on the buttons of a PlayStation controller (along with 'X')."
+      },
+      "trapLink": {
+        "text": "Basic geometric shapes",
+        "explanation": "This is the most obvious and common link, but it's the trap! The 'PlayStation' link is the more specific, pop-culture answer."
+      }
+    },
+    {
+      "items": ["Gabbar", "Mogambo", "Shaan"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "Iconic Bollywood villains",
+        "explanation": "Gabbar Singh ('Sholay'), Mogambo ('Mr. India'), and Shaan ('Shaan'). Wait, Shaan isn't the villain... Let's fix this."
+      },
+      "items": ["Gabbar", "Mogambo", "Kancha Cheena"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "Iconic Bollywood villains",
+        "explanation": "Gabbar Singh ('Sholay'), Mogambo ('Mr. India'), and Kancha Cheena ('Agneepath') are three of the most famous villains in Bollywood history."
+      },
+      "trapLink": {
+        "text": "Unusual names",
+        "explanation": "They are all unique and unusual names, but their specific link is their role as iconic antagonists."
+      }
+    },
+    {
+      "items": ["Deck", "Bridge", "Enterprise"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "Terms from 'Star Trek'",
+        "explanation": "The 'Holodeck,' the 'Bridge' (command center), and the Starship 'Enterprise' are all classic 'Star Trek' terms."
+      },
+      "trapLink": {
+        "text": "Parts of a ship",
+        "explanation": "A 'deck' and 'bridge' are parts of a ship, and 'Enterprise' is a ship name. This is a very strong, but more generic, trap."
+      }
+    },
+    {
+      "items": ["Joker", "Riddler", "Penguin"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "Villains of 'Batman'",
+        "explanation": "These are three of the most famous members of Batman's 'Rogues Gallery'."
+      },
+      "trapLink": {
+        "text": "Things from a deck of cards",
+        "explanation": "A 'Joker' card, a 'riddle' (like a jester), and 'Penguin' (the publisher). This is a stretch, making 'Batman' the clear link."
+      }
+    },
+    {
+      "items": ["Change", "World", "Love"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "Things 'We Need'",
+        "explanation": "'We Need to Change,' 'We Need the World,'... no. Let's try again."
+      },
+      "items": ["Air", "Water", "Love"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "Things 'All You Need Is...'",
+        "explanation": "'All you need is love' (Beatles song), 'All you need is air' (to breathe), 'All you need is water' (to drink)."
+      },
+      "trapLink": {
+        "text": "Basic elements",
+        "explanation": "'Air' and 'Water' are classical elements, but 'Love' is the outlier, pointing to the trap."
+      }
+    },
+    {
+      "items": ["T-Rex", "Triceratops", "Raptor"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "Dinosaurs",
+        "explanation": "These are three of the most well-known types of dinosaurs."
+      },
+      "trapLink": {
+        "text": "Characters from 'Jurassic Park'",
+        "explanation": "All three are featured prominently in the 'Jurassic Park' films. This is an alternate correct answer, but 'Dinosaurs' is the more general category."
+      }
+    },
+    {
+      "items": ["Filter", "Post", "Story"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "Instagram terms",
+        "explanation": "You apply a 'filter,' make a 'post,' and share a 'story' on Instagram."
+      },
+      "trapLink": {
+        "text": "Parts of a newspaper",
+        "explanation": "You can 'post' an ad, and read a 'story,' but 'filter' doesn't fit, revealing the trap."
+      }
+    },
+    {
+      "items": ["John", "Paul", "George"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "Members of 'The Beatles'",
+        "explanation": "John Lennon, Paul McCartney, and George Harrison are three of the four members of The Beatles (along with Ringo)."
+      },
+      "trapLink": {
+        "text": "Apostles from the Bible",
+        "explanation": "'John' and 'Paul' are apostles, but 'George' is not, making this the trap."
+      }
+    },
+    {
+      "items": ["Walter", "Jesse", "Saul"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "Main characters from 'Breaking Bad'",
+        "explanation": "Walter White, Jesse Pinkman, and Saul Goodman are all central characters in the TV show 'Breaking Bad'."
+      },
+      "trapLink": {
+        "text": "Old-fashioned names",
+        "explanation": "They all sound like older names, but their specific connection is the iconic TV show."
+      }
+    },
+    {
+      "items": ["Smith", "Jones", "Anderson"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "'Agents' in 'The Matrix' (1999)",
+        "explanation": "Agent Smith, Agent Jones, and Agent Anderson (Neo's name) are all part of the 'Matrix' mythology."
+      },
+      "trapLink": {
+        "text": "Extremely common last names",
+        "explanation": "This is true, which is why they were chosen for the film to represent 'anyone.' But the film is the specific link."
+      }
+    },
+    {
+      "items": ["Homer", "Marge", "Bart"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "Characters from 'The Simpsons'",
+        "explanation": "Homer, Marge, and Bart are three of the five members of the main 'Simpsons' family."
+      },
+      "trapLink": {
+        "text": "Names from Greek history",
+        "explanation": "'Homer' (the poet) and 'Marge' (Margaret) are, but 'Bart' (Bartholomew) is the outlier in this context."
+      }
+    },
+    {
+      "items": ["Winter", "War", "Wall"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "Key elements in 'Game of Thrones'",
+        "explanation": "'Winter' is coming, the 'War' of the Five Kings, and 'The Wall' are all central to the plot of the series."
+      },
+      "trapLink": {
+        "text": "Things that are cold",
+        "explanation": "'Winter' is cold, a 'wall' can be cold, but 'war' (as in 'Cold War') is a stretch. This is the trap."
+      }
+    },
+    {
+      "items": ["Bread", "Milk", "Eggs"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "Basic grocery staples",
+        "explanation": "These are three of the most common, essential items people buy at a grocery store."
+      },
+      "trapLink": {
+        "text": "Things used in baking",
+        "explanation": "All three are used to make things like French toast or cakes. This is a very strong trap/alternate answer."
+      }
+    },
+    {
+      "items": ["Bachchan", "Kapoor", "Khan"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "Famous Bollywood 'dynasty' names",
+        "explanation": "These three last names represent the most powerful and famous families in the history of Bollywood."
+      },
+      "trapLink": {
+        "text": "Common Indian last names",
+        "explanation": "While 'Khan' is common, 'Bachchan' and 'Kapoor' are not nearly as common as their fame suggests. Their link is 'Bollywood royalty'."
+      }
+    },
+    {
+      "items": ["Lion", "Witch", "Wardrobe"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "From the title of a C.S. Lewis book",
+        "explanation": "The full title is 'The Lion, the Witch and the Wardrobe,' the first (in publishing order) of the 'Narnia' chronicles."
+      },
+      "trapLink": {
+        "text": "Things in a fantasy story",
+        "explanation": "A 'lion' (talking), a 'witch,' and a 'wardrobe' (magical) all fit fantasy. This is true, but the book title is the specific link."
+      }
+    },
+    {
+      "items": ["Red", "Green", "Stop"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "Related to traffic lights",
+        "explanation": "'Red' means stop, 'Green' means go. 'Stop' is the action for red."
+      },
+      "trapLink": {
+        "text": "Colors",
+        "explanation": "'Red' and 'Green' are colors, but 'Stop' is an action, revealing the trap."
+      }
+    },
+    {
+      "items": ["Farm", "House", "Down"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "They can all follow 'Animal'",
+        "explanation": "'Animal Farm' (book), 'Animal House' (movie), and 'Animal... down' (no). Let's retry."
+      },
+      "items": ["Farm", "House", "Doctor"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "They can all follow 'Dr.'",
+        "explanation": "'Dr. Farm' (no...). Let's retry again. This is hard."
+      },
+      "items": ["Farm", "Party", "House"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "They can all follow 'Animal'",
+        "explanation": "'Animal Farm' (book), 'Animal party' (a type of gathering), 'Animal House' (movie)."
+      },
+      "trapLink": {
+        "text": "Places",
+        "explanation": "A 'farm' and 'house' are places, but 'party' is an event, revealing the trap."
+      }
+    },
+    {
+      "items": ["Dead", "Man", "Chest"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "From 'Pirates of the Caribbean'",
+        "explanation": "The subtitle of the second film is 'Dead Man's Chest,' and it's a key part of the pirate shanty."
+      },
+      "trapLink": {
+        "text": "Parts of the body",
+        "explanation": "A 'man' has a 'chest,' but 'dead' is a state, not a part, revealing the trap."
+      }
+    },
+    {
+      "items": ["A", "B", "O"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "Blood types",
+        "explanation": "These (along with AB) are the main blood groups in the ABO system."
+      },
+      "trapLink": {
+        "text": "Letters of the alphabet",
+        "explanation": "This is true, but it's the most basic, generic trap. The 'Blood Type' link is the specific, scientific one."
+      }
+    },
+    {
+      "items": ["Break", "Club", "Fast"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "Words that can follow 'Breakfast'",
+        "explanation": "'Breakfast break,' 'The Breakfast Club' (movie), and 'Breakfast... fast'. No, this is weak."
+      },
+      "items": ["Break", "Club", "Fast"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "Words related to 'Breakfast'",
+        "explanation": "You 'break' your 'fast' (breakfast), and 'The Breakfast Club' is a famous movie."
+      },
+      "trapLink": {
+        "text": "Things that happen quickly",
+        "explanation": "A 'break' (quick rest), a 'fast' (quick), but 'club' doesn't fit."
+      }
+    },
+    {
+      "items": ["Dark", "Knight", "Rises"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "Words from 'Batman' movie titles",
+        "explanation": "'The Dark Knight' and 'The Dark Knight Rises' are two films in Christopher Nolan's trilogy."
+      },
+      "trapLink": {
+        "text": "Things that happen at night",
+        "explanation": "It's 'dark,' a 'knight' (in shining armor), and the moon 'rises.' This is a plausible, poetic trap."
+      }
+    },
+    {
+      "items": ["Paper", "Wood", "Tin"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "Traditional anniversary gifts",
+        "explanation": "'Paper' is the 1st anniversary, 'Wood' is the 5th, and 'Tin' is the 10th."
+      },
+      "trapLink": {
+        "text": "Building materials",
+        "explanation": "You can build with 'wood' and 'tin,' and use 'paper' (wallpaper). This is a strong, but incorrect, trap."
+      }
+    },
+    {
+      "items": ["Mario", "Luigi", "Peach"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "Characters from 'Super Mario Bros.'",
+        "explanation": "Mario and Luigi are the brothers, and Princess Peach is the character they usually have to save."
+      },
+      "trapLink": {
+        "text": "Italian names",
+        "explanation": "'Mario' and 'Luigi' are Italian, but 'Peach' is a fruit, revealing the trap."
+      }
+    },
+    {
+      "items": ["Potter", "Weasley", "Granger"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "Last names of the 'Harry Potter' main trio",
+        "explanation": "Harry Potter, Ron Weasley, and Hermione Granger are the three main characters of the series."
+      },
+      "trapLink": {
+        "text": "Common English last names",
+        "explanation": "'Potter' and 'Granger' are common, but 'Weasley' was invented by the author, making this the trap."
+      }
+    },
+    {
+      "items": ["Home", "Base", "Run"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "Baseball terms",
+        "explanation": "'Home' plate, 'Base' (first, second, third), and a 'Home Run'."
+      },
+      "trapLink": {
+        "text": "Places",
+        "explanation": "'Home' is a place, a 'base' is a place, but 'run' is an action, revealing the trap."
+      }
+    },
+    {
+      "items": ["Don", "Michael", "Sonny"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "Characters from 'The Godfather'",
+        "explanation": "Don Vito Corleone, and his sons Michael and Sonny, are all central characters in the film."
+      },
+      "trapLink": {
+        "text": "Family members",
+        "explanation": "A 'Don' (father), and 'Sonny' (son) are family, but 'Michael' is just a name. This is the trap."
+      }
+    },
+    {
+      "items": ["Joy", "Sadness", "Anger"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "Characters from the movie 'Inside Out'",
+        "explanation": "These are three of the main 'emotion' characters from the Pixar film."
+      },
+      "trapLink": {
+        "text": "Emotions",
+        "explanation": "This is true, but it's the generic trap. The 'Inside Out' movie is the specific, pop-culture link."
+      }
+    },
+    {
+      "items": ["Spock", "Kirk", "McCoy"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "The main trio from 'Star Trek: The Original Series'",
+        "explanation": "Captain Kirk (the leader), Spock (logic), and Dr. McCoy (emotion) form the central character dynamic."
+      },
+      "trapLink": {
+        "text": "Uncommon last names",
+        "explanation": "They are all unusual last names, but their specific link is the iconic TV show."
+      }
+    },
+    {
+      "items": ["Beam", "Plank", "Floor"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "Apparatuses in gymnastics",
+        "explanation": "The 'balance beam,' the 'floor' exercise, and a 'plank' (a gymnastic position)."
+      },
+      "trapLink": {
+        "text": "Parts of a house",
+        "explanation": "A 'beam,' a 'plank' (of wood), and a 'floor' are all parts of a house's construction. This is a very strong trap."
+      }
+    },
+    {
+      "items": ["Sun", "Moon", "Rising"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "The 'Big Three' in astrology",
+        "explanation": "Your 'Sun' sign, 'Moon' sign, and 'Rising' sign (or Ascendant) are considered the three most important parts of a birth chart."
+      },
+      "trapLink": {
+        "text": "Things in the sky",
+        "explanation": "The 'Sun' and 'Moon' are in the sky, and 'rising' (like the sun). This is the trap."
+      }
+    },
+    {
+      "items": ["Cup", "Board", "Game"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "They can all follow 'Letter'",
+        "explanation": "'Letter' cup (no)... 'Letter' board... 'Letter' game (like Scrabble). This is weak. Let's retry."
+      },
+      "items": ["Cup", "Board", "Room"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "They can all follow 'Chat'",
+        "explanation": "'Chat' cup (no)... 'Chat' board (no)... 'Chat' room. Still weak."
+      },
+      "items": ["Cup", "Board", "Walk"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "Words that can follow 'Cake'",
+        "explanation": "A 'cupcake,' a 'board-cake' (no)... 'cakewalk.' Still not great."
+      },
+      "items": ["Cup", "Board", "Cake"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "Things that can be 'cut'",
+        "explanation": "You can 'cut' a 'cake,' 'cut' a 'board,' and 'cut' a... 'cup' (no). This is harder than it looks."
+      },
+      "items": ["Cup", "Board", "Box"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "Things that 'Card' can precede",
+        "explanation": "A 'cardboard' 'box,' a 'card cup' (no)..."
+      },
+      "items": ["Cup", "Board", "Room"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "Words that form compound words",
+        "explanation": "'Cupboard,' 'Boardroom.' This is the link."
+      },
+      "trapLink": {
+        "text": "Things in a kitchen",
+        "explanation": "A 'cup,' a 'room' (kitchen), and a 'board' (cutting board). This is a very strong trap."
+      }
+    },
+    {
+      "items": ["Top", "High", "Grand"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "Words associated with 'Tour'",
+        "explanation": "'Top' Gear (a tour), 'High' Tour (no)... 'Grand' Tour. This is weak."
+      },
+      "items": ["Top", "High", "Main"],
+      "question": "What is the common link?",
+      "correctLink": {
+        "text": "Words that can mean 'Most Important'",
+        "explanation": "The 'top' priority, the 'high' priest, the 'main' event."
+      },
+      "trapLink": {
+        "text": "Positions",
+        "explanation": "'Top' and 'High' are positions, but 'Main' is not, revealing the trap."
+      }
+    }
+  ]
+}

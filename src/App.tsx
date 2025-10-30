@@ -5,6 +5,8 @@ import EnterName from './pages/EnterName';
 import Menu from './pages/Menu';
 import Leaderboard from './pages/Leaderboard';
 import About from './pages/About';
+import TwoTruths from './pages/games/TwoTruths';
+import CommonLink from './pages/games/CommonLink';
 
 function App() {
   const playerName = useGameStore((state) => state.playerName);
@@ -25,6 +27,14 @@ function App() {
         <Route 
           path="/about" 
           element={playerName ? <About /> : <Navigate to="/" replace />} 
+        />
+        <Route 
+          path="/game/truths" 
+          element={playerName ? <TwoTruths /> : <Navigate to="/" replace />} 
+        />
+        <Route 
+          path="/game/commonlink" 
+          element={playerName ? <CommonLink /> : <Navigate to="/" replace />} 
         />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

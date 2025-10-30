@@ -1,4 +1,5 @@
 import { useGameStore } from '../store/gameStore';
+import { Link } from 'react-router-dom';
 import StatBox from '../components/StatBox';
 import { useEffect } from 'react';
 
@@ -25,28 +26,36 @@ export default function Menu() {
       type: "AI GAME",
       title: "20Q — The AI Guesser",
       subtitle: "Think of an object. Can the AI guess it in 10 questions?",
-      typeColor: "text-red-600"
+      typeColor: "text-red-600",
+      path: "/game/20q",
+      available: false
     },
     {
       id: 2,
-      type: "AI GAME",
+      type: "STATIC GAME",
       title: "Two Truths & a Hallucination",
       subtitle: 'The AI gives 3 "facts." Can you spot the one it made up?',
-      typeColor: "text-red-600"
+      typeColor: "text-blue-600",
+      path: "/game/truths",
+      available: true
     },
     {
       id: 3,
       type: "AI GAME",
       title: "The Literal Genie",
       subtitle: "Make a wish. Can you phrase it so the AI can't twist it?",
-      typeColor: "text-red-600"
+      typeColor: "text-red-600",
+      path: "/game/genie",
+      available: false
     },
     {
       id: 4,
-      type: "AI GAME",
+      type: "STATIC GAME",
       title: "The Common Link",
       subtitle: "Find the true logical link between 3 items. Avoid the AI's trap!",
-      typeColor: "text-red-600"
+      typeColor: "text-blue-600",
+      path: "/game/commonlink",
+      available: true
     }
   ];
 
@@ -120,18 +129,47 @@ export default function Menu() {
 
         {/* Game Cards */}
         <div className="space-y-4">
-          {games.map((game) => (
-            <div
-              key={game.id}
-              className="bg-white border-2 border-black rounded-xl shadow-[8px_8px_0px_#000] p-5 hover:shadow-[12px_12px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all cursor-pointer"
-            >
-              <div className={`text-xs md:text-sm font-bold mb-2 ${game.typeColor}`}>
-                {game.type}
+          {games.map((game) => {
+            if (game.available) {
+              return (
+                <Link
+                  key={game.id}
+                  to={game.path}
+                  className="block bg-white border-2 border-black rounded-xl shadow-[8px_8px_0px_#000] p-5 hover:shadow-[12px_12px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all cursor-pointer"
+                >
+                  <div className="flex items-start justify-between">
+                    <div className="flex-1">
+                      <div className={`text-xs md:text-sm font-bold mb-2 ${game.typeColor}`}>
+                        {game.type}
+                      </div>
+                      <h3 className="text-xl md:text-2xl font-black mb-2 text-black">{game.title}</h3>
+                      <p className="text-sm md:text-base text-gray-700 leading-relaxed">{game.subtitle}</p>
+                    </div>
+                  </div>
+                </Link>
+              );
+            }
+            
+            return (
+              <div
+                key={game.id}
+                className="block bg-white border-2 border-black rounded-xl shadow-[8px_8px_0px_#000] p-5 opacity-60 cursor-not-allowed"
+              >
+                <div className="flex items-start justify-between">
+                  <div className="flex-1">
+                    <div className={`text-xs md:text-sm font-bold mb-2 ${game.typeColor}`}>
+                      {game.type}
+                    </div>
+                    <h3 className="text-xl md:text-2xl font-black mb-2 text-black">{game.title}</h3>
+                    <p className="text-sm md:text-base text-gray-700 leading-relaxed">{game.subtitle}</p>
+                  </div>
+                  <span className="ml-4 px-3 py-1 bg-gray-300 border-2 border-black text-xs font-bold">
+                    COMING SOON
+                  </span>
+                </div>
               </div>
-              <h3 className="text-xl md:text-2xl font-black mb-2 text-black">{game.title}</h3>
-              <p className="text-sm md:text-base text-gray-700 leading-relaxed">{game.subtitle}</p>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </div>
