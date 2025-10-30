@@ -14,16 +14,11 @@ interface Puzzle {
   trapLink: LinkOption;
 }
 
-interface GameData {
-  commonLink: Puzzle[];
-}
-
 export default function CommonLink() {
   const navigate = useNavigate();
   const { incrementGlobalScore, incrementGamesPlayed, updateStreak } = useGameStore();
   
-  const [selectedPuzzles, setSelectedPuzzles] = useState<Puzzle[]>([]);
-  const [currentPuzzleIndex, setCurrentPuzzleIndex] = useState(0);
+  const [currentPuzzle, setCurrentPuzzle] = useState<Puzzle | null>(null);
   const [selectedOption, setSelectedOption] = useState<'correct' | 'trap' | null>(null);
   const [showExplanation, setShowExplanation] = useState(false);
   const [score, setScore] = useState(0);
@@ -31,20 +26,26 @@ export default function CommonLink() {
   const [gameOver, setGameOver] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  // Load puzzles from JSON
-  useEffect(() => {
-    fetch('/games.json')
-      .then((res) => res.json())
-      .then((data: GameData) => {
-        // Select 10 random puzzles and shuffle the answer order
-        const shuffled = [...data.commonLink].sort(() => Math.random() - 0.5);
-        setSelectedPuzzles(shuffled.slice(0, 10));
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error('Failed to load puzzles:', err);
-        setLoading(false);
+  // Load puzzle from AI
+  const loadNewPuzzle = async () => {
+    setLoading(true);
+    try {
+      const response = await fetch('/api/gemini-commonlink', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
       });
+      const puzzle = await response.json();
+      setCurrentPuzzle(puzzle);
+      setLoading(false);
+    } catch (err) {
+      console.error('Failed to load puzzle:', err);
+      setLoading(false);
+    }
+  };
+
+  // Load first puzzle on mount
+  useEffect(() => {
+    loadNewPuzzle();
   }, []);
 
   const handleOptionClick = (option: 'correct' | 'trap') => {
@@ -76,17 +77,19 @@ export default function CommonLink() {
       }
     } else {
       // Next question
-      setCurrentPuzzleIndex(currentPuzzleIndex + 1);
       setQuestionNumber(questionNumber + 1);
       setSelectedOption(null);
       setShowExplanation(false);
+      loadNewPuzzle();
     }
   };
 
-  if (loading) {
+  if (loading || !currentPuzzle) {
     return (
       <div className="min-h-screen bg-purple-300 flex items-center justify-center p-4">
-        <div className="text-4xl font-black">Loading puzzles...</div>
+        <div className="text-4xl font-black">
+          {loading ? 'AI is generating puzzle...' : 'Loading...'}
+        </div>
       </div>
     );
   }
@@ -128,8 +131,6 @@ export default function CommonLink() {
     );
   }
 
-  const currentPuzzle = selectedPuzzles[currentPuzzleIndex];
-  
   // Randomly shuffle the options for display
   const [option1, option2] = Math.random() > 0.5 
     ? [

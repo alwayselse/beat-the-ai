@@ -7,6 +7,8 @@ import Leaderboard from './pages/Leaderboard';
 import About from './pages/About';
 import TwoTruths from './pages/games/TwoTruths';
 import CommonLink from './pages/games/CommonLink';
+import TwentyQuestions from './pages/games/TwentyQuestions';
+import LiteralGenie from './pages/games/LiteralGenie';
 
 function App() {
   const playerName = useGameStore((state) => state.playerName);
@@ -35,6 +37,14 @@ function App() {
         <Route 
           path="/game/commonlink" 
           element={playerName ? <CommonLink /> : <Navigate to="/" replace />} 
+        />
+        <Route 
+          path="/game/20q" 
+          element={playerName ? <TwentyQuestions /> : <Navigate to="/" replace />} 
+        />
+        <Route 
+          path="/game/genie" 
+          element={playerName ? <LiteralGenie /> : <Navigate to="/" replace />} 
         />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

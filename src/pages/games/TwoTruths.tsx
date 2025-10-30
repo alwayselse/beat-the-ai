@@ -13,16 +13,11 @@ interface Puzzle {
   explanation: string;
 }
 
-interface GameData {
-  twoTruthsAndHallucination: Puzzle[];
-}
-
 export default function TwoTruths() {
   const navigate = useNavigate();
   const { incrementGlobalScore, incrementGamesPlayed, updateStreak } = useGameStore();
   
-  const [selectedPuzzles, setSelectedPuzzles] = useState<Puzzle[]>([]);
-  const [currentPuzzleIndex, setCurrentPuzzleIndex] = useState(0);
+  const [currentPuzzle, setCurrentPuzzle] = useState<Puzzle | null>(null);
   const [selectedFactIndex, setSelectedFactIndex] = useState<number | null>(null);
   const [showExplanation, setShowExplanation] = useState(false);
   const [score, setScore] = useState(0);
@@ -30,29 +25,34 @@ export default function TwoTruths() {
   const [gameOver, setGameOver] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  // Load puzzles from JSON
-  useEffect(() => {
-    fetch('/games.json')
-      .then((res) => res.json())
-      .then((data: GameData) => {
-        // Select 10 random puzzles
-        const shuffled = [...data.twoTruthsAndHallucination].sort(() => Math.random() - 0.5);
-        setSelectedPuzzles(shuffled.slice(0, 10));
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error('Failed to load puzzles:', err);
-        setLoading(false);
+  // Load puzzle from AI
+  const loadNewPuzzle = async () => {
+    setLoading(true);
+    try {
+      const response = await fetch('/api/gemini-truths', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
       });
+      const puzzle = await response.json();
+      setCurrentPuzzle(puzzle);
+      setLoading(false);
+    } catch (err) {
+      console.error('Failed to load puzzle:', err);
+      setLoading(false);
+    }
+  };
+
+  // Load first puzzle on mount
+  useEffect(() => {
+    loadNewPuzzle();
   }, []);
 
   const handleFactClick = (factIndex: number) => {
-    if (showExplanation) return; // Don't allow clicks after answer
+    if (showExplanation || !currentPuzzle) return;
 
     setSelectedFactIndex(factIndex);
     setShowExplanation(true);
 
-    const currentPuzzle = selectedPuzzles[currentPuzzleIndex];
     const selectedFact = currentPuzzle.facts[factIndex];
 
     // Check if the selected fact is the lie (isTrue === false)
@@ -79,20 +79,12 @@ export default function TwoTruths() {
       }
     } else {
       // Next question
-      setCurrentPuzzleIndex(currentPuzzleIndex + 1);
       setQuestionNumber(questionNumber + 1);
       setSelectedFactIndex(null);
       setShowExplanation(false);
+      loadNewPuzzle();
     }
   };
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-yellow-300 flex items-center justify-center p-4">
-        <div className="text-4xl font-black">Loading puzzles...</div>
-      </div>
-    );
-  }
 
   if (gameOver) {
     const playerWon = score >= 7;
@@ -131,7 +123,15 @@ export default function TwoTruths() {
     );
   }
 
-  const currentPuzzle = selectedPuzzles[currentPuzzleIndex];
+  if (!currentPuzzle || loading) {
+    return (
+      <div className="min-h-screen bg-yellow-300 flex items-center justify-center p-4">
+        <div className="text-4xl font-black">
+          {loading ? 'AI is generating puzzle...' : 'Loading...'}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-yellow-300 py-8 px-4">

@@ -28,11 +28,11 @@ export default function Menu() {
       subtitle: "Think of an object. Can the AI guess it in 10 questions?",
       typeColor: "text-red-600",
       path: "/game/20q",
-      available: false
+      available: true
     },
     {
       id: 2,
-      type: "STATIC GAME",
+      type: "AI GAME",
       title: "Two Truths & a Hallucination",
       subtitle: 'The AI gives 3 "facts." Can you spot the one it made up?',
       typeColor: "text-blue-600",
@@ -44,16 +44,16 @@ export default function Menu() {
       type: "AI GAME",
       title: "The Literal Genie",
       subtitle: "Make a wish. Can you phrase it so the AI can't twist it?",
-      typeColor: "text-red-600",
+      typeColor: "text-purple-600",
       path: "/game/genie",
-      available: false
+      available: true
     },
     {
       id: 4,
-      type: "STATIC GAME",
+      type: "AI GAME",
       title: "The Common Link",
       subtitle: "Find the true logical link between 3 items. Avoid the AI's trap!",
-      typeColor: "text-blue-600",
+      typeColor: "text-green-600",
       path: "/game/commonlink",
       available: true
     }
