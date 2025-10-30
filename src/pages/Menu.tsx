@@ -1,5 +1,6 @@
 import { useGameStore } from '../store/gameStore';
 import StatBox from '../components/StatBox';
+import { useEffect } from 'react';
 
 export default function Menu() {
   const playerName = useGameStore((state) => state.playerName);
@@ -7,6 +8,12 @@ export default function Menu() {
   const totalGamesPlayed = useGameStore((state) => state.totalGamesPlayed);
   const currentStreak = useGameStore((state) => state.currentStreak);
   const bestStreak = useGameStore((state) => state.bestStreak);
+  const fetchGlobalScores = useGameStore((state) => state.fetchGlobalScores);
+
+  // Fetch global scores when component mounts
+  useEffect(() => {
+    fetchGlobalScores();
+  }, [fetchGlobalScores]);
 
   const winRate = totalGamesPlayed > 0 
     ? Math.round((globalScore.humans / totalGamesPlayed) * 100) 

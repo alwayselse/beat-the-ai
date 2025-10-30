@@ -25,6 +25,8 @@ interface GameState {
   incrementGamesPlayed: () => void;
   updateStreak: (won: boolean) => void;
   refreshScores: () => void;
+  fetchGlobalScores: () => Promise<void>;
+  incrementGlobalScore: (winner: 'human' | 'ai') => Promise<void>;
 }
 
 // Generate initial dummy leaderboard
@@ -106,6 +108,32 @@ export const useGameStore = create<GameState>()(
             score: Math.max(100, entry.score + Math.floor(Math.random() * 200 - 100)),
           })).sort((a, b) => b.score - a.score),
         })),
+
+      // Fetch global scores from API
+      fetchGlobalScores: async () => {
+        try {
+          const response = await fetch('/api/get-scores');
+          const data = await response.json();
+          set({ globalScore: { humans: data.humans, ai: data.ai } });
+        } catch (error) {
+          console.error('Failed to fetch global scores:', error);
+        }
+      },
+
+      // Increment global score via API
+      incrementGlobalScore: async (winner: 'human' | 'ai') => {
+        try {
+          const response = await fetch('/api/update-score', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ winner }),
+          });
+          const data = await response.json();
+          set({ globalScore: { humans: data.humans, ai: data.ai } });
+        } catch (error) {
+          console.error('Failed to update global score:', error);
+        }
+      },
     }),
     {
       name: 'beat-the-ai-storage',
