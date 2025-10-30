@@ -1,11 +1,11 @@
-const { Redis } = require('@upstash/redis');
+import { Redis } from '@upstash/redis';
 
 const redis = new Redis({
   url: process.env.beatai_REDIS_URL || process.env.beatai_KV_URL,
   token: process.env.beatai_KV_REST_API_TOKEN,
 });
 
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
   // Set CORS headers
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -43,4 +43,4 @@ module.exports = async function handler(req, res) {
     console.error('Redis Error:', error);
     res.status(500).json({ error: 'Failed to update score', details: error.message });
   }
-};
+}

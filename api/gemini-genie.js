@@ -1,6 +1,6 @@
-const { GoogleGenerativeAI } = require("@google/generative-ai");
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
   // Set CORS headers
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -49,6 +49,6 @@ Your twisted interpretation or admission of defeat:`;
     res.status(200).json({ response, playerWon });
   } catch (error) {
     console.error('Gemini API Error:', error);
-    res.status(500).json({ error: 'Failed to generate response', details: error.message });
+    res.status(500).json({ error: 'Failed to process wish', details: error.message });
   }
-};
+}
