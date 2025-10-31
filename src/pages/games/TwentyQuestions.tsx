@@ -9,7 +9,7 @@ interface Message {
 
 export default function TwentyQuestions() {
   const navigate = useNavigate();
-  const { incrementGlobalScore, incrementGamesPlayed, updateStreak } = useGameStore();
+  const { incrementGlobalScore } = useGameStore();
   
   const [gameState, setGameState] = useState<'setup' | 'playing' | 'finished'>('setup');
   const [secret, setSecret] = useState('');
@@ -75,8 +75,6 @@ export default function TwentyQuestions() {
         
         setPlayerWon(won);
         setGameState('finished');
-        incrementGamesPlayed();
-        updateStreak(won);
         
         if (won) {
           incrementGlobalScore('human');

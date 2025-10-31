@@ -1,24 +1,16 @@
 import { useGameStore } from '../store/gameStore';
 import { Link } from 'react-router-dom';
-import StatBox from '../components/StatBox';
 import { useEffect } from 'react';
 
 export default function Menu() {
   const playerName = useGameStore((state) => state.playerName);
   const globalScore = useGameStore((state) => state.globalScore);
-  const totalGamesPlayed = useGameStore((state) => state.totalGamesPlayed);
-  const currentStreak = useGameStore((state) => state.currentStreak);
-  const bestStreak = useGameStore((state) => state.bestStreak);
   const fetchGlobalScores = useGameStore((state) => state.fetchGlobalScores);
 
   // Fetch global scores when component mounts
   useEffect(() => {
     fetchGlobalScores();
   }, [fetchGlobalScores]);
-
-  const winRate = totalGamesPlayed > 0 
-    ? Math.round((globalScore.humans / totalGamesPlayed) * 100) 
-    : 0;
 
   const games = [
     {
@@ -82,35 +74,7 @@ export default function Menu() {
           </div>
         </div>
 
-        {/* Stats Dashboard */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-          <StatBox 
-            title="Total Games" 
-            value={totalGamesPlayed} 
-            icon="🎮" 
-            color="purple"
-          />
-          <StatBox 
-            title="Win Rate" 
-            value={`${winRate}%`} 
-            icon="📊" 
-            color="green"
-            trend={winRate > 50 ? 'up' : winRate < 50 ? 'down' : 'neutral'}
-          />
-          <StatBox 
-            title="Current Streak" 
-            value={currentStreak} 
-            icon="🔥" 
-            color="red"
-            trend={currentStreak > 0 ? 'up' : 'neutral'}
-          />
-          <StatBox 
-            title="Best Streak" 
-            value={bestStreak} 
-            icon="⭐" 
-            color="yellow"
-          />
-        </div>
+        {/* Stats Dashboard - Removed */}
 
         {/* Scoreboard Section */}
         <div className="bg-white border-2 border-black rounded-xl shadow-[8px_8px_0px_#000] p-6 mb-6">

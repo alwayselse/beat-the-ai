@@ -15,7 +15,7 @@ interface Puzzle {
 
 export default function TwoTruths() {
   const navigate = useNavigate();
-  const { incrementGlobalScore, incrementGamesPlayed, updateStreak } = useGameStore();
+  const { incrementGlobalScore } = useGameStore();
   
   const [currentPuzzle, setCurrentPuzzle] = useState<Puzzle | null>(null);
   const [selectedFactIndex, setSelectedFactIndex] = useState<number | null>(null);
@@ -65,11 +65,9 @@ export default function TwoTruths() {
     if (questionNumber >= 10) {
       // Game over
       setGameOver(true);
-      incrementGamesPlayed();
       
       // Need 7/10 to win
       const playerWon = score >= 7;
-      updateStreak(playerWon);
       
       // Update global score
       if (playerWon) {

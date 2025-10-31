@@ -10,7 +10,7 @@ interface WishResult {
 
 export default function LiteralGenie() {
   const navigate = useNavigate();
-  const { incrementGlobalScore, incrementGamesPlayed, updateStreak } = useGameStore();
+  const { incrementGlobalScore } = useGameStore();
   
   const [gameState, setGameState] = useState<'playing' | 'finished'>('playing');
   const [currentWish, setCurrentWish] = useState('');
@@ -46,14 +46,10 @@ export default function LiteralGenie() {
       if (data.playerWon) {
         setPlayerWon(true);
         setGameState('finished');
-        incrementGamesPlayed();
-        updateStreak(true);
         incrementGlobalScore('human');
       } else if (attemptNumber >= 3) {
         setPlayerWon(false);
         setGameState('finished');
-        incrementGamesPlayed();
-        updateStreak(false);
         incrementGlobalScore('ai');
       }
       

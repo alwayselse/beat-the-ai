@@ -16,7 +16,7 @@ interface Puzzle {
 
 export default function CommonLink() {
   const navigate = useNavigate();
-  const { incrementGlobalScore, incrementGamesPlayed, updateStreak } = useGameStore();
+  const { incrementGlobalScore } = useGameStore();
   
   const [currentPuzzle, setCurrentPuzzle] = useState<Puzzle | null>(null);
   const [selectedOption, setSelectedOption] = useState<'correct' | 'trap' | null>(null);
@@ -63,11 +63,9 @@ export default function CommonLink() {
     if (questionNumber >= 10) {
       // Game over
       setGameOver(true);
-      incrementGamesPlayed();
       
       // Need 7/10 to win
       const playerWon = score >= 7;
-      updateStreak(playerWon);
       
       // Update global score
       if (playerWon) {

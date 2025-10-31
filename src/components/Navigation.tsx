@@ -12,7 +12,7 @@ export default function Navigation() {
 
   const navLinks = [
     { path: '/menu', label: '🎮 Games', icon: '🎮' },
-    { path: '/leaderboard', label: '🏆 Leaderboard', icon: '🏆' },
+    { path: '/leaderboard', label: '⚔️ Battle Stats', icon: '⚔️' },
     { path: '/about', label: 'ℹ️ About', icon: 'ℹ️' },
   ];
 
