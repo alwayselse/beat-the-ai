@@ -1,5 +1,5 @@
 export default async function handler(req, res) {
-  // Set CORS headers
+  // Set CORS headers FIRST
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
@@ -8,14 +8,23 @@ export default async function handler(req, res) {
     'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
   );
 
+  // Handle preflight
   if (req.method === 'OPTIONS') {
     res.status(200).end();
     return;
   }
 
+  // Log the request method for debugging
+  console.log('Received request method:', req.method);
+  console.log('Request body:', JSON.stringify(req.body));
+
   // Only allow POST requests
   if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
+    return res.status(405).json({ 
+      error: 'Method not allowed',
+      received: req.method,
+      expected: 'POST'
+    });
   }
 
   try {
