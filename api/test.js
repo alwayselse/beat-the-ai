@@ -9,19 +9,34 @@ export default async function handler(req, res) {
     return;
   }
 
-  // Check environment variables (without exposing the full keys)
-  const hasGeminiKey = !!process.env.GEMINI_API_KEY;
-  const hasRedisUrl = !!process.env.UPSTASH_REDIS_REST_URL;
-  const hasRedisToken = !!process.env.UPSTASH_REDIS_REST_TOKEN;
+  // Check all possible environment variable names
+  const geminiKey = process.env.GEMINI_API_KEY;
+  
+  // Check all Upstash variable variations
+  const upstashUrl = process.env.beatai_KV_REST_API_URL || 
+                     process.env.beatai_REDIS_URL || 
+                     process.env.beatai_KV_URL ||
+                     process.env.UPSTASH_REDIS_REST_URL;
+                     
+  const upstashToken = process.env.beatai_KV_REST_API_TOKEN || 
+                       process.env.UPSTASH_REDIS_REST_TOKEN;
 
   res.status(200).json({
     status: 'API is working!',
     timestamp: new Date().toISOString(),
     environment: {
-      geminiKey: hasGeminiKey ? 'Set ✓' : 'Missing ✗',
-      upstashUrl: hasRedisUrl ? 'Set ✓' : 'Missing ✗',
-      upstashToken: hasRedisToken ? 'Set ✓' : 'Missing ✗',
+      geminiKey: geminiKey ? 'Set ✓' : 'Missing ✗',
+      upstashUrl: upstashUrl ? 'Set ✓' : 'Missing ✗',
+      upstashToken: upstashToken ? 'Set ✓' : 'Missing ✗',
     },
-    geminiKeyLength: process.env.GEMINI_API_KEY?.length || 0,
+    detectedVars: {
+      beatai_KV_REST_API_URL: !!process.env.beatai_KV_REST_API_URL,
+      beatai_REDIS_URL: !!process.env.beatai_REDIS_URL,
+      beatai_KV_URL: !!process.env.beatai_KV_URL,
+      beatai_KV_REST_API_TOKEN: !!process.env.beatai_KV_REST_API_TOKEN,
+      UPSTASH_REDIS_REST_URL: !!process.env.UPSTASH_REDIS_REST_URL,
+      UPSTASH_REDIS_REST_TOKEN: !!process.env.UPSTASH_REDIS_REST_TOKEN,
+    },
+    geminiKeyLength: geminiKey?.length || 0,
   });
 }

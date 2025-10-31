@@ -1,5 +1,3 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
-
 export default async function handler(req, res) {
   // Set CORS headers
   res.setHeader('Access-Control-Allow-Credentials', true);
@@ -20,8 +18,10 @@ export default async function handler(req, res) {
   }
 
   try {
-    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const apiKey = process.env.GEMINI_API_KEY;
+    if (!apiKey) {
+      throw new Error('GEMINI_API_KEY not configured');
+    }
 
     const { wish, attemptNumber } = req.body;
 
@@ -39,14 +39,36 @@ The user's wish: "${wish}"
 
 Your twisted interpretation or admission of defeat:`;
 
-    const result = await model.generateContent(prompt);
-    const response = result.response.text();
+    const response = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          contents: [{
+            parts: [{
+              text: prompt
+            }]
+          }]
+        })
+      }
+    );
+
+    if (!response.ok) {
+      const errorData = await response.text();
+      throw new Error(`Gemini API error: ${response.status} - ${errorData}`);
+    }
+
+    const data = await response.json();
+    const aiResponse = data.candidates[0].content.parts[0].text;
 
     // Check if AI admitted defeat
-    const playerWon = response.toLowerCase().includes("curses") || 
-                      response.toLowerCase().includes("perfect");
+    const playerWon = aiResponse.toLowerCase().includes("curses") || 
+                      aiResponse.toLowerCase().includes("perfect");
 
-    res.status(200).json({ response, playerWon });
+    res.status(200).json({ response: aiResponse, playerWon });
   } catch (error) {
     console.error('Gemini API Error:', error);
     res.status(500).json({ error: 'Failed to process wish', details: error.message });

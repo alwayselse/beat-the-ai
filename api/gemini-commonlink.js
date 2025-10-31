@@ -1,5 +1,3 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
-
 export default async function handler(req, res) {
   // Set CORS headers
   res.setHeader('Access-Control-Allow-Credentials', true);
@@ -20,8 +18,10 @@ export default async function handler(req, res) {
   }
 
   try {
-    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const apiKey = process.env.GEMINI_API_KEY;
+    if (!apiKey) {
+      throw new Error('GEMINI_API_KEY not configured');
+    }
 
     const prompt = `Generate ONE "Common Link" puzzle.
 
@@ -46,14 +46,36 @@ Return ONLY valid JSON in this EXACT format (no markdown, no extra text):
   }
 }`;
 
-    const result = await model.generateContent(prompt);
-    let response = result.response.text();
+    const response = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          contents: [{
+            parts: [{
+              text: prompt
+            }]
+          }]
+        })
+      }
+    );
+
+    if (!response.ok) {
+      const errorData = await response.text();
+      throw new Error(`Gemini API error: ${response.status} - ${errorData}`);
+    }
+
+    const data = await response.json();
+    let textResponse = data.candidates[0].content.parts[0].text;
     
     // Clean up response - remove markdown code blocks if present
-    response = response.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
+    textResponse = textResponse.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
     
     // Parse and validate JSON
-    const puzzle = JSON.parse(response);
+    const puzzle = JSON.parse(textResponse);
     
     // Validate structure
     if (!puzzle.items || puzzle.items.length !== 3 || !puzzle.correctLink || !puzzle.trapLink) {
