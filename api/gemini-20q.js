@@ -1,7 +1,7 @@
 export default async function handler(req, res) {
   // Set CORS headers FIRST
   res.setHeader('Access-Control-Allow-Credentials', true);
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Origin', '*'); // Or lock this down to your Vercel domain
   res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
   res.setHeader(
     'Access-Control-Allow-Headers',
@@ -35,31 +35,34 @@ export default async function handler(req, res) {
       throw new Error('Secret is required');
     }
 
-    // System prompt for AI behavior
+    // --- OPTIMIZATION 1: Create a separate System Prompt ---
+    // This is the AI's "Job Description." It's sent separately from the chat history.
     const systemPrompt = `You are a game bot playing 20 Questions. You have 10 questions to guess a secret.
 
 CRITICAL RULES FOR API COST:
-1. BE BRUTALLY CONCISE. Your entire response must be ONLY the question.
-2. Do NOT use any filler words, greetings, or conversational text.
-3. WRONG: "Okay, my next question is: is it alive?"
-4. RIGHT: "Is it alive?"
-5. Ask ONLY smart, strategic yes/no/maybe questions.
+1.  **BE BRUTALLY CONCISE.** Your *entire* response must be **only** the question.
+2.  Do NOT use any filler words, greetings, or conversational text.
+3.  **WRONG:** "Okay, my next question is: is it alive?"
+4.  **RIGHT:** "Is it alive?"
+5.  Ask ONLY smart, strategic yes/no/maybe questions.
 
 GUESSING FORMAT:
 * You can make a guess AT ANY TIME when you feel confident.
-* Your guess MUST be in this exact format: FINAL GUESS: [Your Guess]
+* Your guess MUST be in this exact format: \`FINAL GUESS: [Your Guess]\`
 * Do not say "My final guess is..." or anything else.
 
 The user's secret object is: "${secret}"
 You are on question ${questionCount}/10.`;
 
-    // Format the chat history for the API
+    
+    // --- OPTIMIZATION 2: Format the chat history for the API ---
+    // The `contents` array should *only* contain the chat history.
     const geminiHistory = history.map(msg => ({
-      role: msg.role === 'user' ? 'user' : 'model',
+      role: msg.role === 'player' ? 'user' : 'model', // Convert 'player' to 'user'
       parts: [{ text: msg.content }]
     }));
 
-    // If the history is empty, this is the first turn
+    // If the history is empty, this is the first turn.
     if (geminiHistory.length === 0) {
       geminiHistory.push({
         role: 'user',
@@ -67,13 +70,17 @@ You are on question ${questionCount}/10.`;
       });
     }
 
-    // Use the correct model name
-    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`;
+    // --- 
+    // --- THIS IS THE FIX ---
+    // --- The model name is corrected from 'gemini-1.5-flash-latest'
+    // ---
+    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
     
+    // --- OPTIMIZATION 3: Send the new, structured request body ---
     const requestBody = {
       contents: geminiHistory,
       systemInstruction: {
-        role: 'model',
+        role: 'model', // System instructions are a special type of 'model' role
         parts: [{
           text: systemPrompt
         }]
@@ -85,15 +92,17 @@ You are on question ${questionCount}/10.`;
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(requestBody)
+      body: JSON.stringify(requestBody) // Send the new structured body
     });
 
     if (!response.ok) {
       const errorText = await response.text();
+      // Try to parse the error for a cleaner message
       try {
         const errorJson = JSON.parse(errorText);
         throw new Error(`Gemini API error: ${response.status} - ${errorJson.error.message}`);
       } catch (e) {
+        // Fallback if the error text isn't JSON
         throw new Error(`Gemini API error: ${response.status} - ${errorText}`);
       }
     }
@@ -116,3 +125,4 @@ You are on question ${questionCount}/10.`;
     });
   }
 }
+
