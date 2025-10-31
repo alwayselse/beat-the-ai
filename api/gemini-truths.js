@@ -45,7 +45,7 @@ Return ONLY valid JSON in this EXACT format (no markdown, no extra text):
 
     // Use fetch API directly to avoid SDK CommonJS issues
     const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`,
       {
         method: 'POST',
         headers: {
