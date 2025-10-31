@@ -1,12 +1,8 @@
 export default async function handler(req, res) {
-  // Set CORS headers
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
-  res.setHeader(
-    'Access-Control-Allow-Headers',
-    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
-  );
+  res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version');
 
   if (req.method === 'OPTIONS') {
     res.status(200).end();
@@ -25,52 +21,65 @@ export default async function handler(req, res) {
 
     const { wish, attemptNumber } = req.body;
 
-    const prompt = `You are a mischievous, LITERAL genie who twists wishes.
+    if (!wish) {
+      throw new Error('Wish is required');
+    }
 
-Rules:
-1. Find clever loopholes in the wish wording
+    const systemPrompt = `You are a mischievous LITERAL genie who twists wishes.
+
+RULES:
+1. Find loopholes in the wish wording
 2. Grant the LITERAL interpretation, not the spirit
-3. Be creative and funny with your twists
-4. If the wish is PERFECTLY worded with no loopholes, you MUST say: "CURSES! Your wish is... perfect. I grant it fairly."
-5. Keep responses under 100 words
+3. Be creative and funny
+4. If wish is PERFECT (no loopholes), say EXACTLY: "CURSES! Your wish is... perfect. I grant it fairly."
+5. Keep response under 80 words
 6. This is attempt ${attemptNumber}/3
 
-The user's wish: "${wish}"
+User's wish: "${wish}"
 
-Your twisted interpretation or admission of defeat:`;
+Your response:`;
 
-    const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          contents: [{
-            parts: [{
-              text: prompt
-            }]
-          }]
-        })
+    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+    
+    const requestBody = {
+      contents: [{
+        role: 'user',
+        parts: [{ text: wish }]
+      }],
+      systemInstruction: {
+        role: 'model',
+        parts: [{ text: systemPrompt }]
       }
-    );
+    };
+
+    const response = await fetch(apiUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(requestBody)
+    });
 
     if (!response.ok) {
-      const errorData = await response.text();
-      throw new Error(`Gemini API error: ${response.status} - ${errorData}`);
+      const errorText = await response.text();
+      throw new Error(`Gemini API error: ${response.status} - ${errorText}`);
     }
 
     const data = await response.json();
-    const aiResponse = data.candidates[0].content.parts[0].text;
+    const aiResponse = data.candidates?.[0]?.content?.parts?.[0]?.text;
 
-    // Check if AI admitted defeat
+    if (!aiResponse) {
+      throw new Error('Invalid response from Gemini API');
+    }
+
     const playerWon = aiResponse.toLowerCase().includes("curses") || 
                       aiResponse.toLowerCase().includes("perfect");
 
     res.status(200).json({ response: aiResponse, playerWon });
+
   } catch (error) {
     console.error('Gemini API Error:', error);
-    res.status(500).json({ error: 'Failed to process wish', details: error.message });
+    res.status(500).json({ 
+      error: 'Failed to generate response', 
+      details: error.message 
+    });
   }
 }
