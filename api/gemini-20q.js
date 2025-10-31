@@ -35,52 +35,43 @@ export default async function handler(req, res) {
       throw new Error('Secret is required');
     }
 
-    // --- OPTIMIZATION 1: Create a separate System Prompt ---
-    // This is the AI's "Job Description." It's sent separately from the chat history.
-    const systemPrompt = `You are a game bot playing 20 Questions. You have 10 questions to guess a secret.
+    // System prompt - DON'T reveal the secret to AI!
+    const systemPrompt = `You are playing 20 Questions. You must guess the player's secret in 10 questions.
 
-CRITICAL RULES FOR API COST:
-1.  **BE BRUTALLY CONCISE.** Your *entire* response must be **only** the question.
-2.  Do NOT use any filler words, greetings, or conversational text.
-3.  **WRONG:** "Okay, my next question is: is it alive?"
-4.  **RIGHT:** "Is it alive?"
-5.  Ask ONLY smart, strategic yes/no/maybe questions.
+CRITICAL RULES:
+1. Ask ONLY yes/no questions
+2. Be strategic - narrow down categories before specific guessing
+3. Your response must be ONLY the question (no extra words)
+4. WRONG: "Okay, is it alive?"
+5. RIGHT: "Is it alive?"
 
-GUESSING FORMAT:
-* You can make a guess AT ANY TIME when you feel confident.
-* Your guess MUST be in this exact format: \`FINAL GUESS: [Your Guess]\`
-* Do not say "My final guess is..." or anything else.
+GUESSING:
+- When confident, make a guess using EXACTLY this format: FINAL GUESS: [your answer]
+- You can guess at ANY time, but you have ${10 - questionCount + 1} questions left
+- On question 10, you MUST make a final guess
 
-The user's secret object is: "${secret}"
-You are on question ${questionCount}/10.`;
+Question ${questionCount}/10`;
 
-    
-    // --- OPTIMIZATION 2: Format the chat history for the API ---
-    // The `contents` array should *only* contain the chat history.
+    // Format chat history - frontend sends 'ai' and 'user' roles
     const geminiHistory = history.map(msg => ({
-      role: msg.role === 'player' ? 'user' : 'model', // Convert 'player' to 'user'
+      role: msg.role === 'ai' ? 'model' : 'user',
       parts: [{ text: msg.content }]
     }));
 
-    // If the history is empty, this is the first turn.
+    // First turn - add initial user message
     if (geminiHistory.length === 0) {
       geminiHistory.push({
         role: 'user',
-        parts: [{ text: 'I have my secret. Ask your first question.' }]
+        parts: [{ text: 'I have a secret. Start asking questions to guess it!' }]
       });
     }
 
-    // --- 
-    // --- THIS IS THE FIX ---
-    // --- The model name is corrected from 'gemini-1.5-flash-latest'
-    // ---
     const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
     
-    // --- OPTIMIZATION 3: Send the new, structured request body ---
     const requestBody = {
       contents: geminiHistory,
       systemInstruction: {
-        role: 'model', // System instructions are a special type of 'model' role
+        role: 'model',
         parts: [{
           text: systemPrompt
         }]
@@ -92,17 +83,15 @@ You are on question ${questionCount}/10.`;
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(requestBody) // Send the new structured body
+      body: JSON.stringify(requestBody)
     });
 
     if (!response.ok) {
       const errorText = await response.text();
-      // Try to parse the error for a cleaner message
       try {
         const errorJson = JSON.parse(errorText);
         throw new Error(`Gemini API error: ${response.status} - ${errorJson.error.message}`);
       } catch (e) {
-        // Fallback if the error text isn't JSON
         throw new Error(`Gemini API error: ${response.status} - ${errorText}`);
       }
     }
