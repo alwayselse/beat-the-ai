@@ -2,21 +2,46 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
 interface LeaderboardEntry {
-  name: string;
+  playerName: string;
+  game: string;
   score: number;
+  won: boolean;
   date: string;
 }
 
+interface GameStats {
+  totalGamesPlayed: number;
+  gamesWon: number;
+  gamesLost: number;
+  bestStreak: number;
+  currentStreak: number;
+}
+
 interface GameState {
+  // Player info
   playerName: string;
+  
+  // Global scores (shared by everyone)
   globalScore: {
     humans: number;
     ai: number;
   };
+  
+  // Personal stats (per player)
+  playerStats: GameStats;
+  
+  // Personal best scores (top 10 for this player)
+  personalBestScores: LeaderboardEntry[];
+  
+  // Global leaderboard (top players)
   leaderboard: LeaderboardEntry[];
+  
+  // Legacy local data
   totalGamesPlayed: number;
   currentStreak: number;
   bestStreak: number;
+  
+  // Actions
   setPlayerName: (name: string) => void;
   incrementScore: (winner: 'humans' | 'ai') => void;
   resetScores: () => void;
@@ -25,32 +50,40 @@ interface GameState {
   incrementGamesPlayed: () => void;
   updateStreak: (won: boolean) => void;
   refreshScores: () => void;
+  
+  // API actions
   fetchGlobalScores: () => Promise<void>;
   incrementGlobalScore: (winner: 'human' | 'ai') => Promise<void>;
+  saveGameResult: (game: string, score: number, won: boolean) => Promise<void>;
+  fetchPlayerStats: () => Promise<void>;
+  fetchLeaderboard: () => Promise<void>;
 }
 
 // Generate initial dummy leaderboard
 const generateInitialLeaderboard = (): LeaderboardEntry[] => [
-  { name: 'Alice Champion', score: 2850, date: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString() },
-  { name: 'Bob Masters', score: 2340, date: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString() },
-  { name: 'Zara Elite', score: 2120, date: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString() },
-  { name: 'Rex Pro', score: 1890, date: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000).toISOString() },
-  { name: 'Jay Wins', score: 1650, date: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString() },
-  { name: 'Sky Walker', score: 1430, date: new Date(Date.now() - 6 * 24 * 60 * 60 * 1000).toISOString() },
-  { name: 'Vex Storm', score: 1200, date: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString() },
-  { name: 'Neo Genius', score: 980, date: new Date(Date.now() - 8 * 24 * 60 * 60 * 1000).toISOString() },
-  { name: 'Luna Star', score: 750, date: new Date(Date.now() - 9 * 24 * 60 * 60 * 1000).toISOString() },
-  { name: 'Kai Legend', score: 520, date: new Date(Date.now() - 10 * 24 * 60 * 60 * 1000).toISOString() },
+  { playerName: 'Alice Champion', game: 'truths', score: 2850, won: true, date: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString() },
+  { playerName: 'Bob Masters', game: '20q', score: 2340, won: true, date: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString() },
+  { playerName: 'Zara Elite', game: 'commonlink', score: 2120, won: true, date: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString() },
+  { playerName: 'Rex Pro', game: 'genie', score: 1890, won: true, date: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000).toISOString() },
+  { playerName: 'Jay Wins', game: 'truths', score: 1650, won: true, date: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString() },
 ];
 
 export const useGameStore = create<GameState>()(
   persist(
-    (set) => ({
+    (set, get) => ({
       playerName: '',
       globalScore: {
         humans: 12,
         ai: 8,
       },
+      playerStats: {
+        totalGamesPlayed: 0,
+        gamesWon: 0,
+        gamesLost: 0,
+        bestStreak: 0,
+        currentStreak: 0,
+      },
+      personalBestScores: [],
       leaderboard: generateInitialLeaderboard(),
       totalGamesPlayed: 20,
       currentStreak: 3,
@@ -81,7 +114,7 @@ export const useGameStore = create<GameState>()(
         set((state) => ({
           leaderboard: [...state.leaderboard, entry]
             .sort((a, b) => b.score - a.score)
-            .slice(0, 20), // Keep top 20
+            .slice(0, 20),
         })),
 
       updateLeaderboard: (entries: LeaderboardEntry[]) =>
@@ -134,9 +167,71 @@ export const useGameStore = create<GameState>()(
           console.error('Failed to update global score:', error);
         }
       },
+
+      // Save individual game result
+      saveGameResult: async (game: string, score: number, won: boolean) => {
+        const { playerName } = get();
+        if (!playerName) {
+          console.warn('No player name set, skipping save');
+          return;
+        }
+        
+        try {
+          const response = await fetch('/api/save-game-result', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ 
+              playerName, 
+              game, 
+              score, 
+              won 
+            }),
+          });
+          const data = await response.json();
+          
+          // Update local state with server data
+          set({ 
+            playerStats: data.stats,
+            personalBestScores: data.personalBest 
+          });
+        } catch (error) {
+          console.error('Failed to save game result:', error);
+        }
+      },
+
+      // Fetch player stats
+      fetchPlayerStats: async () => {
+        const { playerName } = get();
+        if (!playerName) return;
+        
+        try {
+          const response = await fetch(`/api/get-player-stats?name=${encodeURIComponent(playerName)}`);
+          const data = await response.json();
+          set({ 
+            playerStats: data.stats,
+            personalBestScores: data.personalBest 
+          });
+        } catch (error) {
+          console.error('Failed to fetch player stats:', error);
+        }
+      },
+
+      // Fetch global leaderboard
+      fetchLeaderboard: async () => {
+        try {
+          const response = await fetch('/api/get-leaderboard');
+          const data = await response.json();
+          set({ leaderboard: data.leaderboard });
+        } catch (error) {
+          console.error('Failed to fetch leaderboard:', error);
+        }
+      },
     }),
     {
       name: 'beat-the-ai-storage',
+      partialize: (state) => ({
+        playerName: state.playerName, // Only persist player name locally
+      }),
     }
   )
 );
