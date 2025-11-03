@@ -2,50 +2,62 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useGameStore } from '../../store/gameStore';
 
-interface LinkOption {
-  text: string;
-  explanation: string;
+interface CommonLinkQuestion {
+  id: number;
+  category: string;
+  items: string[];
+  correctAnswer: string;
+  trapAnswer: string;
+  difficulty: string;
+  hint?: string;
 }
 
-interface Puzzle {
-  items: string[];
-  question: string;
-  correctLink: LinkOption;
-  trapLink: LinkOption;
+interface GameData {
+  commonLink: CommonLinkQuestion[];
 }
 
 export default function CommonLink() {
   const navigate = useNavigate();
-  const { incrementGlobalScore } = useGameStore();
+  const { incrementGlobalScore, recordGameResult } = useGameStore();
   
-  const [currentPuzzle, setCurrentPuzzle] = useState<Puzzle | null>(null);
+  const [gameData, setGameData] = useState<CommonLinkQuestion[]>([]);
+  const [currentQuestion, setCurrentQuestion] = useState<CommonLinkQuestion | null>(null);
   const [selectedOption, setSelectedOption] = useState<'correct' | 'trap' | null>(null);
   const [showExplanation, setShowExplanation] = useState(false);
   const [score, setScore] = useState(0);
   const [questionNumber, setQuestionNumber] = useState(1);
   const [gameOver, setGameOver] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [shuffledAnswers, setShuffledAnswers] = useState<Array<{type: 'correct' | 'trap', text: string}>>([]);
 
-  // Load puzzle from AI
-  const loadNewPuzzle = async () => {
-    setLoading(true);
-    try {
-      const response = await fetch('/api/gemini-commonlink', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-      });
-      const puzzle = await response.json();
-      setCurrentPuzzle(puzzle);
-      setLoading(false);
-    } catch (err) {
-      console.error('Failed to load puzzle:', err);
-      setLoading(false);
-    }
-  };
-
-  // Load first puzzle on mount
+  // Load and shuffle game data on mount
   useEffect(() => {
-    loadNewPuzzle();
+    const loadGameData = async () => {
+      setLoading(true);
+      try {
+        const response = await fetch('/game-data/common-link.json');
+        const data: GameData = await response.json();
+        
+        // Shuffle the questions and pick first 10
+        const shuffled = [...data.commonLink].sort(() => Math.random() - 0.5).slice(0, 10);
+        setGameData(shuffled);
+        setCurrentQuestion(shuffled[0]);
+        
+        // Shuffle answer order for first question
+        const answers = [
+          { type: 'correct' as const, text: shuffled[0].correctAnswer },
+          { type: 'trap' as const, text: shuffled[0].trapAnswer }
+        ].sort(() => Math.random() - 0.5);
+        setShuffledAnswers(answers);
+        
+        setLoading(false);
+      } catch (err) {
+        console.error('Failed to load game data:', err);
+        setLoading(false);
+      }
+    };
+
+    loadGameData();
   }, []);
 
   const handleOptionClick = (option: 'correct' | 'trap') => {
@@ -67,6 +79,9 @@ export default function CommonLink() {
       // Need 7/10 to win
       const playerWon = score >= 7;
       
+      // Record game result for leaderboard
+      recordGameResult('commonLink', playerWon);
+      
       // Update global score
       if (playerWon) {
         incrementGlobalScore('human');
@@ -75,18 +90,26 @@ export default function CommonLink() {
       }
     } else {
       // Next question
+      const nextQuestion = gameData[questionNumber];
       setQuestionNumber(questionNumber + 1);
+      setCurrentQuestion(nextQuestion);
       setSelectedOption(null);
       setShowExplanation(false);
-      loadNewPuzzle();
+      
+      // Shuffle answer order for next question
+      const answers = [
+        { type: 'correct' as const, text: nextQuestion.correctAnswer },
+        { type: 'trap' as const, text: nextQuestion.trapAnswer }
+      ].sort(() => Math.random() - 0.5);
+      setShuffledAnswers(answers);
     }
   };
 
-  if (loading || !currentPuzzle) {
+  if (loading || !currentQuestion) {
     return (
       <div className="min-h-screen bg-purple-300 flex items-center justify-center p-4">
         <div className="text-4xl font-black">
-          {loading ? 'AI is generating puzzle...' : 'Loading...'}
+          {loading ? 'Loading game data...' : 'Loading...'}
         </div>
       </div>
     );
@@ -129,17 +152,6 @@ export default function CommonLink() {
     );
   }
 
-  // Randomly shuffle the options for display
-  const [option1, option2] = Math.random() > 0.5 
-    ? [
-        { type: 'correct' as const, data: currentPuzzle.correctLink },
-        { type: 'trap' as const, data: currentPuzzle.trapLink }
-      ]
-    : [
-        { type: 'trap' as const, data: currentPuzzle.trapLink },
-        { type: 'correct' as const, data: currentPuzzle.correctLink }
-      ];
-
   return (
     <div className="min-h-screen bg-purple-300 py-8 px-4">
       <div className="max-w-4xl mx-auto">
@@ -159,13 +171,13 @@ export default function CommonLink() {
               What connects these three things?
             </h2>
             
-            <div className="flex gap-4 justify-center mb-8">
-              {currentPuzzle.items.map((item, index) => (
+            <div className="flex gap-4 justify-center mb-8 flex-wrap">
+              {currentQuestion.items.map((item, index) => (
                 <div
                   key={index}
-                  className="bg-cyan-300 border-4 border-black shadow-[4px_4px_0px_#000] p-6 flex-1 text-center"
+                  className="bg-cyan-300 border-4 border-black shadow-[4px_4px_0px_#000] p-6 flex-1 min-w-[150px] text-center"
                 >
-                  <div className="text-3xl font-black">{item}</div>
+                  <div className="text-2xl md:text-3xl font-black">{item}</div>
                 </div>
               ))}
             </div>
@@ -176,47 +188,29 @@ export default function CommonLink() {
           </div>
 
           <div className="space-y-4 mb-8">
-            <button
-              onClick={() => handleOptionClick(option1.type)}
-              disabled={showExplanation}
-              className={`w-full text-left p-6 border-4 border-black font-bold text-lg transition-all
-                ${selectedOption === option1.type
-                  ? option1.type === 'correct'
-                    ? 'bg-green-400 shadow-[4px_4px_0px_#000]'
-                    : 'bg-red-400 shadow-[4px_4px_0px_#000]'
-                  : showExplanation && option1.type === 'correct'
-                    ? 'bg-green-200 shadow-[4px_4px_0px_#000]'
-                    : showExplanation
-                      ? 'bg-gray-200'
-                      : 'bg-blue-300 hover:bg-blue-400 shadow-[6px_6px_0px_#000] hover:shadow-[4px_4px_0px_#000] hover:translate-x-[2px] hover:translate-y-[2px]'
-                }
-                ${showExplanation ? 'cursor-not-allowed' : 'cursor-pointer'}
-              `}
-            >
-              <span className="font-black mr-3">A.</span>
-              {option1.data.text}
-            </button>
-
-            <button
-              onClick={() => handleOptionClick(option2.type)}
-              disabled={showExplanation}
-              className={`w-full text-left p-6 border-4 border-black font-bold text-lg transition-all
-                ${selectedOption === option2.type
-                  ? option2.type === 'correct'
-                    ? 'bg-green-400 shadow-[4px_4px_0px_#000]'
-                    : 'bg-red-400 shadow-[4px_4px_0px_#000]'
-                  : showExplanation && option2.type === 'correct'
-                    ? 'bg-green-200 shadow-[4px_4px_0px_#000]'
-                    : showExplanation
-                      ? 'bg-gray-200'
-                      : 'bg-blue-300 hover:bg-blue-400 shadow-[6px_6px_0px_#000] hover:shadow-[4px_4px_0px_#000] hover:translate-x-[2px] hover:translate-y-[2px]'
-                }
-                ${showExplanation ? 'cursor-not-allowed' : 'cursor-pointer'}
-              `}
-            >
-              <span className="font-black mr-3">B.</span>
-              {option2.data.text}
-            </button>
+            {shuffledAnswers.map((answer, index) => (
+              <button
+                key={index}
+                onClick={() => handleOptionClick(answer.type)}
+                disabled={showExplanation}
+                className={`w-full text-left p-6 border-4 border-black font-bold text-lg transition-all
+                  ${selectedOption === answer.type
+                    ? answer.type === 'correct'
+                      ? 'bg-green-400 shadow-[4px_4px_0px_#000]'
+                      : 'bg-red-400 shadow-[4px_4px_0px_#000]'
+                    : showExplanation && answer.type === 'correct'
+                      ? 'bg-green-200 shadow-[4px_4px_0px_#000]'
+                      : showExplanation
+                        ? 'bg-gray-200'
+                        : 'bg-blue-300 hover:bg-blue-400 shadow-[6px_6px_0px_#000] hover:shadow-[4px_4px_0px_#000] hover:translate-x-[2px] hover:translate-y-[2px]'
+                  }
+                  ${showExplanation ? 'cursor-not-allowed' : 'cursor-pointer'}
+                `}
+              >
+                <span className="font-black mr-3">{String.fromCharCode(65 + index)}.</span>
+                {answer.text}
+              </button>
+            ))}
           </div>
 
           {showExplanation && (
@@ -225,16 +219,14 @@ export default function CommonLink() {
                 <h3 className="text-xl font-black mb-3 text-green-800">
                   ✅ CORRECT ANSWER:
                 </h3>
-                <p className="text-lg font-bold mb-2">{currentPuzzle.correctLink.text}</p>
-                <p className="text-base">{currentPuzzle.correctLink.explanation}</p>
+                <p className="text-lg font-bold mb-2">{currentQuestion.correctAnswer}</p>
               </div>
 
               <div className="bg-red-100 border-4 border-black p-6">
                 <h3 className="text-xl font-black mb-3 text-red-800">
                   ⚠️ AI TRAP:
                 </h3>
-                <p className="text-lg font-bold mb-2">{currentPuzzle.trapLink.text}</p>
-                <p className="text-base">{currentPuzzle.trapLink.explanation}</p>
+                <p className="text-lg font-bold mb-2">{currentQuestion.trapAnswer}</p>
               </div>
 
               <div className="bg-yellow-100 border-4 border-black p-6">

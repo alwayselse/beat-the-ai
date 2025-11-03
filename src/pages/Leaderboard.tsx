@@ -4,10 +4,15 @@ import { useGameStore } from '../store/gameStore';
 export default function Leaderboard() {
   const globalScore = useGameStore((state) => state.globalScore);
   const fetchGlobalScores = useGameStore((state) => state.fetchGlobalScores);
+  const leaderboard = useGameStore((state) => state.leaderboard);
+  const leaderboardLoading = useGameStore((state) => state.leaderboardLoading);
+  const fetchLeaderboard = useGameStore((state) => state.fetchLeaderboard);
+  const playerName = useGameStore((state) => state.playerName);
 
   useEffect(() => {
     fetchGlobalScores();
-  }, [fetchGlobalScores]);
+    fetchLeaderboard();
+  }, [fetchGlobalScores, fetchLeaderboard]);
 
   const totalGames = globalScore.humans + globalScore.ai;
   const humanWinRate = totalGames > 0 ? ((globalScore.humans / totalGames) * 100).toFixed(1) : '0.0';
@@ -65,7 +70,10 @@ export default function Leaderboard() {
         {/* Refresh Button */}
         <div className="mb-6">
           <button
-            onClick={fetchGlobalScores}
+            onClick={() => {
+              fetchGlobalScores();
+              fetchLeaderboard();
+            }}
             className="w-full bg-black text-white font-black py-4 px-6 rounded-xl border-4 border-black shadow-[8px_8px_0px_#000] hover:shadow-[12px_12px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all"
           >
             🔄 Refresh Stats
@@ -73,7 +81,7 @@ export default function Leaderboard() {
         </div>
 
         {/* Info Box */}
-        <div className="bg-white border-4 border-black rounded-xl shadow-[8px_8px_0px_#000] p-6 text-center">
+        <div className="bg-white border-4 border-black rounded-xl shadow-[8px_8px_0px_#000] p-6 text-center mb-8">
           <p className="font-black text-lg mb-2">
             {globalScore.humans > globalScore.ai ? '🎉 Humans are winning!' : 
              globalScore.ai > globalScore.humans ? '🤖 AI is dominating!' : 
@@ -82,6 +90,81 @@ export default function Leaderboard() {
           <p className="text-gray-600 font-semibold text-sm">
             Play games to help humanity beat the machines!
           </p>
+        </div>
+
+        {/* Player Leaderboard Section */}
+        <div className="bg-white border-4 border-black rounded-2xl shadow-[12px_12px_0px_#000] p-6 md:p-8">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-3xl md:text-4xl font-black text-black">
+              🏆 TOP PLAYERS
+            </h2>
+            {leaderboardLoading && (
+              <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-black"></div>
+            )}
+          </div>
+
+          {leaderboard.length === 0 && !leaderboardLoading ? (
+            <div className="text-center py-12">
+              <p className="text-2xl font-black text-gray-400 mb-2">📊 No Rankings Yet</p>
+              <p className="text-gray-600 font-semibold">Be the first to set a record!</p>
+            </div>
+          ) : (
+            <div className="space-y-3">
+              {leaderboard.slice(0, 10).map((player, index) => {
+                const isCurrentPlayer = player.name === playerName;
+                const medalEmoji = index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : '';
+                
+                return (
+                  <div
+                    key={`${player.name}-${player.lastPlayed}`}
+                    className={`flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-xl border-4 border-black transition-all ${
+                      isCurrentPlayer 
+                        ? 'bg-gradient-to-r from-yellow-200 to-orange-200 shadow-[6px_6px_0px_#000]' 
+                        : 'bg-gradient-to-r from-gray-50 to-gray-100 shadow-[4px_4px_0px_#000]'
+                    }`}
+                  >
+                    <div className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-0">
+                      <span className="text-2xl sm:text-3xl font-black text-purple-600 min-w-[50px] sm:min-w-[60px]">
+                        {medalEmoji} #{player.rank}
+                      </span>
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2">
+                          <p className="font-black text-base sm:text-lg text-black">
+                            {player.name}
+                          </p>
+                          {isCurrentPlayer && (
+                            <span className="bg-purple-500 text-white text-xs font-black px-2 py-1 rounded border-2 border-black">
+                              YOU
+                            </span>
+                          )}
+                        </div>
+                        <p className="text-xs sm:text-sm text-gray-600 font-semibold">
+                          {player.gamesPlayed} games • {player.winRate}% win rate
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between sm:justify-end gap-4">
+                      <div className="text-right">
+                        <p className="text-2xl sm:text-3xl font-black text-green-600">
+                          {player.totalWins}
+                        </p>
+                        <p className="text-xs text-gray-500 font-bold">wins</p>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+
+          {/* Show More Message */}
+          {leaderboard.length > 10 && (
+            <div className="mt-6 text-center">
+              <p className="text-gray-600 font-semibold text-sm">
+                Showing top 10 of {leaderboard.length} players
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -39,7 +39,7 @@ User's wish: "${wish}"
 
 Your response:`;
 
-    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?key=${apiKey}`;
     
     const requestBody = {
       contents: [{
@@ -49,6 +49,11 @@ Your response:`;
       systemInstruction: {
         role: 'model',
         parts: [{ text: systemPrompt }]
+      },
+      generationConfig: {
+        temperature: 0.9,
+        maxOutputTokens: 120, // Increased for 3 attempts
+        topP: 0.95,
       }
     };
 

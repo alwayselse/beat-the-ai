@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useGameStore } from '../../store/gameStore';
 
@@ -8,15 +8,53 @@ interface WishResult {
   success: boolean;
 }
 
+// Rate limiting helper
+const checkRateLimit = (gameKey: string, maxGames: number = 10): { allowed: boolean; remaining: number; resetTime: string } => {
+  const now = Date.now();
+  const rateLimitKey = `rateLimit_${gameKey}`;
+  const stored = localStorage.getItem(rateLimitKey);
+  
+  if (!stored) {
+    const newData = { count: 1, resetAt: now + 3600000 }; // 1 hour
+    localStorage.setItem(rateLimitKey, JSON.stringify(newData));
+    return { allowed: true, remaining: maxGames - 1, resetTime: new Date(newData.resetAt).toLocaleTimeString() };
+  }
+  
+  const data = JSON.parse(stored);
+  
+  // Reset if time expired
+  if (now > data.resetAt) {
+    const newData = { count: 1, resetAt: now + 3600000 };
+    localStorage.setItem(rateLimitKey, JSON.stringify(newData));
+    return { allowed: true, remaining: maxGames - 1, resetTime: new Date(newData.resetAt).toLocaleTimeString() };
+  }
+  
+  // Check limit
+  if (data.count >= maxGames) {
+    return { allowed: false, remaining: 0, resetTime: new Date(data.resetAt).toLocaleTimeString() };
+  }
+  
+  // Increment count
+  data.count++;
+  localStorage.setItem(rateLimitKey, JSON.stringify(data));
+  return { allowed: true, remaining: maxGames - data.count, resetTime: new Date(data.resetAt).toLocaleTimeString() };
+};
+
 export default function LiteralGenie() {
   const navigate = useNavigate();
-  const { incrementGlobalScore } = useGameStore();
+  const { incrementGlobalScore, recordGameResult } = useGameStore();
   
   const [gameState, setGameState] = useState<'playing' | 'finished'>('playing');
   const [currentWish, setCurrentWish] = useState('');
   const [attempts, setAttempts] = useState<WishResult[]>([]);
   const [loading, setLoading] = useState(false);
   const [playerWon, setPlayerWon] = useState(false);
+  const [rateLimit, setRateLimit] = useState<{ allowed: boolean; remaining: number; resetTime: string } | null>(null);
+
+  useEffect(() => {
+    const limit = checkRateLimit('literalgenie', 15);
+    setRateLimit(limit);
+  }, []);
 
   const handleSubmitWish = async () => {
     if (!currentWish.trim() || loading || attempts.length >= 3) return;
@@ -46,10 +84,12 @@ export default function LiteralGenie() {
       if (data.playerWon) {
         setPlayerWon(true);
         setGameState('finished');
+        recordGameResult('literalGenie', true);
         incrementGlobalScore('human');
       } else if (attemptNumber >= 3) {
         setPlayerWon(false);
         setGameState('finished');
+        recordGameResult('literalGenie', false);
         incrementGlobalScore('ai');
       }
       
@@ -110,6 +150,29 @@ export default function LiteralGenie() {
     );
   }
 
+  // Show rate limit warning
+  if (rateLimit && !rateLimit.allowed) {
+    return (
+      <div className="min-h-screen bg-pink-300 py-8 px-4 flex items-center justify-center">
+        <div className="max-w-md bg-white border-4 border-black shadow-[8px_8px_0px_#000] p-8">
+          <h2 className="text-3xl font-black mb-4 text-red-600">⏰ Rate Limit Reached</h2>
+          <p className="text-lg font-bold mb-4">
+            You've played the maximum number of games for now.
+          </p>
+          <p className="text-md font-bold mb-6">
+            Reset time: {rateLimit.resetTime}
+          </p>
+          <button
+            onClick={() => navigate('/menu')}
+            className="w-full bg-blue-500 hover:bg-blue-600 text-white font-black py-3 px-6 border-4 border-black shadow-[4px_4px_0px_#000] hover:shadow-[2px_2px_0px_#000] hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
+          >
+            Back to Menu
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-pink-300 py-8 px-4">
       <div className="max-w-4xl mx-auto">
@@ -118,6 +181,11 @@ export default function LiteralGenie() {
           <div className="text-xl font-bold">
             Attempts: {attempts.length}/3
           </div>
+          {rateLimit && (
+            <div className="mt-2 text-sm font-bold text-green-700">
+              ⚡ Games remaining this hour: {rateLimit.remaining}
+            </div>
+          )}
         </div>
 
         <div className="bg-yellow-100 border-4 border-black shadow-[8px_8px_0px_#000] p-6 mb-6">

@@ -23,6 +23,15 @@ export default async function handler(req, res) {
     });
   }
 
+  const { stream } = req.body;
+
+  // Enable streaming response if requested
+  if (stream) {
+    res.setHeader('Content-Type', 'text/event-stream');
+    res.setHeader('Cache-Control', 'no-cache');
+    res.setHeader('Connection', 'keep-alive');
+  }
+
   try {
     const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) {
@@ -66,7 +75,7 @@ Question ${questionCount}/10`;
       });
     }
 
-    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:${stream ? 'streamGenerateContent' : 'generateContent'}?key=${apiKey}${stream ? '&alt=sse' : ''}`;
     
     const requestBody = {
       contents: geminiHistory,
@@ -75,6 +84,11 @@ Question ${questionCount}/10`;
         parts: [{
           text: systemPrompt
         }]
+      },
+      generationConfig: {
+        temperature: 0.7,
+        maxOutputTokens: 50, // Short questions only
+        topP: 0.9,
       }
     };
 
@@ -96,6 +110,44 @@ Question ${questionCount}/10`;
       }
     }
 
+    // Handle streaming response
+    if (stream && response.body) {
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+
+      try {
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+
+          const chunk = decoder.decode(value);
+          const lines = chunk.split('\n').filter(line => line.trim().startsWith('data:'));
+
+          for (const line of lines) {
+            const data = line.replace('data:', '').trim();
+            if (data === '[DONE]') continue;
+
+            try {
+              const parsed = JSON.parse(data);
+              const text = parsed.candidates?.[0]?.content?.parts?.[0]?.text;
+              if (text) {
+                res.write(`data: ${JSON.stringify({ text })}\n\n`);
+              }
+            } catch (e) {
+              // Skip invalid JSON
+            }
+          }
+        }
+        res.write('data: [DONE]\n\n');
+        res.end();
+      } catch (error) {
+        res.write(`data: ${JSON.stringify({ error: error.message })}\n\n`);
+        res.end();
+      }
+      return;
+    }
+
+    // Handle non-streaming response (fallback)
     const data = await response.json();
     const aiResponse = data.candidates?.[0]?.content?.parts?.[0]?.text;
 

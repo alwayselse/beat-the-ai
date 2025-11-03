@@ -1,0 +1,1279 @@
+{
+  "commonLink": [
+    {
+      "id": 101,
+      "category": "Food & Brands",
+      "items": [
+        "Coca-Cola",
+        "Dr Pepper",
+        "Ginger Ale"
+      ],
+      "correctAnswer": "Originally marketed or sold as health tonics in pharmacies",
+      "trapAnswer": "Soft drinks invented in Atlanta",
+      "difficulty": "medium",
+      "hint": "Think about their 19th-century origins."
+    },
+    {
+      "id": 102,
+      "category": "Food & Brands",
+      "items": [
+        "Cronut",
+        "Sushirrito",
+        "Ramen Burger"
+      ],
+      "correctAnswer": "Famous hybrid food trends from the 2010s",
+      "trapAnswer": "Foods invented in New York City",
+      "difficulty": "medium",
+      "hint": "The Sushirrito was famously started in San Francisco."
+    },
+    {
+      "id": 103,
+      "category": "Food & Brands",
+      "items": [
+        "Wendy's",
+        "Taco Bell",
+        "Panda Express"
+      ],
+      "correctAnswer": "Fast food chains named after a real person",
+      "trapAnswer": "Companies named after their founder",
+      "difficulty": "hard",
+      "hint": "Wendy's was Dave Thomas's daughter; Taco Bell was Glen Bell; Panda Express was named for founder Andrew Cherng's wife, Peggy."
+    },
+    {
+      "id": 104,
+      "category": "Food & Brands",
+      "items": [
+        "Sriracha (Huy Fong)",
+        "Kimchi",
+        "Gochujang"
+      ],
+      "correctAnswer": "Spicy foods central to Asian cuisine",
+      "trapAnswer": "Fermented foods",
+      "difficulty": "easy",
+      "hint": "Sriracha is a sauce, not typically fermented."
+    },
+    {
+      "id": 105,
+      "category": "Food & Brands",
+      "items": [
+        "Doritos Locos Tacos",
+        "The McRib",
+        "KFC's Double Down"
+      ],
+      "correctAnswer": "Famous limited-time or novelty fast food items",
+      "trapAnswer": "Sandwiches that use meat as the 'bread'",
+      "difficulty": "medium",
+      "hint": "Only the Double Down fits the trap."
+    },
+    {
+      "id": 106,
+      "category": "Food & Brands",
+      "items": [
+        "Starbucks 'Pumpkin Spice Latte'",
+        "McDonald's 'Shamrock Shake'",
+        "Cadbury 'Creme Egg'"
+      ],
+      "correctAnswer": "Iconic seasonal food or drink items",
+      "trapAnswer": "Coffee-based drinks",
+      "difficulty": "easy"
+    },
+    {
+      "id": 107,
+      "category": "Food & Brands",
+      "items": [
+        "Impossible Burger",
+        "Beyond Meat",
+        "Oatly"
+      ],
+      "correctAnswer": "Popular plant-based alternatives to animal products",
+      "trapAnswer": "Brands that are soy-free",
+      "difficulty": "medium",
+      "hint": "Impossible Burgers originally used soy."
+    },
+    {
+      "id": 108,
+      "category": "Food & Brands",
+      "items": [
+        "Amazon (shopping)",
+        "Apple (computers)",
+        "Google (search)"
+      ],
+      "correctAnswer": "Companies famously started in a garage",
+      "trapAnswer": "Companies named after a fruit",
+      "difficulty": "easy"
+    },
+    {
+      "id": 109,
+      "category": "Food & Brands",
+      "items": [
+        "Tony the Tiger",
+        "The Trix Rabbit",
+        "Sonny the Cuckoo Bird"
+      ],
+      "correctAnswer": "Cereal mascots involved in 'chases' for their cereal",
+      "trapAnswer": "Mascots for sugar-coated cereals",
+      "difficulty": "medium",
+      "hint": "Tony is just 'gr-r-reat', he's not chasing anything."
+    },
+    {
+      "id": 110,
+      "category": "Food & Brands",
+      "items": [
+        "Harland Sanders",
+        "Dave Thomas",
+        "Ray Kroc"
+      ],
+      "correctAnswer": "Founders of major fast food chains (KFC, Wendy's, McDonald's)",
+      "trapAnswer": "Their faces appear in the company logo",
+      "difficulty": "medium",
+      "hint": "Only Sanders and Thomas are part of their logos."
+    },
+    {
+      "id": 111,
+      "category": "Food & Brands",
+      "items": [
+        "Avocado Toast",
+        "Quinoa Bowls",
+        "Kale Smoothies"
+      ],
+      "correctAnswer": "Foods that became major health food trends in the 2010s",
+      "trapAnswer": "Foods that are 'superfoods'",
+      "difficulty": "easy"
+    },
+    {
+      "id": 112,
+      "category": "Food & Brands",
+      "items": [
+        "Red Bull",
+        "Monster",
+        "5-Hour Energy"
+      ],
+      "correctAnswer": "Popular energy drinks/shots",
+      "trapAnswer": "Drinks that come in a large silver can",
+      "difficulty": "easy"
+    },
+    {
+      "id": 113,
+      "category": "Food & Brands",
+      "items": [
+        "Nike",
+        "Blue Ribbon Sports",
+        "Onitsuka Tiger"
+      ],
+      "correctAnswer": "Names associated with the history of Nike",
+      "trapAnswer": "American running shoe brands",
+      "difficulty": "hard",
+      "hint": "Blue Ribbon Sports was Nike's original name, and they started by importing Onitsuka Tiger shoes from Japan."
+    },
+    {
+      "id": 114,
+      "category": "Food & Brands",
+      "items": [
+        "Tapatío",
+        "Cholula",
+        "Valentina"
+      ],
+      "correctAnswer": "Popular brands of Mexican hot sauce",
+      "trapAnswer": "Hot sauces that use chipotle peppers",
+      "difficulty": "medium"
+    },
+    {
+      "id": 115,
+      "category": "Food & Brands",
+      "items": [
+        "Fritos",
+        "Cheetos",
+        "Ruffles"
+      ],
+      "correctAnswer": "Snack brands owned by Frito-Lay",
+      "trapAnswer": "Types of potato chips",
+      "difficulty": "easy",
+      "hint": "Fritos and Cheetos are corn-based."
+    },
+    {
+      "id": 116,
+      "category": "Food & Brands",
+      "items": [
+        "LEGO",
+        "IKEA",
+        "H&M"
+      ],
+      "correctAnswer": "Globally recognized brands founded in Scandinavia (Denmark, Sweden, Sweden)",
+      "trapAnswer": "Brands that sell furniture",
+      "difficulty": "medium"
+    },
+    {
+      "id": 117,
+      "category": "Food & Brands",
+      "items": [
+        "LaCroix",
+        "Bubly",
+        "Topo Chico"
+      ],
+      "correctAnswer": "Popular brands of sparkling water",
+      "trapAnswer": "Calorie-free soft drinks with artificial sweeteners",
+      "difficulty": "easy",
+      "hint": "These are typically unsweetened."
+    },
+    {
+      "id": 118,
+      "category": "Food & Brands",
+      "items": [
+        "M&M's",
+        "Kit Kat",
+        "Snickers"
+      ],
+      "correctAnswer": "Top-selling global chocolate candies",
+      "trapAnswer": "Candies that contain nuts",
+      "difficulty": "medium",
+      "hint": "M&M's and Kit Kat (typically) do not."
+    },
+    {
+      "id": 119,
+      "category": "Food & Brands",
+      "items": [
+        "Heinz (Ketchup)",
+        "Kleenex (Tissues)",
+        "Band-Aid (Adhesive Bandages)"
+      ],
+      "correctAnswer": "Brand names that are commonly used as generic terms for the product",
+      "trapAnswer": "Products found in a bathroom",
+      "difficulty": "medium"
+    },
+    {
+      "id": 120,
+      "category": "Food & Brands",
+      "items": [
+        "\"Just Do It\"",
+        "\"Think Different\"",
+        "\"I'm Lovin' It\""
+      ],
+      "correctAnswer": "Famous advertising slogans (Nike, Apple, McDonald's)",
+      "trapAnswer": "Slogans from the 1990s",
+      "difficulty": "easy",
+      "hint": "\"I'm Lovin' It\" is from 2003."
+    },
+    {
+      "id": 121,
+      "category": "Food & Brands",
+      "items": [
+        "A&W",
+        "White Castle",
+        "KFC"
+      ],
+      "correctAnswer": "Fast food chains that were founded before 1940",
+      "trapAnswer": "Restaurants known for their burgers",
+      "difficulty": "hard",
+      "hint": "KFC is known for chicken."
+    },
+    {
+      "id": 122,
+      "category": "Food & Brands",
+      "items": [
+        "Caviar",
+        "Truffles",
+        "Saffron"
+      ],
+      "correctAnswer": "Three of the world's most expensive foods by weight",
+      "trapAnswer": "Foods used in French cuisine",
+      "difficulty": "medium"
+    },
+    {
+      "id": 123,
+      "category": "Food & Brands",
+      "items": [
+        "Unilever",
+        "Procter & Gamble",
+        "Nestlé"
+      ],
+      "correctAnswer": "Massive parent corporations that own hundreds of different consumer brands",
+      "trapAnswer": "Companies that only sell food",
+      "difficulty": "medium",
+      "hint": "P&G sells Tide, Crest, Pampers, etc."
+    },
+    {
+      "id": 124,
+      "category": "Food & Brands",
+      "items": [
+        "The 'Flo' from Progressive",
+        "The 'Jake' from State Farm",
+        "The 'Geico Gecko'"
+      ],
+      "correctAnswer": "Famous advertising characters for insurance companies",
+      "trapAnswer": "Mascots that are computer-animated",
+      "difficulty": "easy",
+      "hint": "Flo and Jake are live-action."
+    },
+    {
+      "id": 125,
+      "category": "Food & Brands",
+      "items": [
+        "Gin",
+        "Rum",
+        "Vodka"
+      ],
+      "correctAnswer": "Spirits that can be 'clear' (unaged)",
+      "trapAnswer": "Alcohols that are aged in barrels",
+      "difficulty": "medium",
+      "hint": "While Rum *can* be aged, Gin and Vodka typically are not."
+    },
+    {
+      "id": 126,
+      "category": "Sports & Athletes",
+      "items": [
+        "Michael Jordan",
+        "Bo Jackson",
+        "Deion Sanders"
+      ],
+      "correctAnswer": "Athletes who played professionally in two major American sports (NBA/MLB, NFL/MLB, NFL/MLB)",
+      "trapAnswer": "Athletes who had their own signature shoe",
+      "difficulty": "medium"
+    },
+    {
+      "id": 127,
+      "category": "Sports & Athletes",
+      "items": [
+        "Tom Brady",
+        "Bill Russell",
+        "Yogi Berra"
+      ],
+      "correctAnswer": "American athletes with the most championship rings in their respective sports (NFL, NBA, MLB)",
+      "trapAnswer": "Athletes who played for a Boston team",
+      "difficulty": "hard",
+      "hint": "Brady (Patriots), Russell (Celtics), Berra (Yankees)."
+    },
+    {
+      "id": 128,
+      "category": "Sports & Athletes",
+      "items": [
+        "Simone Biles",
+        "Michael Phelps",
+        "Usain Bolt"
+      ],
+      "correctAnswer": "Dominant, iconic athletes from the 2016 Rio Olympics",
+      "trapAnswer": "Athletes who have retired from their sport",
+      "difficulty": "easy",
+      "hint": "Simone Biles has not officially retired."
+    },
+    {
+      "id": 129,
+      "category": "Sports & Athletes",
+      "items": [
+        "'The Shot' (MJ)",
+        "'The Catch' (Clark)",
+        "'The Miracle on Ice'"
+      ],
+      "correctAnswer": "Iconic, named moments in American sports history",
+      "trapAnswer": "Moments from a championship game",
+      "difficulty": "medium",
+      "hint": "'The Shot' and 'The Catch' were in playoff games, not the final."
+    },
+    {
+      "id": 130,
+      "category": "Sports & Athletes",
+      "items": [
+        "Wrexham AFC",
+        "Paris Saint-Germain",
+        "Manchester City"
+      ],
+      "correctAnswer": "Soccer clubs that had high-profile takeovers by wealthy new owners",
+      "trapAnswer": "Teams in the English Premier League",
+      "difficulty": "medium",
+      "hint": "PSG is in France. Wrexham was non-league at takeover."
+    },
+    {
+      "id": 131,
+      "category": "Sports & Athletes",
+      "items": [
+        "Caitlin Clark",
+        "Shohei Ohtani",
+        "Lionel Messi"
+      ],
+      "correctAnswer": "Athletes who signed record-breaking or highly-publicized contracts in the 2020s",
+      "trapAnswer": "Athletes who play for an American team",
+      "difficulty": "easy"
+    },
+    {
+      "id": 132,
+      "category": "Sports & Athletes",
+      "items": [
+        "Heisman Trophy",
+        "Ballon d'Or",
+        "MVP (Most Valuable Player)"
+      ],
+      "correctAnswer": "Annual awards given to the single best player in their sport",
+      "trapAnswer": "Awards voted on by journalists",
+      "difficulty": "easy"
+    },
+    {
+      "id": 133,
+      "category": "Sports & Athletes",
+      "items": [
+        "Green Bay Packers",
+        "FC Barcelona",
+        "Real Madrid CF"
+      ],
+      "correctAnswer": "Major sports teams that are owned by their fans ('members' or 'socios')",
+      "trapAnswer": "Teams that have never been relegated",
+      "difficulty": "hard"
+    },
+    {
+      "id": 134,
+      "category": "Sports & Athletes",
+      "items": [
+        "Pickleball",
+        "Cornhole",
+        "Spikeball"
+      ],
+      "correctAnswer": "Games that surged in popularity as casual/backyard sports in the 2010s/2020s",
+      "trapAnswer": "Games played with a net",
+      "difficulty": "easy",
+      "hint": "Cornhole uses boards."
+    },
+    {
+      "id": 135,
+      "category": "Sports & Athletes",
+      "items": [
+        "Serena Williams",
+        "Roger Federer",
+        "Rafael Nadal"
+      ],
+      "correctAnswer": "Tennis legends who all retired in the 2020s",
+      "trapAnswer": "Players who have won a 'Career Golden Slam'",
+      "difficulty": "medium",
+      "hint": "Federer never won Olympic singles gold."
+    },
+    {
+      "id": 136,
+      "category": "Sports & Athletes",
+      "items": [
+        "'Moneyball'",
+        "'The Blind Side'",
+        "'I, Tonya'"
+      ],
+      "correctAnswer": "Oscar-nominated movies based on true stories about sports",
+      "trapAnswer": "Movies about Olympic athletes",
+      "difficulty": "easy",
+      "hint": "Moneyball and The Blind Side are about baseball/football."
+    },
+    {
+      "id": 137,
+      "category": "Sports & Athletes",
+      "items": [
+        "Tour de France",
+        "Giro d'Italia",
+        "Vuelta a España"
+      ],
+      "correctAnswer": "The three 'Grand Tours' of professional cycling",
+      "trapAnswer": "Races that go through the Alps mountains",
+      "difficulty": "medium",
+      "hint": "The Vuelta is in Spain."
+    },
+    {
+      "id": 138,
+      "category": "Sports & Athletes",
+      "items": [
+        "Red Card",
+        "Penalty Box",
+        "Foul Out"
+      ],
+      "correctAnswer": "Ways a player is removed from a game for rule infractions (Soccer, Hockey, Basketball)",
+      "trapAnswer": "Punishments given by a referee's whistle",
+      "difficulty": "easy"
+    },
+    {
+      "id": 139,
+      "category": "Sports & Athletes",
+      "items": [
+        "New York Yankees",
+        "Dallas Cowboys",
+        "Manchester United"
+      ],
+      "correctAnswer": "Sports franchises consistently ranked as the most valuable in the world",
+      "trapAnswer": "Teams that wear blue as a primary color",
+      "difficulty": "medium"
+    },
+    {
+      "id": 140,
+      "category": "Sports & Athletes",
+      "items": [
+        "'Dream Team' (1992)",
+        "'Redeem Team' (2008)",
+        "'The 'Invincibles' (Arsenal 2003-04)"
+      ],
+      "correctAnswer": "Famous nicknames for specific, historically dominant sports teams",
+      "trapAnswer": "USA Olympic basketball teams",
+      "difficulty": "medium"
+    },
+    {
+      "id": 141,
+      "category": "Sports & Athletes",
+      "items": [
+        "Patrick Mahomes",
+        "Lamar Jackson",
+        "Joe Burrow"
+      ],
+      "correctAnswer": "Star NFL quarterbacks drafted in the late 2010s (2017, 2018, 2020)",
+      "trapAnswer": "Quarterbacks who have won a Super Bowl",
+      "difficulty": "medium",
+      "hint": "Lamar Jackson and Joe Burrow have not won a Super Bowl (as of early 2025)."
+    },
+    {
+      "id": 142,
+      "category": "Sports & Athletes",
+      "items": [
+        "Chicago Cubs (2016)",
+        "Boston Red Sox (2004)",
+        "Cleveland Cavaliers (2016)"
+      ],
+      "correctAnswer": "Teams that broke long-standing (50+ year) championship 'curses' or droughts",
+      "trapAnswer": "Teams that won the final game in a 7-game series",
+      "difficulty": "hard",
+      "hint": "The 2004 Red Sox won in a 4-game sweep."
+    },
+    {
+      "id": 143,
+      "category": "Sports & Athletes",
+      "items": [
+        "Formula 1",
+        "NASCAR",
+        "IndyCar"
+      ],
+      "correctAnswer": "Premier classes of professional auto racing",
+      "trapAnswer": "Races that are only held in the USA",
+      "difficulty": "easy",
+      "hint": "Formula 1 is a global series."
+    },
+    {
+      "id": 144,
+      "category": "Sports & Athletes",
+      "items": [
+        "Kobe Bryant",
+        "Pelé",
+        "Diego Maradona"
+      ],
+      "correctAnswer": "Global sports icons who passed away in the 2020s",
+      "trapAnswer": "Athletes who died in accidents",
+      "difficulty": "medium",
+      "hint": "Pelé and Maradona died of natural causes."
+    },
+    {
+      "id": 145,
+      "category": "Sports & Athletes",
+      "items": [
+        "Sumo",
+        "Kendo",
+        "Judo"
+      ],
+      "correctAnswer": "Traditional Japanese martial arts or combat sports",
+      "trapAnswer": "Olympic sports",
+      "difficulty": "medium",
+      "hint": "Sumo and Kendo are not Olympic sports."
+    },
+    {
+      "id": 146,
+      "category": "Countries & Cities",
+      "items": [
+        "Istanbul",
+        "Saint Petersburg",
+        "Mumbai"
+      ],
+      "correctAnswer": "Major world cities that officially changed their names",
+      "trapAnswer": "Capital cities",
+      "difficulty": "medium",
+      "hint": "Istanbul (Constantinople), St. Petersburg (Leningrad), Mumbai (Bombay). None are current capitals."
+    },
+    {
+      "id": 147,
+      "category": "Countries & Cities",
+      "items": [
+        "Vatican City",
+        "Monaco",
+        "Singapore"
+      ],
+      "correctAnswer": "Modern 'city-states' (sovereign nations that consist of a single city)",
+      "trapAnswer": "Countries in Europe",
+      "difficulty": "easy",
+      "hint": "Singapore is in Asia."
+    },
+    {
+      "id": 148,
+      "category": "Countries & Cities",
+      "items": [
+        "The Shard (London)",
+        "Burj Khalifa (Dubai)",
+        "One World Trade Center (NYC)"
+      ],
+      "correctAnswer": "Iconic skyscrapers that are the tallest in their respective countries",
+      "trapAnswer": "Buildings taller than 2000 feet",
+      "difficulty": "medium",
+      "hint": "Only the Burj Khalifa is over 2000 ft."
+    },
+    {
+      "id": 149,
+      "category": "Countries & Cities",
+      "items": [
+        "Greenland",
+        "New Guinea",
+        "Borneo"
+      ],
+      "correctAnswer": "The three largest non-continental islands in the world",
+      "trapAnswer": "Islands that are also countries",
+      "difficulty": "hard",
+      "hint": "All three islands are split between multiple countries or territories."
+    },
+    {
+      "id": 150,
+      "category": "Countries & Cities",
+      "items": [
+        "Pripyat (Ukraine)",
+        "Centralia (USA)",
+        "Hashima Island (Japan)"
+      ],
+      "correctAnswer": "Famous 'ghost towns' or abandoned modern settlements",
+      "trapAnswer": "Cities evacuated due to nuclear disasters",
+      "difficulty": "medium",
+      "hint": "Centralia was abandoned due to a coal mine fire; Hashima was a declining coal facility."
+    },
+    {
+      "id": 151,
+      "category": "Countries & Cities",
+      "items": [
+        "Brazil",
+        "Portugal",
+        "Mozambique"
+      ],
+      "correctAnswer": "Countries where Portuguese is an official language",
+      "trapAnswer": "Countries in the Southern Hemisphere",
+      "difficulty": "easy",
+      "hint": "Portugal is in the Northern Hemisphere."
+    },
+    {
+      "id": 152,
+      "category": "Countries & Cities",
+      "items": [
+        "Spain",
+        "Morocco",
+        "France"
+      ],
+      "correctAnswer": "Countries that border both the Atlantic Ocean and the Mediterranean Sea",
+      "trapAnswer": "Countries in the European Union",
+      "difficulty": "hard",
+      "hint": "Morocco is in Africa."
+    },
+    {
+      "id": 153,
+      "category": "Countries & Cities",
+      "items": [
+        "The Louvre",
+        "The British Museum",
+        "The Metropolitan Museum of Art"
+      ],
+      "correctAnswer": "Three of the world's most-visited art museums",
+      "trapAnswer": "Museums that offer free admission",
+      "difficulty": "medium",
+      "hint": "The Louvre and The Met charge admission."
+    },
+    {
+      "id": 154,
+      "category": "Countries & Cities",
+      "items": [
+        "Alaska (USA)",
+        "Siberia (Russia)",
+        "Norway"
+      ],
+      "correctAnswer": "Regions that are partially located within the Arctic Circle",
+      "trapAnswer": "Places where polar bears live natively",
+      "difficulty": "easy"
+    },
+    {
+      "id": 155,
+      "category": "Countries & Cities",
+      "items": [
+        "Austin, TX",
+        "Berlin",
+        "Coachella Valley, CA"
+      ],
+      "correctAnswer": "Cities/locations famous for their major annual music festivals",
+      "trapAnswer": "Capital cities",
+      "difficulty": "medium",
+      "hint": "Coachella Valley is a region, not a city."
+    },
+    {
+      "id": 156,
+      "category": "Countries & Cities",
+      "items": [
+        "Switzerland",
+        "Austria",
+        "Nepal"
+      ],
+      "correctAnswer": "Landlocked countries famous for their high mountains",
+      "trapAnswer": "Countries where German is spoken",
+      "difficulty": "easy"
+    },
+    {
+      "id": 157,
+      "category": "Countries & Cities",
+      "items": [
+        "La Paz (Bolivia)",
+        "Quito (Ecuador)",
+        "Bogotá (Colombia)"
+      ],
+      "correctAnswer": "Three of the highest-altitude capital cities in the world",
+      "trapAnswer": "Capitals in the Andes mountains",
+      "difficulty": "medium"
+    },
+    {
+      "id": 158,
+      "category": "Countries & Cities",
+      "items": [
+        "India",
+        "Pakistan",
+        "Ireland"
+      ],
+      "correctAnswer": "Countries that gained independence from the United Kingdom in the 20th century",
+      "trapAnswer": "Countries in Asia",
+      "difficulty": "medium",
+      "hint": "Ireland is in Europe."
+    },
+    {
+      "id": 159,
+      "category": "Countries & Cities",
+      "items": [
+        "Venice",
+        "Amsterdam",
+        "St. Petersburg"
+      ],
+      "correctAnswer": "Major cities famously built on a network of canals",
+      "trapAnswer": "Cities nicknamed 'The Venice of the North'",
+      "difficulty": "easy"
+    },
+    {
+      "id": 160,
+      "category": "Countries & Cities",
+      "items": [
+        "Denmark",
+        "Norway",
+        "United Kingdom"
+      ],
+      "correctAnswer": "European countries that are constitutional monarchies",
+      "trapAnswer": "Countries that use the Euro currency",
+      "difficulty": "medium",
+      "hint": "None of these three use the Euro."
+    },
+    {
+      "id": 161,
+      "category": "Countries & Cities",
+      "items": [
+        "Canada",
+        "Australia",
+        "New Zealand"
+      ],
+      "correctAnswer": "Commonwealth realms that have King Charles III as their head of state",
+      "trapAnswer": "Countries where people drive on the left",
+      "difficulty": "medium",
+      "hint": "Canada drives on the right."
+    },
+    {
+      "id": 162,
+      "category": "Countries & Cities",
+      "items": [
+        "Chernobyl (Ukraine)",
+        "Fukushima (Japan)",
+        "Three Mile Island (USA)"
+      ],
+      "correctAnswer": "Sites of the three most significant nuclear power plant accidents (INES Level 5 or higher)",
+      "trapAnswer": "Nuclear plants in Asia",
+      "difficulty": "easy"
+    },
+    {
+      "id": 163,
+      "category": "Countries & Cities",
+      "items": [
+        "Argentina",
+        "Chile",
+        "South Africa"
+      ],
+      "correctAnswer": "Countries in the Southern Hemisphere known for their wine production",
+      "trapAnswer": "Countries that border the Atlantic Ocean",
+      "difficulty": "medium",
+      "hint": "Chile borders the Pacific."
+    },
+    {
+      "id": 164,
+      "category": "Countries & Cities",
+      "items": [
+        "Mount Rushmore",
+        "Christ the Redeemer",
+        "Statue of Liberty"
+      ],
+      "correctAnswer": "Iconic, massive statues located in the Americas",
+      "trapAnswer": "Statues that are UNESCO World Heritage Sites",
+      "difficulty": "hard",
+      "hint": "Mount Rushmore is not a UNESCO World Heritage Site."
+    },
+    {
+      "id": 165,
+      "category": "Countries & Cities",
+      "items": [
+        "Finland",
+        "Denmark",
+        "Iceland"
+      ],
+      "correctAnswer": "Countries consistently ranked as the 'happiest in the world'",
+      "trapAnswer": "Scandinavian countries",
+      "difficulty": "medium",
+      "hint": "Finland and Iceland are Nordic, but not technically Scandinavian (which is Denmark, Norway, Sweden)."
+    },
+    {
+      "id": 166,
+      "category": "Books & Authors",
+      "items": [
+        "'The Hunger Games'",
+        "'Battle Royale'",
+        "'The Long Walk'"
+      ],
+      "correctAnswer": "Novels featuring a 'last person standing' death game plot",
+      "trapAnswer": "Books adapted into movies",
+      "difficulty": "medium",
+      "hint": "'The Long Walk' has been in development but not released as a major film."
+    },
+    {
+      "id": 167,
+      "category": "Books & Authors",
+      "items": [
+        "Stephen King",
+        "J.K. Rowling",
+        "Agatha Christie"
+      ],
+      "correctAnswer": "Authors who have written under a famous pseudonym",
+      "trapAnswer": "Authors of horror or mystery novels",
+      "difficulty": "medium",
+      "hint": "King (Richard Bachman), Rowling (Robert Galbraith), Christie (Mary Westmacott)."
+    },
+    {
+      "id": 168,
+      "category": "Books & Authors",
+      "items": [
+        "'Dune'",
+        "'A Game of Thrones'",
+        "'The Wheel of Time'"
+      ],
+      "correctAnswer": "Massive, multi-book epic series adapted into major TV shows or films",
+      "trapAnswer": "Fantasy series",
+      "difficulty": "easy",
+      "hint": "'Dune' is science fiction."
+    },
+    {
+      "id": 169,
+      "category": "Books & Authors",
+      "items": [
+        "'Call me Ishmael.'",
+        "'It was a bright cold day in April, and the clocks were striking thirteen.'",
+        "'Mr. and Mrs. Dursley, of number four, Privet Drive, were proud to say that they were perfectly normal, thank you very much.'"
+      ],
+      "correctAnswer": "Famous opening lines from classic novels",
+      "trapAnswer": "Lines from British authors",
+      "difficulty": "easy",
+      "hint": "'Call me Ishmael.' (Moby-Dick) is by an American author."
+    },
+    {
+      "id": 170,
+      "category": "Books & Authors",
+      "items": [
+        "George R.R. Martin",
+        "Patrick Rothfuss",
+        "Scott Lynch"
+      ],
+      "correctAnswer": "Fantasy authors famous for long-delayed sequels in their main series",
+      "trapAnswer": "Authors whose books were adapted by HBO",
+      "difficulty": "medium",
+      "hint": "Only Martin's work was adapted by HBO."
+    },
+    {
+      "id": 171,
+      "category": "Books & Authors",
+      "items": [
+        "Agatha Christie",
+        "Arthur Conan Doyle",
+        "Raymond Chandler"
+      ],
+      "correctAnswer": "Pioneering and iconic authors of mystery or detective fiction",
+      "trapAnswer": "British authors",
+      "difficulty": "easy",
+      "hint": "Raymond Chandler was American."
+    },
+    {
+      "id": 172,
+      "category": "Books & Authors",
+      "items": [
+        "'Fifty Shades of Grey'",
+        "'After'",
+        "Cassandra Clare's 'Mortal Instruments' series"
+      ],
+      "correctAnswer": "Bestselling book series that originated as 'fan fiction'",
+      "trapAnswer": "Books adapted into movies in the 2010s",
+      "difficulty": "hard",
+      "hint": "They were fan fiction of 'Twilight', 'One Direction', and 'Harry Potter', respectively."
+    },
+    {
+      "id": 173,
+      "category": "Books & Authors",
+      "items": [
+        "'The Martian'",
+        "'Project Hail Mary'",
+        "'Artemis'"
+      ],
+      "correctAnswer": "Science fiction novels written by Andy Weir",
+      "trapAnswer": "Books about astronauts",
+      "difficulty": "easy",
+      "hint": "'Artemis' is set on the Moon but the protagonist is a smuggler, not an astronaut."
+    },
+    {
+      "id": 174,
+      "category": "Books & Authors",
+      "items": [
+        "H.P. Lovecraft",
+        "J.R.R. Tolkien",
+        "C.S. Lewis"
+      ],
+      "correctAnswer": "Authors who were part of famous literary groups",
+      "trapAnswer": "Authors who invented their own languages",
+      "difficulty": "medium",
+      "hint": "Tolkien/Lewis ('The Inklings'), Lovecraft ('The Kalem Club')."
+    },
+    {
+      "id": 175,
+      "category": "Books & Authors",
+      "items": [
+        "'The Handmaid's Tale'",
+        "'The Giver'",
+        "'Brave New World'"
+      ],
+      "correctAnswer": "Classic works of dystopian fiction",
+      "trapAnswer": "Novels published in the 20th century",
+      "difficulty": "easy"
+    },
+    {
+      "id": 176,
+      "category": "Books & Authors",
+      "items": [
+        "'Twilight'",
+        "'The Vampire Diaries'",
+        "'True Blood' (Sookie Stackhouse novels)"
+      ],
+      "correctAnswer": "Book series about vampire-human romance popular in the late 2000s/early 2010s",
+      "trapAnswer": "Books written for Young Adults",
+      "difficulty": "medium",
+      "hint": "The 'True Blood' books are adult urban fantasy, not YA."
+    },
+    {
+      "id": 177,
+      "category": "Books & Authors",
+      "items": [
+        "Sally Rooney",
+        "Colleen Hoover",
+        "Taylor Jenkins Reid"
+      ],
+      "correctAnswer": "Contemporary female authors who dominated bestseller lists in the 2020s",
+      "trapAnswer": "Authors who became famous on 'BookTok'",
+      "difficulty": "medium",
+      "hint": "Sally Rooney is more of a critical darling; Hoover and Reid are massive on BookTok."
+    },
+    {
+      "id": 178,
+      "category": "Books & Authors",
+      "items": [
+        "'Ulysses' (Joyce)",
+        "'The Satanic Verses' (Rushdie)",
+        "'To Kill a Mockingbird' (Lee)"
+      ],
+      "correctAnswer": "Novels that were famously banned or the subject of major censorship controversies",
+      "trapAnswer": "Books that won a Pulitzer Prize",
+      "difficulty": "medium",
+      "hint": "'Ulysses' and 'Satanic Verses' did not win a Pulitzer."
+    },
+    {
+      "id": 179,
+      "category": "Books & Authors",
+      "items": [
+        "'The Girl with the Dragon Tattoo'",
+        "'Gone Girl'",
+        "'The Silent Patient'"
+      ],
+      "correctAnswer": "Hugely popular psychological thriller novels from the 21st century",
+      "trapAnswer": "Books with 'Girl' in the title",
+      "difficulty": "easy"
+    },
+    {
+      "id": 180,
+      "category": "Books & Authors",
+      "items": [
+        "Edgar Allan Poe",
+        "Mary Shelley",
+        "Bram Stoker"
+      ],
+      "correctAnswer": "Authors who defined the 'Gothic' literature genre",
+      "trapAnswer": "Authors from the 19th century",
+      "difficulty": "easy"
+    },
+    {
+      "id": 181,
+      "category": "Books & Authors",
+      "items": [
+        "'War and Peace'",
+        "'Infinite Jest'",
+        "'Les Misérables'"
+      ],
+      "correctAnswer": "Novels that are famously and exceptionally long (over 1,000 pages)",
+      "trapAnswer": "Books originally written in English",
+      "difficulty": "medium",
+      "hint": "War and Peace (Russian), Les Misérables (French)."
+    },
+    {
+      "id": 182,
+      "category": "Books & Authors",
+      "items": [
+        "Nobel Prize in Literature",
+        "The Booker Prize",
+        "The Pulitzer Prize for Fiction"
+      ],
+      "correctAnswer": "Highly prestigious annual literary awards",
+      "trapAnswer": "Awards for American authors only",
+      "difficulty": "medium",
+      "hint": "The Nobel is global; The Booker is for books published in the UK/Ireland."
+    },
+    {
+      "id": 183,
+      "category": "Books & Authors",
+      "items": [
+        "'Percy Jackson & the Olympians'",
+        "'The Chronicles of Narnia'",
+        "'American Gods'"
+      ],
+      "correctAnswer": "Book series heavily based on mythology or theology",
+      "trapAnswer": "Fantasy books for children",
+      "difficulty": "medium",
+      "hint": "'American Gods' is an adult novel."
+    },
+    {
+      "id": 184,
+      "category": "Books & Authors",
+      "items": [
+        "Jane Austen",
+        "Emily Brontë",
+        "George Eliot"
+      ],
+      "correctAnswer": "Female authors from 19th-century England",
+      "trapAnswer": "Authors who published under their real names",
+      "difficulty": "hard",
+      "hint": "George Eliot's real name was Mary Ann Evans."
+    },
+    {
+      "id": 185,
+      "category": "Books & Authors",
+      "items": [
+        "'Ready Player One'",
+        "'Snow Crash'",
+        "'Neuromancer'"
+      ],
+      "correctAnswer": "Seminal novels in the 'Cyberpunk' or 'Metaverse' genre",
+      "trapAnswer": "Books with movie adaptations",
+      "difficulty": "medium",
+      "hint": "'Snow Crash' and 'Neuromancer' have not had major film adaptations."
+    },
+    {
+      "id": 186,
+      "category": "Technology & Inventions",
+      "items": [
+        "QWERTY",
+        "AZERTY",
+        "QWERTZ"
+      ],
+      "correctAnswer": "Different keyboard layouts used in different regions",
+      "trapAnswer": "Types of mechanical keyboard switches",
+      "difficulty": "easy"
+    },
+    {
+      "id": 187,
+      "category": "Technology & Inventions",
+      "items": [
+        "The Segway",
+        "Google Glass",
+        "3D Television"
+      ],
+      "correctAnswer": "Hyped technologies that failed to gain mass-market adoption",
+      "trapAnswer": "Products invented in the 2000s",
+      "difficulty": "medium",
+      "hint": "3D TV was pushed heavily in the early 2010s."
+    },
+    {
+      "id": 188,
+      "category": "Technology & Inventions",
+      "items": [
+        "TikTok",
+        "Instagram Reels",
+        "YouTube Shorts"
+      ],
+      "correctAnswer": "Short-form vertical video platforms",
+      "trapAnswer": "Apps owned by American companies",
+      "difficulty": "easy",
+      "hint": "TikTok is owned by ByteDance (China)."
+    },
+    {
+      "id": 189,
+      "category": "Technology & Inventions",
+      "items": [
+        "Satoshi Nakamoto",
+        "Banksy",
+        "Elena Ferrante"
+      ],
+      "correctAnswer": "Famous modern figures who operate under a pseudonym and whose true identity is unknown or unconfirmed",
+      "trapAnswer": "People who created a new technology",
+      "difficulty": "medium"
+    },
+    {
+      "id": 190,
+      "category": "Technology & Inventions",
+      "items": [
+        "Python",
+        "Java",
+        "C++"
+      ],
+      "correctAnswer": "Widely-used, object-oriented programming languages",
+      "trapAnswer": "Programming languages used for web development",
+      "difficulty": "medium",
+      "hint": "C++ is more for systems, games, and applications."
+    },
+    {
+      "id": 191,
+      "category": "Technology & Inventions",
+      "items": [
+        "Floppy Disk",
+        "CD-ROM",
+        "USB Drive"
+      ],
+      "correctAnswer": "Evolutions of portable digital storage media",
+      "trapAnswer": "Things that hold megabytes of data",
+      "difficulty": "easy",
+      "hint": "USB drives hold gigabytes or terabytes."
+    },
+    {
+      "id": 192,
+      "category": "Technology & Inventions",
+      "items": [
+        "GPS",
+        "Velcro",
+        "Memory Foam"
+      ],
+      "correctAnswer": "Technologies originally developed by or for NASA",
+      "trapAnswer": "Inventions from the 1970s",
+      "difficulty": "hard",
+      "hint": "GPS was a US military project, not NASA. Velcro was inspired by nature. Memory Foam was NASA."
+    },
+    {
+      "id": 193,
+      "category": "Technology & Inventions",
+      "items": [
+        "Bitcoin",
+        "Ethereum",
+        "Dogecoin"
+      ],
+      "correctAnswer": "Popular cryptocurrencies",
+      "trapAnswer": "Currencies based on 'proof-of-work'",
+      "difficulty": "hard",
+      "hint": "Ethereum moved to 'proof-of-stake'."
+    },
+    {
+      "id": 194,
+      "category": "Technology & Inventions",
+      "items": [
+        "Oculus Rift",
+        "HTC Vive",
+        "Apple Vision Pro"
+      ],
+      "correctAnswer": "Virtual or Mixed Reality headsets",
+      "trapAnswer": "Headsets that require a PC to use",
+      "difficulty": "easy",
+      "hint": "Apple Vision Pro is a standalone computer."
+    },
+    {
+      "id": 195,
+      "category": "Technology & Inventions",
+      "items": [
+        "ARPANET",
+        "Ethernet",
+        "TCP/IP"
+      ],
+      "correctAnswer": "Foundational technologies or protocols for the Internet and computer networking",
+      "trapAnswer": "Terms invented by DARPA",
+      "difficulty": "hard",
+      "hint": "Ethernet was developed at Xerox PARC."
+    },
+    {
+      "id": 196,
+      "category": "Technology & Inventions",
+      "items": [
+        "Netflix",
+        "Blockbuster",
+        "Redbox"
+      ],
+      "correctAnswer": "Companies primarily known for movie rentals",
+      "trapAnswer": "Streaming services",
+      "difficulty": "easy",
+      "hint": "Blockbuster and Redbox were physical media."
+    },
+    {
+      "id": 197,
+      "category": "Technology & Inventions",
+      "items": [
+        "ChatGPT (OpenAI)",
+        "Gemini (Google)",
+        "Claude (Anthropic)"
+      ],
+      "correctAnswer": "Prominent generative AI large language models (LLMs)",
+      "trapAnswer": "AI models available to the public for free",
+      "difficulty": "easy",
+      "hint": "Advanced versions of all three typically require a subscription."
+    },
+    {
+      "id": 198,
+      "category": "Technology & Inventions",
+      "items": [
+        "The Printing Press",
+        "The Telegraph",
+        "The Internet"
+      ],
+      "correctAnswer": "Inventions that revolutionized mass communication",
+      "trapAnswer": "Inventions by American inventors",
+      "difficulty": "easy",
+      "hint": "Gutenberg (Germany) invented the printing press."
+    },
+    {
+      "id": 199,
+      "category": "Technology & Inventions",
+      "items": [
+        "Microsoft",
+        "Apple",
+        "Xerox"
+      ],
+      "correctAnswer": "Companies associated with the development of the first Graphical User Interface (GUI)",
+      "trapAnswer": "Companies founded in a garage",
+      "difficulty": "medium",
+      "hint": "Xerox PARC developed the GUI, which Apple and then Microsoft adapted."
+    },
+    {
+      "id": 200,
+      "category": "Technology & Inventions",
+      "items": [
+        "CRISPR",
+        "Penicillin",
+        "The X-Ray"
+      ],
+      "correctAnswer": "Revolutionary discoveries in medicine or biology",
+      "trapAnswer": "Discoveries from the 20th century",
+      "difficulty": "medium",
+      "hint": "CRISPR's application was developed in the 2010s."
+    }
+  ]
+}

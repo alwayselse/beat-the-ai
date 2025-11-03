@@ -2,22 +2,24 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useGameStore } from '../../store/gameStore';
 
-interface Fact {
-  text: string;
-  isTrue: boolean;
+interface TwoTruthsQuestion {
+  id: number;
+  category: string;
+  statements: string[];
+  hallucination: number;
+  explanation: string;
 }
 
-interface Puzzle {
-  topic: string;
-  facts: Fact[];
-  explanation: string;
+interface GameData {
+  twoTruths: TwoTruthsQuestion[];
 }
 
 export default function TwoTruths() {
   const navigate = useNavigate();
-  const { incrementGlobalScore } = useGameStore();
+  const { incrementGlobalScore, recordGameResult } = useGameStore();
   
-  const [currentPuzzle, setCurrentPuzzle] = useState<Puzzle | null>(null);
+  const [gameData, setGameData] = useState<TwoTruthsQuestion[]>([]);
+  const [currentQuestion, setCurrentQuestion] = useState<TwoTruthsQuestion | null>(null);
   const [selectedFactIndex, setSelectedFactIndex] = useState<number | null>(null);
   const [showExplanation, setShowExplanation] = useState(false);
   const [score, setScore] = useState(0);
@@ -25,38 +27,36 @@ export default function TwoTruths() {
   const [gameOver, setGameOver] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  // Load puzzle from AI
-  const loadNewPuzzle = async () => {
-    setLoading(true);
-    try {
-      const response = await fetch('/api/gemini-truths', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-      });
-      const puzzle = await response.json();
-      setCurrentPuzzle(puzzle);
-      setLoading(false);
-    } catch (err) {
-      console.error('Failed to load puzzle:', err);
-      setLoading(false);
-    }
-  };
-
-  // Load first puzzle on mount
+  // Load and shuffle game data on mount
   useEffect(() => {
-    loadNewPuzzle();
+    const loadGameData = async () => {
+      setLoading(true);
+      try {
+        const response = await fetch('/game-data/two-truths.json');
+        const data: GameData = await response.json();
+        
+        // Shuffle the questions and pick first 10
+        const shuffled = [...data.twoTruths].sort(() => Math.random() - 0.5).slice(0, 10);
+        setGameData(shuffled);
+        setCurrentQuestion(shuffled[0]);
+        setLoading(false);
+      } catch (err) {
+        console.error('Failed to load game data:', err);
+        setLoading(false);
+      }
+    };
+
+    loadGameData();
   }, []);
 
   const handleFactClick = (factIndex: number) => {
-    if (showExplanation || !currentPuzzle) return;
+    if (showExplanation || !currentQuestion) return;
 
     setSelectedFactIndex(factIndex);
     setShowExplanation(true);
 
-    const selectedFact = currentPuzzle.facts[factIndex];
-
-    // Check if the selected fact is the lie (isTrue === false)
-    if (!selectedFact.isTrue) {
+    // Check if the selected fact is the hallucination
+    if (factIndex === currentQuestion.hallucination) {
       setScore(score + 1);
     }
   };
@@ -69,6 +69,9 @@ export default function TwoTruths() {
       // Need 7/10 to win
       const playerWon = score >= 7;
       
+      // Record game result for leaderboard
+      recordGameResult('twoTruths', playerWon);
+      
       // Update global score
       if (playerWon) {
         incrementGlobalScore('human');
@@ -78,9 +81,9 @@ export default function TwoTruths() {
     } else {
       // Next question
       setQuestionNumber(questionNumber + 1);
+      setCurrentQuestion(gameData[questionNumber]);
       setSelectedFactIndex(null);
       setShowExplanation(false);
-      loadNewPuzzle();
     }
   };
 
@@ -121,11 +124,11 @@ export default function TwoTruths() {
     );
   }
 
-  if (!currentPuzzle || loading) {
+  if (!currentQuestion || loading) {
     return (
       <div className="min-h-screen bg-yellow-300 flex items-center justify-center p-4">
         <div className="text-4xl font-black">
-          {loading ? 'AI is generating puzzle...' : 'Loading...'}
+          {loading ? 'Loading game data...' : 'Loading...'}
         </div>
       </div>
     );
@@ -146,7 +149,7 @@ export default function TwoTruths() {
         {/* Game Card */}
         <div className="bg-white border-4 border-black shadow-[8px_8px_0px_#000] p-8">
           <h2 className="text-3xl font-black mb-8 text-center bg-pink-300 border-4 border-black p-4">
-            {currentPuzzle.topic}
+            {currentQuestion.category}
           </h2>
 
           <p className="text-lg font-bold mb-6 text-center">
@@ -154,27 +157,27 @@ export default function TwoTruths() {
           </p>
 
           <div className="space-y-4 mb-8">
-            {currentPuzzle.facts.map((fact, index) => (
+            {currentQuestion.statements.map((statement, index) => (
               <button
                 key={index}
                 onClick={() => handleFactClick(index)}
                 disabled={showExplanation}
                 className={`w-full text-left p-6 border-4 border-black font-bold text-lg transition-all
                   ${selectedFactIndex === index
-                    ? fact.isTrue
-                      ? 'bg-red-400 shadow-[4px_4px_0px_#000]'
-                      : 'bg-green-400 shadow-[4px_4px_0px_#000]'
+                    ? index === currentQuestion.hallucination
+                      ? 'bg-green-400 shadow-[4px_4px_0px_#000]'
+                      : 'bg-red-400 shadow-[4px_4px_0px_#000]'
                     : showExplanation
-                      ? fact.isTrue
-                        ? 'bg-gray-200'
-                        : 'bg-green-200 shadow-[4px_4px_0px_#000]'
+                      ? index === currentQuestion.hallucination
+                        ? 'bg-green-200 shadow-[4px_4px_0px_#000]'
+                        : 'bg-gray-200'
                       : 'bg-blue-300 hover:bg-blue-400 shadow-[6px_6px_0px_#000] hover:shadow-[4px_4px_0px_#000] hover:translate-x-[2px] hover:translate-y-[2px]'
                   }
                   ${showExplanation ? 'cursor-not-allowed' : 'cursor-pointer'}
                 `}
               >
                 <span className="font-black mr-3">{String.fromCharCode(65 + index)}.</span>
-                {fact.text}
+                {statement}
               </button>
             ))}
           </div>
@@ -182,11 +185,11 @@ export default function TwoTruths() {
           {showExplanation && (
             <div className="bg-yellow-100 border-4 border-black p-6 mb-6">
               <h3 className="text-2xl font-black mb-4">
-                {selectedFactIndex !== null && !currentPuzzle.facts[selectedFactIndex].isTrue
+                {selectedFactIndex !== null && selectedFactIndex === currentQuestion.hallucination
                   ? '✅ Correct!'
                   : '❌ Wrong!'}
               </h3>
-              <p className="text-lg font-bold">{currentPuzzle.explanation}</p>
+              <p className="text-lg font-bold">{currentQuestion.explanation}</p>
             </div>
           )}
 

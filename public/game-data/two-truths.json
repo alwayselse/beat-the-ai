@@ -1,0 +1,1104 @@
+{
+  "twoTruths": [
+    {
+      "id": 101,
+      "category": "Technology & Computing",
+      "statements": [
+        "The QWERTY keyboard layout was designed to slow typists down to prevent old typewriters from jamming.",
+        "The term 'bug' for a computer glitch was popularized after a real moth was found trapped in a relay of the Harvard Mark II computer.",
+        "The first commercially available computer mouse was made of wood and had only one button."
+      ],
+      "hallucination": 2,
+      "explanation": "While the first computer mouse prototype (by Douglas Engelbart) was housed in a wooden shell, it had three buttons. The first commercially available mice were not typically made of wood."
+    },
+    {
+      "id": 102,
+      "category": "Technology & Computing",
+      "statements": [
+        "The '@' symbol was chosen for email by Ray Tomlinson in 1971 to separate the user from the host machine.",
+        "The word 'robot' comes from the Czech word 'robota', which means 'forced labor' or 'drudgery'.",
+        "The programming language Python is named after the snake, reflecting its 'fast and slithering' processing speed."
+      ],
+      "hallucination": 2,
+      "explanation": "Python is named after the British comedy troupe 'Monty Python's Flying Circus', not the snake. Guido van Rossum was a fan."
+    },
+    {
+      "id": 103,
+      "category": "Technology & Computing",
+      "statements": [
+        "The first webcam was invented at Cambridge University to monitor a coffee pot, so people could see if it was full without getting up.",
+        "The term 'Wi-Fi' is short for 'Wireless Fidelity', a technical standard set by the IEEE.",
+        "Bluetooth technology is named after a 10th-century Viking king, Harald Bluetooth, who united Danish tribes."
+      ],
+      "hallucination": 1,
+      "explanation": "The term 'Wi-Fi' is a branded trademark from the Wi-Fi Alliance. It was created as a more user-friendly name and is not an abbreviation for 'Wireless Fidelity', though it was a play on 'Hi-Fi'."
+    },
+    {
+      "id": 104,
+      "category": "Technology & Computing",
+      "statements": [
+        "The first text message ever sent, in 1992, said 'Merry Christmas'.",
+        "The domain name 'Symbolics.com' was the first registered .com domain on the internet in 1985.",
+        "The original name for the search engine Google was 'BackRub', which later changed to 'Googol', and was finally misspelled as 'Google'."
+      ],
+      "hallucination": 2,
+      "explanation": "Google's original name was 'BackRub'. The founders later brainstormed 'Googol' (the number 1 followed by 100 zeros) but settled on 'Google' from the start of the company, not as a misspelling."
+    },
+    {
+      "id": 105,
+      "category": "Technology & Computing",
+      "statements": [
+        "The PNG image format was created as a free, open-source alternative to the GIF format, which used a patented compression algorithm.",
+        "In the 1970s, an IBM computer was programmed to play chess and was the first computer to beat a human Grandmaster in a tournament.",
+        "CAPTCHA is an acronym for 'Completely Automated Public Turing test to tell Computers and Humans Apart'."
+      ],
+      "hallucination": 1,
+      "explanation": "While IBM's Deep Blue famously beat Garry Kasparov in 1997, the first computer to beat a Grandmaster in a tournament was Deep Thought in 1988 (though Kasparov beat it). The 1970s computers were not yet at that level."
+    },
+    {
+      "id": 106,
+      "category": "Technology & Computing",
+      "statements": [
+        "The first video game, 'Tennis for Two', was created in 1958 and played on an oscilloscope.",
+        "The 'Control-Alt-Delete' command was invented by a programmer who needed a quick way to restart his PC without turning it off, and he never intended it for public use.",
+        "The Apple 'command' key (⌘) symbol was copied from the logo of a Swedish car company, Volvo."
+      ],
+      "hallucination": 2,
+      "explanation": "The ⌘ symbol was chosen by designer Susan Kare from a symbol dictionary. It's a symbol used in Sweden to indicate a campground or place of interest, not a car logo."
+    },
+    {
+      "id": 107,
+      "category": "Technology & Computing",
+      "statements": [
+        "The first item sold on eBay (then called AuctionWeb) was a broken laser pointer.",
+        "The programming language Java was originally named 'Oak' after an oak tree outside the lead developer's office.",
+        "The 'Shift' key on a keyboard was originally designed to 'shift' the entire typewriter carriage up, allowing it to strike the uppercase character."
+      ],
+      "hallucination": 0,
+      "explanation": "This is a common myth. The *first* item *listed* was a broken laser pointer, but the first item *sold* was a 'magic' printer. The laser pointer was listed as a test by founder Pierre Omidyar."
+    },
+    {
+      "id": 108,
+      "category": "Technology & Computing",
+      "statements": [
+        "The Firefox browser logo is a red panda, not a fox.",
+        "The first computer virus, 'Creeper', was created in 1971 and was designed to simply display the message 'I'M THE CREEPER: CATCH ME IF YOU CAN!' as it moved between computers.",
+        "The term 'malware' is a blend of 'malicious' and 'hardware', referring to code that can physically damage a computer's components."
+      ],
+      "hallucination": 2,
+      "explanation": "Malware is a blend of 'malicious' and 'software'. While some malware can theoretically damage hardware (e.g., by overheating), the term refers to the software itself."
+    },
+    {
+      "id": 109,
+      "category": "Technology & Computing",
+      "statements": [
+        "The concept of 'cloud computing' was first discussed by J.C.R. Licklider in the 1960s as an 'intergalactic computer network'.",
+        "The world's first gigabyte hard drive, released by IBM in 1980, weighed over 500 pounds and cost $40,000.",
+        "The USB (Universal Serial Bus) standard was developed primarily by Intel, but they gave the patent to the public for free to encourage its adoption."
+      ],
+      "hallucination": 0,
+      "explanation": "While Licklider had visionary ideas, the term 'cloud computing' was first used in the 1990s and popularized in the 2000s. Licklider's ideas were more foundational to ARPANET and the internet."
+    },
+    {
+      "id": 110,
+      "category": "Technology & Computing",
+      "statements": [
+        "In 1999, the U.S. government classified GPS satellite signals, making them intentionally less accurate for civilian use. This 'Selective Availability' was turned off in 2000.",
+        "The Q-rating in a CPU's name (e.g., Intel Q9550) stands for 'Quantum', indicating its ability to perform quantum-like calculations.",
+        "The first website, info.cern.ch, was created by Tim Berners-Lee in 1991 and is still online today."
+      ],
+      "hallucination": 1,
+      "explanation": "The 'Q' in Intel processor names typically stands for 'Quad-Core'. It has no relation to quantum computing."
+    },
+    {
+      "id": 111,
+      "category": "Technology & Computing",
+      "statements": [
+        "Nintendo was founded in 1889 as a company that produced handmade playing cards.",
+        "The term 'podcast' is a blend of 'iPod' and 'broadcast', coined by a journalist for The Guardian.",
+        "The 'Page Up' and 'Page Down' keys were invented by Microsoft for the launch of Windows 1.0 to help users navigate text without a mouse."
+      ],
+      "hallucination": 2,
+      "explanation": "These keys existed on keyboards (like IBM's) before the graphical interface of Windows 1.0, and were used in text-based applications and command-line interfaces."
+    },
+    {
+      "id": 112,
+      "category": "Technology & Computing",
+      "statements": [
+        "The programming language COBOL was designed based on work by Grace Hopper, and its syntax was intended to be as English-like as possible.",
+        "The total data storage of all floppy disks ever manufactured is less than the amount of data currently stored on Google's servers.",
+        "The 'loading' icon of a spinning wheel or bar was first patented by Apple in 1988."
+      ],
+      "hallucination": 2,
+      "explanation": "While Apple and others hold patents on specific *visual appearances* of loading icons (like the 'spinning beach ball'), the concept of a loading indicator itself is too broad and was not patented."
+    },
+    {
+      "id": 113,
+      "category": "Technology & Computing",
+      "statements": [
+        "Ada Lovelace, a 19th-century mathematician, is credited as the first computer programmer for her work on Charles Babbage's unbuilt Analytical Engine.",
+        "The first smartphone, the IBM Simon, was released in 1994 and featured a touchscreen, email, and fax functions.",
+        "The standard digital 'click' sound for a computer mouse was designed to mimic the sound of a spring-loaded light switch."
+      ],
+      "hallucination": 2,
+      "explanation": "The 'click' sound was simply a useful audio feedback mechanism. There is no evidence it was specifically designed to mimic a light switch; it was just a sound that matched the action."
+    },
+    {
+      "id": 114,
+      "category": "Technology & Computing",
+      "statements": [
+        "The '@' symbol is officially called the 'at sign' in English, but in Italian, it's called a 'snail' (chiocciola).",
+        "The company 'Compaq' got its name by combining 'Computer' and 'Pack', reflecting their focus on portable computers.",
+        "The 404 'File Not Found' error code is named after Room 404 at CERN, where the original web servers were housed. If a request failed, it was 'not found' in that room."
+      ],
+      "hallucination": 2,
+      "explanation": "This is a popular urban legend. The '404' number is simply part of the HTTP status code system: the '4xx' block refers to client errors, and '04' was the specific number assigned to 'Not Found'."
+    },
+    {
+      "id": 115,
+      "category": "Technology & Computing",
+      "statements": [
+        "The first person to be convicted of 'spamming' was fined $1.8 million in 2005 for sending millions of unwanted emails.",
+        "In 1997, a South Korean girl 'died' from exhaustion after playing a 'Tamagotchi' virtual pet continuously for 72 hours.",
+        "The first banner ad on the web appeared in 1994 on HotWired.com and had a 44% click-through rate."
+      ],
+      "hallucination": 1,
+      "explanation": "This was a widespread hoax. While there were stories of obsession, no one (child or adult) has ever died from caring for a Tamagotchi."
+    },
+    {
+      "id": 116,
+      "category": "Technology & Computing",
+      "statements": [
+        "The Linux operating system's mascot, a penguin named 'Tux', was chosen because founder Linus Torvalds was once bitten by a penguin.",
+        "The term 'firewall' in computing is a direct metaphor from building construction, where a firewall is a barrier designed to stop a fire from spreading.",
+        "The first laptop, the 'Grid Compass', was so expensive ($8,150 in 1982) that its main customers were NASA (for use on the Space Shuttle) and the U.S. military."
+      ],
+      "hallucination": 0,
+      "explanation": "While Linus Torvalds did get a 'nibble' from a small penguin at an Australian zoo, the story is more of a fond anecdote than a traumatic 'bite' that inspired the mascot. He just liked penguins."
+    },
+    {
+      "id": 117,
+      "category": "Technology & Computing",
+      "statements": [
+        "The game Tetris was so addictive that in the 1980s, medical journals published articles on the 'Tetris effect', where players would see falling blocks in their minds.",
+        "The 'undo' command (Ctrl+Z or Cmd+Z) was invented by programmers at Xerox PARC in the 1970s.",
+        "The first computer hard drive was physically composed of 50 spinning disks, each 24 inches in diameter."
+      ],
+      "hallucination": 0,
+      "explanation": "This is true. The 'Tetris effect', or Tetris Syndrome, is a well-documented phenomenon where people devote so much time to an activity that it begins to pattern their thoughts, mental images, and dreams."
+    },
+    {
+      "id": 118,
+      "category": "Technology & Computing",
+      "statements": [
+        "The first computer-generated image (CGI) used in a major motion picture was for the 1973 film 'Westworld'.",
+        "The term 'Wi-Fi' was created by the marketing firm Interbrand, which also created names like 'Prozac' and 'Viagra'.",
+        "The first 'E-Book' was a digital copy of the U.S. Declaration of Independence, typed manually by Michael S. Hart in 1971, which launched Project Gutenberg."
+      ],
+      "hallucination": 0,
+      "explanation": "This is true. The film used 2D digital compositing to process film footage to appear as a robot's point of view."
+    },
+    {
+      "id": 119,
+      "category": "Technology & Computing",
+      "statements": [
+        "The first version of Microsoft Windows, Windows 1.0, was released in 1985 as a graphical add-on to MS-DOS.",
+        "Amazon.com was originally called 'Cadabra' (as in 'abracadabra'), but was changed because it sounded too much like 'cadaver'.",
+        "The first version of the C programming language was so named because it was the third iteration of a language, following 'A' and 'B'."
+      ],
+      "hallucination": 0,
+      "explanation": "This is true. Windows 1.0 was not a full operating system itself, but a graphical shell that ran on top of the command-line-based MS-DOS."
+    },
+    {
+      "id": 120,
+      "category": "Technology &Computing",
+      "statements": [
+        "The first digital photograph was taken in 1957, decades before the first digital camera was invented, by scanning a film photograph into a computer.",
+        "The 'Intel Inside' jingle is one of the most recognizable in the world, consisting of just five notes (D-flat, G-flat, D-flat, A-flat, B-flat).",
+        "The 'Caps Lock' key was specifically designed for architects and engineers who needed to label blueprints and schematics in all uppercase letters."
+      ],
+      "hallucination": 2,
+      "explanation": "While architects did use all-caps, the 'Caps Lock' key was a holdover from mechanical typewriters, where it was a 'Shift Lock' key that physically held the Shift key down. It wasn't designed for any specific profession."
+    },
+    {
+      "id": 121,
+      "category": "Technology & Computing",
+      "statements": [
+        "The term 'patch' for a software fix comes from the early days of computing, when programmers would physically 'patch' paper tapes by punching new holes or covering old ones.",
+        "The 'delete' key (which removes the character *after* the cursor) was invented before the 'backspace' key (which removes the character *before* it).",
+        "The creator of the animated GIF format says it should be pronounced 'JIF', like the peanut butter brand."
+      ],
+      "hallucination": 1,
+      "explanation": "The 'backspace' key was a standard feature on typewriters (to go back and overstrike), and thus was on early computers. The 'delete' key (or 'forward delete') came later as a specific function for text editing."
+    },
+    {
+      "id": 122,
+      "category": "Technology & Computing",
+      "statements": [
+        "The original 'Pong' arcade game was so successful on its first night in a bar that it jammed because it was overstuffed with quarters.",
+        "The concept of 'hypertext' (clicking links to jump between pages) was conceived in 1945 by Vannevar Bush, long before the internet.",
+        "The first internet router, called an Interface Message Processor (IMP), was delivered in 1969 and was the size of a telephone booth."
+      ],
+      "hallucination": 0,
+      "explanation": "This is true. The 'Pong' prototype placed in Andy Capp's Tavern in Sunnyvale, California, stopped working after just a few days because the coin mechanism was completely full."
+    },
+    {
+      "id": 123,
+      "category": "Technology & Computing",
+      "statements": [
+        "The 'Sleep' mode on a computer was originally called 'Doze' mode, but was changed as it was thought 'Doze' implied laziness.",
+        "In 1968, Douglas Engelbart gave a presentation known as 'The Mother of All Demos', which introduced the computer mouse, video conferencing, hypertext, and windowed computing all at once.",
+        "The first computer-to-computer message sent over ARPANET in 1969 was intended to be 'LOGIN', but the system crashed after 'LO'."
+      ],
+      "hallucination": 0,
+      "explanation": "This is a plausible-sounding fabrication. The 'Sleep' state (or 'Standby') was named for its function, and there's no evidence it was ever officially called 'Doze' mode or changed for marketing reasons."
+    },
+    {
+      "id": 124,
+      "category": "Technology & Computing",
+      "statements": [
+        "The first item purchased using an online credit card transaction was a large pepperoni, mushroom, and extra cheese pizza from Pizza Hut in 1994.",
+        "The 'Favorites' or 'Bookmark' feature in web browsers was inspired by the physical bookmarks used in libraries, where patrons would mark pages in card catalogs.",
+        "Over 6,000 new computer viruses are created and released every month."
+      ],
+      "hallucination": 1,
+      "explanation": "This is a common myth. The first online purchase is debated, but one of the first known secure transactions was for a Sting CD ('Ten Summoner's Tales') sold via NetMarket."
+    },
+    {
+      "id": 125,
+      "category": "Technology & Computing",
+      "statements": [
+        "In 1990, the entire 'World Wide Web' ran on a single NeXT computer at Tim Berners-Lee's desk, which had a handwritten note on it: 'This machine is a server. DO NOT POWER IT DOWN!!'",
+        "The 'Recycle Bin' in Windows was originally named the 'Wastebasket', but was changed to 'Recycle Bin' to sound more environmentally friendly.",
+        "The name 'Sony' comes from the Latin word 'sonus' (sound) and the English slang 'sonny' (a bright young boy)."
+      ],
+      "hallucination": 1,
+      "explanation": "In early versions of Windows, it was called the 'Recycle Bin'. On the original Macintosh, it was (and still is) called the 'Trash' or 'Wastebasket'. The name wasn't changed for environmental reasons."
+    },
+    {
+      "id": 126,
+      "category": "Animals & Nature",
+      "statements": [
+        "A wombat's feces are cube-shaped, which is thought to prevent them from rolling away when marking territory.",
+        "The 'Immortal Jellyfish' (Turritopsis dohrnii) can revert back to its juvenile polyp stage after reaching maturity, potentially living forever.",
+        "A hippopotamus's milk is bright pink due to a unique acid it secretes."
+      ],
+      "hallucination": 2,
+      "explanation": "This is a popular internet 'fact' that is false. Hippo milk is white or beige, just like other mammals. The 'pink' idea may come from a misunderstanding of its skin secretions ('blood sweat') sometimes mixing with milk, but the milk itself is not pink."
+    },
+    {
+      "id": 127,
+      "category": "Animals & Nature",
+      "statements": [
+        "A group of ravens is called an 'unkindness' or a 'conspiracy'.",
+        "A sloth's metabolism is so slow that it can starve to death on a full stomach if it gets too cold to digest its food.",
+        "The fingerprints of a koala are so indistinguishable from a human's that they could taint a crime scene."
+      ],
+      "hallucination": 0,
+      "explanation": "This is true. The collective noun for ravens is 'unkindness' or 'conspiracy', reflecting their perceived intelligence and mysterious nature."
+    },
+    {
+      "id": 128,
+      "category": "Animals & Nature",
+      "statements": [
+        "Octopuses have three hearts: one pumps blood to the body, and the other two pump it to the gills.",
+        "A giraffe and a human have the same number of neck vertebrae (seven), the giraffe's are just much larger.",
+        "Butterflies taste with their antennae, which have chemoreceptors that detect 'sweet' or 'salty'."
+      ],
+      "hallucination": 2,
+      "explanation": "Butterflies (and moths) taste with sensors on their feet. This allows them to test a leaf's suitability for laying eggs just by landing on it."
+    },
+    {
+      "id": 129,
+      "category":"Animals & Nature",
+      "statements": [
+        "The platypus is one of the few mammals that lay eggs instead of giving birth to live young.",
+        "A male platypus has a venomous spur on its hind foot capable of causing excruciating pain to humans.",
+        "When a platypus dives underwater, it closes its eyes, ears, and nose, and hunts by using its sense of smell to detect worms in the mud."
+      ],
+      "hallucination": 2,
+      "explanation": "A platypus hunts underwater using electroreception. Its bill is covered in sensors that detect the tiny electrical fields generated by the muscle contractions of its prey, like shrimp and worms."
+    },
+    {
+      "id": 130,
+      "category": "Animals & Nature",
+      "statements": [
+        "The pistol shrimp can snap its claw shut so fast it creates a bubble that temporarily reaches the temperature of the sun's surface and emits a loud 'pop'.",
+        "The Arctic fox's fur changes from white in winter to brown or gray in summer to stay camouflaged.",
+        "A rhinoceros's horn is made of densely compacted bone, similar to an antler but part of the skull."
+      ],
+      "hallucination": 2,
+      "explanation": "A rhino horn is not bone. It is made of keratin, the same protein that makes up human hair and fingernails, just densely compacted."
+    },
+    {
+      "id": 131,
+      "category": "Animals & Nature",
+      "statements": [
+        "Honey never spoils. Archaeologists have found pots of honey in ancient Egyptian tombs that are thousands of years old and still edible.",
+        "The 'vomit fruit', or durian, is so pungent that it is banned on public transportation in many parts of Southeast Asia.",
+        "Dragonflies are the only known insect to fly backward."
+      ],
+      "hallucination": 2,
+      "explanation": "While dragonflies are exceptional fliers, several insects, including certain types of flies and damselflies, can also fly backward for short distances. Hummingbirds (which are birds) are masters of backward flight."
+    },
+    {
+      "id": 132,
+      "category": "Animals & Nature",
+      "statements": [
+        "A starfish (or sea star) can regenerate an entire new body from a single arm, as long as a part of its central disc is attached.",
+        "A group of flamingos is called a 'flamboyance'.",
+        "Penguins are 'bipolar-adapted', meaning they are the only animal group to have species living at both the North and South poles."
+      ],
+      "hallucination": 2,
+      "explanation": "Penguins live almost exclusively in the Southern Hemisphere. There are no native penguin populations at the North Pole or in the Arctic."
+    },
+    {
+      "id": 133,
+      "category": "Animals & Nature",
+      "statements": [
+        "A mantis shrimp can punch with the force of a .22 caliber bullet, striking so fast its claws boil the water around them.",
+        "The 'Dodo' bird was driven to extinction, but its closest living relative is the common city pigeon.",
+        "The electric eel is not actually an eel; it is a type of knifefish."
+      ],
+      "hallucination": 1,
+      "explanation": "The dodo's closest living relative is the Nicobar pigeon, a colorful bird from Southeast Asia, not the common rock pigeon found in cities."
+    },
+    {
+      "id": 134,
+      "category": "Animals & Nature",
+      "statements": [
+        "The Axolotl, a type of salamander, is 'neotenic', meaning it often remains in its larval (gilled, aquatic) state for its entire life, even when sexually mature.",
+        "If an axolotl loses a limb, its spinal cord, or even parts of its brain, it can regenerate them perfectly.",
+        "The axolotl is native to a complex network of freshwater lakes and canals near Mexico City, but is now extinct in the wild."
+      ],
+      "hallucination": 2,
+      "explanation": "While the axolotl is 'Critically Endangered' and 'Possibly Extinct in the Wild' due to habitat loss, a few individuals were reportedly found as recently as 2014, giving hope that a tiny wild population may still exist."
+    },
+    {
+      "id": 135,
+      "category": "Animals & Nature",
+      "statements": [
+        "A grizzly bear's bite is strong enough to crush a bowling ball.",
+        "The 'corpse flower' (Amorphophallus titanum) smells like rotting flesh to attract pollinating insects like carrion beetles and flies.",
+        "A tarantula can 'shoot' barbed hairs from its abdomen at attackers, which cause intense irritation and blindness."
+      ],
+      "hallucination": 0,
+      "explanation": "This is true. A grizzly bear has a bite force of around 1200 PSI, which is more than enough to shatter a bowling ball."
+    },
+    {
+      "id": 136,
+      "category": "Animals &Nature",
+      "statements": [
+        "A woodpecker's tongue is so long that it wraps around the inside of its skull to cushion its brain while it pecks.",
+        "A group of hedgehogs is called a 'prickle'.",
+        "When a porcupine 'shoots' its quills, it is actually contracting a powerful muscle in its back to launch them at a predator up to 10 feet away."
+      ],
+      "hallucination": 2,
+      "explanation": "Porcupines cannot shoot their quills. The quills are loosely attached and detach easily on contact, or when the porcupine shakes its body, flinging them a short distance, but they are not 'shot' like arrows."
+    },
+    {
+      "id": 137,
+      "category": "Animals & Nature",
+      "statements": [
+        "Reindeer are the only mammals known to be able to see ultraviolet (UV) light, which helps them spot lichen (food) and predator fur in the snow.",
+        "The Ostrich has the largest eye of any land animal, and its eye is larger than its brain.",
+        "A camel's humps store water, which the camel's body slowly absorbs during long desert treks."
+      ],
+      "hallucination": 2,
+      "explanation": "This is a classic myth. A camel's humps store fat, which serves as a concentrated energy reserve. The camel conserves water in other ways, such as in its bloodstream."
+    },
+    {
+      "id": 138,
+      "category": "Animals & Nature",
+      "statements": [
+        "Cows have 'best friends' and can become stressed when they are separated from them.",
+        "A group of owls is called a 'parliament'.",
+        "A crocodile cannot stick its tongue out because it is attached to the bottom of its mouth by a membrane."
+      ],
+      "hallucination": 0,
+      "explanation": "This is true. Studies on cow socialization have shown they form strong bonds, prefer certain companions, and show physiological signs of stress when separated from their preferred partner."
+    },
+    {
+      "id": 139,
+      "category": "Animals & Nature",
+      "statements": [
+        "Vultures are able to eat rotting, diseased carcasses without getting sick because they have extremely strong stomach acid that kills most bacteria and viruses.",
+        "A bat is the only mammal capable of true, sustained flight.",
+        "All scorpions glow a bright blue-green under ultraviolet (UV) light, and scientists have confirmed this is a warning to predators."
+      ],
+      "hallucination": 2,
+      "explanation": "While all scorpions do glow under UV light, scientists are still not certain why. Theories include that it helps them see, protects them from sunlight, or helps them find mates, but the 'warning' hypothesis is not confirmed."
+    },
+    {
+      "id": 140,
+      "category": "Animals & Nature",
+      "statements": [
+        "Some species of horned lizards can shoot a stream of blood from their eyes as a defense mechanism to confuse predators.",
+        "Cats cannot taste 'sweetness' due to a genetic mutation that deactivates their sweet taste receptors.",
+        "A housefly has an average lifespan of 6 months, which is why they can reproduce so rapidly."
+      ],
+      "hallucination": 2,
+      "explanation": "A housefly's lifespan is much shorter, typically only 15 to 30 days, though this depends heavily on temperature and conditions."
+    },
+    {
+      "id": 141,
+      "category": "Animals & Nature",
+      "statements": [
+        "The 'slow loris' is one of the world's only venomous primates. It secretes a toxin from its elbows, which it then licks to deliver a toxic bite.",
+        "A group of jellyfish is called a 'smack'.",
+        "The color 'blue' is the rarest color in nature; most 'blue' animals (like the Blue Morpho butterfly) are not blue from pigment, but from the structure of their scales refracting light."
+      ],
+      "hallucination": 0,
+      "explanation": "This is true. The slow loris combines a brachial gland secretion with its saliva, creating a potent venom it uses for defense."
+    },
+    {
+      "id": 142,
+      "category": "Animals & Nature",
+      "statements": [
+        "A narwhal's 'tusk' is actually an overgrown, spiraling tooth (a canine) that protrudes from its upper lip.",
+        "A group of hippos is called a 'bloat'.",
+        "The cheetah is the fastest land animal, but it can only maintain its top speed for about 10 seconds before it must rest for several minutes."
+      ],
+      "hallucination": 2,
+      "explanation": "A cheetah can maintain its top speed (60-70 mph) for several hundred yards, which takes about 20-30 seconds, not just 10. However, it does overheat quickly."
+    },
+    {
+      "id": 143,
+      "category": "Animals & Nature",
+      "statements": [
+        "Emperor penguins can 'toboggan' (slide on their bellies) across the ice to save energy and move faster than waddling.",
+        "The Glass Frog has translucent skin on its underside, making its heart, liver, and digestive tract fully visible.",
+        "The 'Siberian Ice Spider' is a tarantula-sized arachnid that survives the winter by freezing solid and thawing out in the spring."
+      ],
+      "hallucination": 2,
+      "explanation": "This animal does not exist. While some insects and frogs can survive partial freezing, there is no known tarantula-sized spider with this capability, especially in Siberia."
+    },
+    {
+      "id": 144,
+      "category": "Animals & Nature",
+      "statements": [
+        "A group of crows has been observed holding 'funerals' where they gather around a dead crow, and 'trials' where they 'mob' a crow that has broken the group's social rules.",
+        "The 'Pangolin' is the only mammal in the world that is covered in scales.",
+        "The 'Screaming Hairy Armadillo' gets its name because it is the only armadillo species that vocalizes, letting out a high-pitched scream when threatened."
+      ],
+      "hallucination": 2,
+      "explanation": "While it does scream when threatened, several other armadillo species also vocalize with grunts, snorts, or 'huffs'. The name is for its distinctive, loud scream."
+    },
+    {
+      "id": 145,
+      "category": "Animals & Nature",
+      "statements": [
+        "The 'manatee' is a marine mammal whose closest living land relative is the elephant.",
+        "The 'Lyrebird' is an Australian bird that can perfectly mimic complex sounds, including car alarms, camera shutters, and chainsaws.",
+        "The 'Venus Flytrap' is native only to a small region of bogs in North and South Carolina."
+      ],
+      "hallucination": 0,
+      "explanation": "This is true. Manatees and elephants (along with the hyrax) share a common ancestor, which is why they have similar traits like tough skin, bristle-like hair, and internal testes."
+    },
+    {
+      "id": 146,
+      "category": "Animals & Nature",
+      "statements": [
+        "Orcas (Killer Whales) are not whales; they are the largest species of dolphin.",
+        "A group of parrots is called a 'pandemonium'.",
+        "The 'Naked Mole Rat' is a mammal that is completely cold-blooded, like a reptile, and must bask under heat lamps in zoos."
+      ],
+      "hallucination": 2,
+      "explanation": "Naked mole rats are mammals, and they are warm-blooded. However, they are not good at regulating their body temperature, so they are 'poikilothermic' (their internal temperature varies), but they are not truly 'cold-blooded' (ectothermic)."
+    },
+    {
+      "id": 147,
+      "category": "Animals & Nature",
+      "statements": [
+        "The 'Astraea heliotropium' snail builds its shell by incorporating shards of glass and metal it finds on the seafloor.",
+        "A 'Murder' is the collective noun for a group of crows.",
+        "Goats, like octopuses, have rectangular pupils, which give them a wider field of vision (320-340 degrees) to spot predators."
+      ],
+      "hallucination": 0,
+      "explanation": "This is a fabrication. While some animals (like caddisfly larvae) build cases, this specific snail does not incorporate glass and metal. Its shell is a natural, spiny, star-shaped calcium carbonate structure."
+    },
+    {
+      "id": 148,
+      "category": "Animals & Nature",
+      "statements": [
+        "A 'Komodo Dragon' has venomous glands in its lower jaw. Its bite delivers a toxin that causes shock and prevents blood from clotting.",
+        "The 'Pink Fairy Armadillo' is the smallest species of armadillo, about the size of a hamster, and lives almost entirely underground.",
+        "The 'African Lungfish' can live out of water for several years by secreting a mucus cocoon, burying itself in the mud, and breathing air with its lungs."
+      ],
+      "hallucWination": 0,
+      "explanation": "This is true. For a long time, it was thought the bacteria in its mouth killed its prey, but scientists confirmed in 2009 that the Komodo Dragon is, in fact, venomous."
+    },
+    {
+      "id": 149,
+      "category": "Animals & Nature",
+      "statements": [
+        "The 'Quokka' is a small marsupial from Australia that is known as the 'world's happiest animal' because it appears to be constantly smiling.",
+        "When a Quokka is threatened by a predator, it will often throw its own baby ('joey') from its pouch as a distraction to escape.",
+        "A group of porcupines is called a 'prickle'."
+      ],
+      "hallucination": 0,
+      "explanation": "This is true. The Quokka is known for its photogenic 'smile' and lack of fear of humans."
+    },
+    {
+      "id": 150,
+      "category":"Animals & Nature",
+      "statements": [
+        "Snails can sleep for up to three years at a time if the weather conditions are not suitable.",
+        "The 'Gerenuk' is a long-necked antelope from Africa that can stand up on its hind legs to reach high branches, looking like a 'giraffe-gazelle'.",
+        "The 'Eurasian pygmy shrew' has such a high metabolism that it must eat every 2 hours, or it will starve to death."
+      ],
+      "hallucination": 0,
+      "explanation": "This is true. To survive periods of drought or cold, a snail can enter a state of hibernation (or estivation) that can last for several years, sealing itself off with a layer of mucus."
+    },
+    {
+      "id": 151,
+      "category": "Food & Cooking",
+      "statements": [
+        "Carrots were originally purple, yellow, and white. The modern orange carrot was cultivated by the Dutch in the 17th century.",
+        "White chocolate is not technically 'chocolate' because it contains no cocoa solids, only cocoa butter.",
+        "'German Chocolate Cake' is named after an American baker named Samuel German, not the country of Germany."
+      ],
+      "hallucination": 0,
+      "explanation": "This is true. Dutch growers are credited with developing the orange carrot, possibly as a tribute to William of Orange who led the fight for Dutch independence."
+    },
+    {
+      "id": 152,
+      "category": "Food & Cooking",
+      "statements": [
+        "Ketchup was sold in the 1830s as a medicine, claiming to cure ailments like indigestion and diarrhea.",
+        "The 'Boston Cream Pie' is not a pie; it is a cake. It was named a 'pie' because it was originally baked in pie tins.",
+        "In the 18th century, 'ice cream' was considered a dangerous food in America, as doctors believed the extreme cold could 'freeze' the stomach and cause death."
+      ],
+      "hallucination": 2,
+      "explanation": "While ice cream was a luxury, and some may have cautioned against 'cold' foods, it was never widely considered 'dangerous' or lethal by the medical establishment. It was enjoyed by figures like George Washington and Thomas Jefferson."
+    },
+    {
+      "id": 153,
+      "category": "Food & Cooking",
+      "statements": [
+        "The 'spiciness' of chili peppers (capsaicin) is not a taste, but a pain sensation detected by the same nerves that detect heat.",
+        "Most 'wasabi' served in North America is actually a paste of horseradish, mustard, and green food coloring, as real wasabi is expensive and difficult to grow.",
+        "The original 'Caesar Salad' recipe contains small, whole anchovies, which is what gives it its signature salty flavor."
+      ],
+      "hallucination": 2,
+      "explanation": "This is a common misconception. The original Caesar salad, created by Caesar Cardini, got its faint anchovy-like flavor from Worcestershire sauce. Anchovies are a common *addition* to the modern recipe, but were not in the original."
+    },
+    {
+      "id": 154,
+      "category": "Food & Cooking",
+      "statements": [
+        "Peanuts are an ingredient in dynamite (nitroglycerin is stabilized using peanut oil components).",
+        "The 'Hawaiian' pizza (ham and pineapple) was invented in Canada.",
+        "Pound Cake gets its name because the original recipe called for exactly one pound of flour, one pound of butter, one pound of eggs, and one pound of sugar."
+      ],
+      "hallucination": 0,
+      "explanation": "This is true, or at least was. Peanut oil can be used to make glycerol, which is processed into nitroglycerin. While less common now, peanuts were a key source."
+    },
+    {
+      "id": 155,
+      "category": "Food & Cooking",
+      "statements": [
+        "The 'doughnut hole' was invented in the 19th century by a ship captain who was tired of his greasy doughnut slipping off the ship's wheel spoke.",
+        "Farmed salmon is naturally white or gray; it is fed a supplement (astaxanthin) to turn its flesh pink, mimicking the color of wild salmon (which get it from eating shrimp).",
+        "The 'Sandwich' was named after John Montagu, the 4th Earl of Sandwich, who asked for meat to be served between two slices of bread so he wouldn't have to leave his gambling table."
+      ],
+      "hallucination": 0,
+      "explanation": "This is a popular legend, but the 'hole' was more likely invented for practical reasons: it helped the doughnut cook more evenly and ensured the center wasn't a raw, doughy mess."
+    },
+    {
+      "id": 156,
+      "category": "Food & Cooking",
+      "statements": [
+        "Nutmeg is a powerful hallucinogen if ingested in large doses (though it is also highly toxic).",
+        "Apples, pears, cherries, and almonds are all members of the Rose (Rosaceae) family.",
+        "The '5-second rule' is a scientifically verified principle stating that food dropped on the floor for less than 5 seconds is safe to eat as bacteria need more time to transfer."
+      ],
+      "hallucination": 2,
+      "explanation": "The '5-second rule' is a myth. Bacteria can transfer to food almost instantaneously upon contact. The amount of bacteria transferred depends on the food's moisture, the surface's cleanliness, and the contact time, but 5 seconds is not a 'safe' window."
+    },
+    {
+      "id": 157,
+      "category": "Food & Cooking",
+      "statements": [
+        "The 'Bellini' cocktail (prosecco and peach purée) was invented at Harry's Bar in Venice, Italy, and named after a 15th-century Venetian painter.",
+        "'Chicken Cordon Bleu' is a French dish, named after the 'blue ribbon' of excellence awarded to French knights, and later, to master chefs.",
+        "The original 'Popsicle' was invented by an 11-year-old boy in 1905, who accidentally left a drink with a stirring stick in it on his porch overnight, and it froze."
+      ],
+      "hallucination": 1,
+      "explanation": "While 'Cordon Bleu' is French for 'blue ribbon' (a term for excellence), the dish itself—a schnitzel with ham and cheese—is a Swiss invention, likely from the 1940s. The name is a later, fancier attribution."
+    },
+    {
+      "id": 158,
+      "category": "Food & Cooking",
+      "statements": [
+        "The bubbles in 'sparkling water' are created by infusing the water with carbon dioxide (CO2) gas.",
+        "The world's most expensive coffee, 'Kopi Luwak', is made from coffee beans that have been eaten, digested, and defecated by a civet (a small mammal).",
+        "The 'Croissant' was invented in Vienna, Austria, to celebrate the defeat of the Ottoman Empire (whose flag features a crescent moon), and was later popularized in France."
+      ],
+      "hallucination": 0,
+      "explanation": "This is true. The 'Kipferl', a crescent-shaped pastry, was the precursor to the croissant and originated in Vienna. Marie Antoinette is often credited with introducing it to France, where it evolved into the modern croissant."
+    },
+    {
+      "id": 159,
+      "category": "Food & Cooking",
+      "statements": [
+        "Lollipops were named after 'Lolly Pop', a famously fast-running racehorse from the 1920s.",
+        "Before the 19th century, 'Lobster' was considered a 'trash food' and was so common it was fed to prisoners, apprentices, and servants.",
+        "The 'flame' on the top of a 'Flamin' Hot Cheeto' logo is an exact, registered trademark of the Frito-Lay company."
+      ],
+      "hallucination": 0,
+      "explanation": "This is a plausible, but false, folk etymology. The name 'lollipop' more likely comes from 'lolly' (an old English term for 'tongue') and 'pop' (meaning 'a short, sharp sound' or 'to strike')."
+    },
+    {
+      "id": 160,
+      "category": "Food & Cooking",
+      "statements": [
+        "The 'Margarita' cocktail was named by a bartender in honor of his wife, Margarita, who was allergic to all alcohol *except* tequila.",
+        "'Baby Carrots' (the small, perfectly-shaped carrots sold in bags) are not a special variety; they are just regular, often imperfect, large carrots cut and polished down to that size.",
+        "Coca-Cola was the first soft drink to be consumed in space, drank by astronauts on the Space Shuttle Challenger in 1985."
+      ],
+      "hallucination": 0,
+      "explanation": "This is one of many origin stories, but it is unsubstantiated. The most likely origin is that it was named after actress Marjorie 'Margarita' King, or it was a variation of the 'Daisy' cocktail (margarita is Spanish for 'daisy')."
+    },
+    {
+      "id": 161,
+      "category": "Food & Cooking",
+      "statements": [
+        "Thomas Jefferson is credited with introducing 'Macaroni and Cheese' to the United States after returning from a trip to France.",
+        "Figs are not technically fruits; they are 'inflorescences', an inverted flower. They are also often not vegetarian, as they require a specific 'fig wasp' to crawl inside and pollinate them, which then dies and is digested by the fig.",
+        "The 'Fortune Cookie' is a Japanese invention, not a Chinese one. It was introduced to America by Japanese immigrants and only became associated with Chinese restaurants after World War II."
+      ],
+      "hallucination": 0,
+      "explanation": "This is true. Jefferson served it at a state dinner in 1802, and his 'macaroni' recipe (which was a baked pasta and cheese dish) is preserved in the Library of Congress."
+    },
+    {
+      "id": 162,
+      "category": "Food & Cooking",
+      "statements": [
+        "The 'Bagel' was invented in Poland in the 17th century and was given as a gift to women after childbirth.",
+        "'Ranch' dressing is the most popular salad dressing in the U.S., and was invented in the 1950s by a plumber on a dude ranch in California.",
+        "'Cream of Tartar' is a white powder that is a byproduct of the winemaking process, scraped from the inside of wine barrels."
+      ],
+      "hallucination": 1,
+      "explanation": "While 'Ranch' dressing *is* the most popular and was invented by Steve Henson at 'Hidden Valley Ranch' in California, Henson was not a plumber. He was a construction worker and a cook."
+    },
+    {
+      "id": 163,
+      "category": "Food & Cooking",
+      "statements": [
+        "The 'Nacho' was invented in the 1940s in Mexico by a maître d' named Ignacio 'Nacho' Anaya, who improvised the dish for a group of American military wives.",
+        "A 'Mimosa' cocktail (champagne and orange juice) is named after the 'Mimosa' plant, which has bright yellow flowers that resemble the drink's color.",
+        "The 'Red Velvet' cake's distinct red color originally came from a chemical reaction between the acidic vinegar/buttermilk and the non-Dutch-processed cocoa powder used in the recipe."
+      ],
+      "hallucination": 0,
+      "explanation": "This is true. Ignacio 'Nacho' Anaya quickly fried some tortillas, topped them with cheese and jalapeños, and called them 'Nacho's Especiales'."
+    },
+    {
+      "id": 164,
+      "category": "Food & Cooking",
+      "statements": [
+        "The word 'Avocado' comes from the Aztec (Nahuatl) word 'āhuacatl', which also means 'testicle'.",
+        "The 'Bloody Mary' cocktail was originally called the 'Red Snapper' and was served at the St. Regis Hotel in New York.",
+        "The 'French Dip' sandwich was invented by accident in Los Angeles when a baker dropped a French roll into a pan of meat drippings."
+      ],
+      "hallucEntry": 0,
+      "explanation": "This is true. The name is believed to be a reference to the fruit's shape and its tendency to grow in pairs."
+    },
+    {
+      "id": 165,
+      "category": "Food & Cooking",
+      "statements": [
+        "The 'Buffalo Wing' was invented in Buffalo, New York, in 1964 at the Anchor Bar, when the owner's son asked for a late-night snack.",
+        "The 'Hass' avocado, the most common variety, is named after a postman named Rudolph Hass, who patented it in 1935. All Hass avocado trees today are descended from his original 'mother tree'.",
+        "The ' expiration date' on bottled water is not for the water, which does not go bad, but for the plastic bottle, which can begin to leach chemicals into the water after that date."
+      ],
+      "hallucination": 2,
+      "explanation": "This is a popular myth. The expiration date on bottled water is often required by state laws (like in New Jersey), but it's more for stock rotation and a 'best by' date, as the taste *can* change, not because the plastic suddenly becomes dangerous on that specific date."
+    },
+    {
+      "id": 166,
+      "category": "Food & Cooking",
+      "statements": [
+        "Saffron, the world's most expensive spice, comes from the 'stigma' (the female part) of the crocus flower, and it takes about 75,000 blossoms to produce one pound of saffron.",
+        "The 'Shirley Temple' non-alcoholic cocktail was invented for the child actress, who was annoyed that adults got 'fancy' cocktails with cherries.",
+        "The original 'Cheetos' were crunchy. 'Cheetos Puffs' were invented later, by accident, when a machine operator used the wrong setting and the cornmeal 'puffed up'."
+      ],
+      "hallucination": 2,
+      "explanation": "This is reversed. 'Cheetos Puffs' were the first Cheetos product, introduced in 1948. The 'Crunchy' Cheetos were not introduced until 1971."
+    },
+    {
+      "id": 167,
+      "category": "Food & Cooking",
+      "statements": [
+        "In 1985, Coca-Cola changed its formula to 'New Coke'. The public backlash was so severe that the company brought back the original formula just 79 days later, rebranding it 'Coca-Cola Classic'.",
+        "The 'Cronut' (croissant-doughnut hybrid) was invented by chef Dominique Ansel in New York City in 2013.",
+        "The 'Twinkie' was originally filled with banana cream, but the filling was changed to vanilla during World War II due to a banana shortage."
+      ],
+      "hallucination": 0,
+      "explanation": "This is true. The 'New Coke' failure is one of the most famous marketing blunders in history, and the return of 'Classic' Coke was met with celebration."
+    },
+    {
+      "id": 168,
+      "category": "Food & Cooking",
+      "statements": [
+        "The 'Caesar' cocktail (a Canadian variation of a Bloody Mary) is made with 'Clamato' juice (a blend of tomato and clam broth).",
+        "The 'S'mores' (graham cracker, chocolate, marshmallow) recipe first appeared in a Girl Scout handbook in 1927, where it was called 'Some More'.",
+        "The 'Jell-O' company once produced a line of 'savory' Jell-O flavors in the 1960s, including Celery, Tomato, and 'Italian Salad'."
+      ],
+      "hallucination": 0,
+      "explanation": "This is true. The Caesar is the national cocktail of Canada and is defined by its use of Clamato juice."
+    },
+    {
+      "id": 169,
+      "category": "Food & Cooking",
+      "statements": [
+        "The 'Philly Cheesesteak' was originally invented in the 1930s by a hot dog vendor, and the original version did not include cheese.",
+        "The 'Mayonnaise' was invented in 1756 by a French chef to celebrate a naval victory at the port of Mahón, hence 'mahonnaise'.",
+        "'Spam' (the canned meat) is a 'portmanteau' of 'Spiced' and 'Ham'."
+      ],
+      "hallucination": 2,
+      "explanation": "This is the most popular theory, but the true origin is unknown. A former Hormel Foods president said the real meaning is a mystery, and other theories include 'Shoulder of Pork and Ham' or an acronym for 'Specially Processed American Meat'."
+    },
+    {
+      "id": 170,
+      "category": "Food & Cooking",
+      "statements": [
+        "The 'Taco' was invented in the 18th century by Mexican silver miners, who named it after the 'tacos' (charges) of gunpowder they used to excavate ore.",
+        "The 'Potato Chip' was invented by accident in 1853 by a chef, George Crum, who was trying to spite a customer (allegedly Cornelius Vanderbilt) who kept sending his fried potatoes back, complaining they were too thick.",
+        "The 'Banoffee Pie' (banana and toffee) was invented in England in the 1970s."
+      ],
+      "hallucination": 0,
+      "explanation": "This is the most widely accepted origin story. The 'taco' was the paper wrapper around the gunpowder charge, and the miners' food—tortillas wrapped around potatoes and meat—resembled it."
+    },
+    {
+      "id": 171,
+      "category": "Sports & Games",
+      "statements": [
+        "In the original rules of basketball, 'dribbling' (bouncing the ball) was not allowed. Players had to pass or shoot from where they caught the ball.",
+        "The first 'Super Bowl' in 1967 did not sell out, and large sections of the stadium were empty.",
+        "The 'Monopoly' character in the jail, 'Jake the Jailbird', is the only character in the game with a name."
+      ],
+      "hallucination": 2,
+      "explanation": "This is false. The character on the 'Go to Jail' square is named Officer Edgar Mallory. The character *in* the jail is named 'Jake the Jailbird'. The mascot, 'Rich Uncle Pennybags' (Mr. Monopoly), is also a named character."
+    },
+    {
+      "id": 172,
+      "category": "Sports & Games",
+      "statements": [
+        "The first basketball hoops were actual peach baskets, and a referee had to use a ladder to retrieve the ball after every successful shot.",
+        "In 1904, the winner of the Olympic Marathon was disqualified because he had hitched a ride in a car for 11 miles of the race.",
+        "The board game 'Clue' (or 'Cluedo') was invented by a British musician during World War II to pass the time during air raid blackouts."
+      ],
+      "hallucination": 0,
+      "explanation": "This is true. James Naismith used peach baskets, and it wasn't until later that someone had the idea to cut the bottoms out."
+    },
+    {
+      "id": 173,
+      "category": "Sports & Games",
+      "statements": [
+        "The game 'Scrabble' was originally called 'Criss-Crosswords'. The inventor, Alfred Butts, was unemployed and created the game by calculating the letter frequencies on the front page of The New York Times.",
+        "The 'Queen' in chess was originally the weakest piece, only able to move one square diagonally. It was changed to its current powerful moves (combining the Rook and Bishop) in the 15th century.",
+        "The 'penalty kick' in soccer was introduced in 1891, but for the first 10 years, it could be taken from anywhere along a 12-yard line, not from a specific 'spot'."
+      ],
+      "hallucination": 0,
+      "explanation": "This is true. Butts analyzed letter frequencies to determine the tile distribution and point values, creating 'Criss-Crosswords', which was later refined and renamed 'Scrabble'."
+    },
+    {
+      "id": 174,
+      "category": "Sports & Games",
+      "statements": [
+        "The shortest possible checkmate in chess is known as 'Fool's Mate' and can be achieved in just two moves.",
+        "The 'Grand Slam' in tennis (winning all 4 major tournaments in one year) was named after a 'grand slam' in the game of Bridge, which means winning all 13 tricks.",
+        "In professional bowling, a 'perfect' 300 game (12 strikes in a row) has only been achieved 23 times in the sport's televised history."
+      ],
+      "hallucination": 2,
+      "explanation": "This is incorrect. A televised 300 game is rare, but it has happened *more* than 23 times. The PBA (Professional Bowlers Association) recognizes dozens of televised perfect games in its history."
+    },
+    {
+      "id": 175,
+      "category": "Sports & Games",
+      "statements": [
+        "In baseball, a 'rain check' was originally a ticket stub given to fans during a rained-out game, allowing them to attend a future game for free.",
+        "The dimples on a golf ball (which can range from 300 to 500) help it fly farther by reducing air drag (drag).",
+        "The 'Ace' in a standard deck of cards is the highest card because it represented the 'ace' pilots of World War I, who were the best."
+      ],
+      "hallucination": 2,
+      "explanation": "This is a false etymology. The Ace has been the 'high card' since the French Revolution (1789), where it was used to symbolize the 'common man' (the 'One') triumphing over the royalty (King, Queen). This was long before WWI."
+    },
+    {
+      "id": 176,
+      "category": "Sports & Games",
+      "statements": [
+        "The 'Tour de France' (cycling race) was originally created in 1903 by a French newspaper as a publicity stunt to increase its sales.",
+        "The game 'Twister' was almost rejected by the Milton Bradley company for being 'sex in a box'. It was only saved by a last-minute demonstration on 'The Tonight Show' with Johnny Carson.",
+        "In the game of 'Monopoly', the 'Go' square was originally a 'Stop' square, and players had to pay a fine if they landed on it."
+      ],
+      "hallucination": 2,
+      "explanation": "This is false. The 'Go' square, where players collect a salary, was a fundamental part of 'The Landlord's Game' (the precursor to Monopoly) and has always been a positive space."
+    },
+    {
+      "id": 177,
+      "category": "Sports & Games",
+      "statements": [
+        "The 'slap shot' in ice hockey was invented by Hall of Famer Bernie 'Boom Boom' Geoffrion.",
+        "The 'slam dunk' in basketball was banned by the NCAA (college basketball) from 1967 to 1976, largely in response to the dominance of player Lew Alcindor (Kareem Abdul-Jabbar).",
+        "The card game 'Solitaire' was invented by Napoleon Bonaparte while he was in exile on the island of Saint Helena."
+      ],
+      "hallucination": 2,
+      "explanation": "This is a popular myth. While Napoleon was known to play 'Patience' (the British name for Solitaire), the game's origins are much earlier, likely in 18th-century Germany or Scandinavia."
+    },
+    {
+      "id": 178,
+      "category": "Sports & Games",
+      "statements": [
+        "In the original 1896 Olympic Games, the winners were awarded silver medals and an olive branch, not gold medals.",
+        "The 'high five' gesture was invented by two baseball players, Dusty Baker and Glenn Burke of the LA Dodgers, in 1977.",
+        "The game 'Chess' was originally invented in China, where it was known as 'Xiangqi' and played on the lines of the board, not the squares."
+      ],
+      "hallucination": 2,
+      "explanation": "While 'Xiangqi' (Chinese chess) is an ancient and related game, modern Chess is believed to have originated in India around the 6th century as 'Chaturanga', before spreading to Persia and then Europe."
+    },
+    {
+      "id": 179,
+      "category": "Sports & Games",
+      "statements": [
+        "The 3-point line was not added to the NBA until the 1979-1980 season.",
+        "The playing card 'suits' (Hearts, Diamonds, Clubs, Spades) originated in France and are meant to represent the four classes of society: Clergy (Hearts), Nobility (Spades/swords), Merchants (Diamonds/coins), and Peasants (Clubs/batons).",
+        "The 'Joker' card was invented for the game of 'Go Fish' as a 'wild card' to represent any fish."
+      ],
+      "hallucination": 2,
+      "explanation": "The Joker was invented in the U.S. for the game of 'Euchre', where it was used as the highest trump card. Its use as a 'wild card' in other games like poker came later."
+    },
+    {
+      "id": 180,
+      "category": "Sports & Games",
+      "statements": [
+        "The 'seventh-inning stretch' in baseball became a tradition after President William Howard Taft stood up to stretch in the 7th inning of a game in 1910, and the crowd, thinking he was leaving, stood up out of respect.",
+        "The board game 'Candy Land' was invented in 1948 by a woman who wanted to create a simple game for children recovering from polio.",
+        "The 'Queen' and 'Bishop' in chess are the only pieces named after female figures."
+      ],
+      "hallucination": 2,
+      "explanation": "This is false. The 'Bishop' (or 'Alfil' in Spanish, meaning 'the elephant') is not a female figure. The name 'Bishop' was an English adaptation, but it does not represent a woman."
+    },
+    {
+      "id": 181,
+      "category": "Sports & Games",
+      "statements": [
+        "A standard 52-card deck represents the 52 weeks in a year. The 4 suits represent the 4 seasons. The 13 cards per suit represent the 13 lunar cycles.",
+        "The 'cork' center of a modern baseball is wrapped in over a mile of yarn.",
+        "The board game 'Operation' was invented by a college student who sold the idea to Milton Bradley for $500."
+      ],
+      "hallucination": 1,
+      "explanation": "A modern baseball is wrapped in several hundred *yards* of yarn, not an entire mile. A mile of yarn would make the ball significantly larger and heavier."
+    },
+    {
+      "id": 182,
+      "category": "Sports & Games",
+      "statements": [
+        "In 1980, the U.S. Men's Olympic Hockey team's 'Miracle on Ice' victory over the Soviet Union won them the gold medal.",
+        "The term 'hat trick' (scoring 3 goals in a game) originated in the sport of cricket, where a bowler who took 3 wickets in 3 balls was awarded a new hat by his club.",
+        "In the game of 'Risk', the 'Australia' continent is considered the easiest to defend because it only has one entry point (Siam)."
+      ],
+      "hallucination": 0,
+      "explanation": "This is a common misconception. The 'Miracle on Ice' was the *semifinal* game. The U.S. team still had to play and win one more game, against Finland, two days later, to actually secure the gold medal."
+    },
+    {
+      "id": 183,
+      "category": "Sports & Games",
+      "statements": [
+        "The 'home run' was originally called a 'four-base hit' or 'circuit', and the term 'home run' was considered informal slang.",
+        "The 'Suicide King' (the King of Hearts) is the only King in a deck of cards without a mustache.",
+        "The 'En Passant' rule in chess was created in the 15th century to prevent players from using the new 'two-square' pawn move to 'run past' an opposing pawn that was waiting to capture it."
+      ],
+      "hallucination": 0,
+      "explanation": "This is true. Early baseball reports refer to 'circuit hits' or 'round-trippers'. 'Home run' was slang that eventually became the official term."
+    },
+    {
+      "id": 184,
+      "category": "Sports & Games",
+      "statements": [
+        "The 'Lombardi Trophy' (for the Super Bowl) is made by Tiffany & Co. and costs $50,000 to produce.",
+        "The term 'love' for a score of 'zero' in tennis comes from the French word 'l'oeuf', meaning 'the egg', which looks like a zero.",
+        "The 'King' in a deck of cards (King of Diamonds) is holding an axe, which is why he is sometimes called the 'Axeman'."
+      ],
+      "hallucination": 0,
+      "explanation": "don't have one "
+    },
+    {
+      "id": 185,
+      "category": "Sports & Games",
+      "statements": [
+        "In 1919, the entire 'Chicago White Sox' team (known as the 'Black Sox') was banned from baseball for life for intentionally losing the World Series in a gambling scheme.",
+        "The board game 'Snakes and Ladders' originated in ancient India as a game called 'Moksha Patam', and was intended to teach children about morality (Ladders were virtues, Snakes were vices).",
+        "The 'designated hitter' (DH) rule in baseball was adopted by the American League in 1973. The first DH to ever bat was Ron Blomberg of the New York Yankees."
+      ],
+      "hallucination": 0,
+      "explanation": "This is false. Eight *players* from the team were banned, not the 'entire team' (which included many innocent players and coaches)."
+    },
+    {
+      "id": 186,
+      "category": "Art & Literature",
+      "statements": [
+        "Leonardo da Vinci's 'Mona Lisa' has no eyebrows or eyelashes, which was consistent with the fashion of high-status women in 16th-century Florence.",
+        "The 'Statue of Liberty' was originally intended for Egypt, to be placed at the entrance of the Suez Canal, but the Egyptian government rejected it as too expensive.",
+        "The painting 'The Scream' by Edvard Munch was stolen from a museum in 2004. When it was recovered two years later, it had a new, permanent moisture stain from being left in the rain."
+      ],
+      "hallucination": 2,
+      "explanation": "While 'The Scream' *was* stolen in 2004 and recovered in 2006, the moisture stain was already there *before* the theft, according to museum curators. The thieves did, however, cause other damage to the painting."
+    },
+    {
+      "id": 187,
+      "category": "Art & Literature",
+      "statements": [
+        "Dr. Seuss (Theodor Geisel) wrote 'Green Eggs and Ham' on a bet with his publisher that he could not write a book using only 50 different words.",
+        "The author Mary Shelley wrote the novel 'Frankenstein' as part of a ghost story competition with her husband, Percy Shelley, and Lord Byron.",
+        "The famous 'Impressionist' art movement got its name from a painting by Claude Monet titled 'Impression, Sunrise', which a critic used to mock the 'impressionistic' style of the art."
+      ],
+      "hallucination": 0,
+      "explanation": "This is true. The publisher, Bennett Cerf, bet him $50. The 50 unique words are: a, am, and, anywhere, are, be, boat, box, car, could, dark, do, eat, eggs, fox, goat, good, green, ham, here, house, I, if, in, let, like, may, me, mouse, not, on, or, rain, Sam, say, see, so, thank, that, the, them, there, they, train, tree, try, will, with, would, you."
+    },
+    {
+      "id": 188,
+      "category": "Art & Literature",
+      "statements": [
+        "Vincent van Gogh sold only one, possibly two, paintings during his entire lifetime.",
+        "The character 'Sherlock Holmes' never says the phrase 'Elementary, my dear Watson' in any of Sir Arthur Conan Doyle's original 60 stories.",
+        "The 'Mona Lisa' was once stolen from the Louvre in 1911. The main suspect for the theft was the painter Pablo Picasso."
+      ],
+      "hallucination": 0,
+      "explanation": "This is true. The only confirmed sale was 'The Red Vineyard', bought by Anna Boch. There is a second possible sale, but his life as a painter was a commercial failure."
+    },
+    {
+      "id": 189,
+      "category": "Art & Literature",
+      "statements": [
+        "The 'red' color used in many medieval illuminated manuscripts was often made from 'vermilion', which was derived from the highly toxic mineral cinnabar (mercury sulfide).",
+        "George Orwell's novel '1984' was originally titled 'The Last Man in Europe'.",
+        "The 'Rosetta Stone', which unlocked the meaning of Egyptian hieroglyphs, was discovered by a British soldier during the Napoleonic campaigns in Egypt."
+      ],
+      "hallucination": 2,
+      "explanation": "The Rosetta Stone was discovered by a *French* soldier (Pierre-François Bouchard) in 1799. It later fell into British hands after the French defeat in Egypt."
+    },
+    {
+      "id": 190,
+      "category": "Art & Literature",
+      "statements": [
+        "The novel 'Moby-Dick' by Herman Melville was a commercial failure when it was first published in 1851 and was out of print when he died.",
+        "The famous sculpture 'The Thinker' by Auguste Rodin was originally designed to be a small part of a larger, monumental doorway called 'The Gates of Hell'.",
+        "The 'A' in the title of 'The Scarlet Letter' stands for 'Adultery', but the novel reveals it secretly stands for 'Able' or 'Angel' by the end."
+      ],
+      "hallucination": 2,
+      "explanation": "The 'A' stands only for 'Adultery'. While the *meaning* of the symbol evolves, and the townspeople begin to interpret it as 'Able' due to Hester's good works, the letter itself never *stands* for 'Able' or 'Angel'."
+    },
+    {
+      "id": 191,
+      "category": "Art & Literature",
+      "statements": [
+        "In Shakespeare's 'Romeo and Juliet', Juliet's famous line is 'O Romeo, Romeo, wherefore art thou Romeo?'. 'Wherefore' means 'Why', not 'Where'—she is asking 'Why are you Romeo (a Montague)?'",
+        "The 'Pop Art' movement (e.g., Andy Warhol) was a reaction against the 'Abstract Expressionism' movement, aiming to use everyday, mass-media objects as subjects.",
+        "The novel 'Fahrenheit 451' is named for the temperature at which paper auto-ignites (451°F)."
+      ],
+      "hallucination": 0,
+      "explanation": "This is a common point of confusion. Juliet is on her balcony and knows Romeo is (likely) nearby. She is lamenting *who* he is (a Montague), not asking *where* he is."
+    },
+    {
+      "id": 192,
+      "category": "Art & Literature",
+      "statements": [
+        "The 'A' in the name of the author 'A. A. Milne' (creator of Winnie-the-Pooh) stands for 'Alan Alexander'.",
+        "The novel 'Gulliver's Travels' by Jonathan Swift, while now seen as a children's story, was originally a sharp political satire of 18th-century England.",
+        "The nursery rhyme 'Ring Around the Rosie' is a dark poem about the Bubonic Plague, where 'rosie' refers to the rash, 'posies' were to ward off the smell, and 'all fall down' refers to dying."
+      ],
+      "hallucination": 2,
+      "explanation": "This is a very popular, but unsubstantiated, urban legend. Folklorists have found no evidence linking the rhyme to the plague. The 'plague' interpretation only appeared in the 20th century."
+    },
+    {
+      "id": 193,
+      "category": "Art & Literature",
+      "statements": [
+        "J.R.R. Tolkien, author of 'The Lord of the Rings', was also one of the lead etymologists who worked on the 'Oxford English Dictionary'.",
+        "The famous American Gothic' painting by Grant Wood features a farmer and his wife.",
+        "The character 'Big Brother' from George Orwell's '1984' was inspired by the face on a World War I recruitment poster of Lord Kitchener, which said 'Your Country Needs You'."
+      ],
+      "hallucination": 1,
+      "explanation": "This is a common misconception. The painting features a farmer and his *daughter*. The woman who modeled for the painting was the artist's sister, Nan Wood Graham."
+    },
+    {
+      "id": 194,
+      "category": "Art & Literature",
+      "statements": [
+        "Dr. Seuss's first book, 'And to Think That I Saw It on Mulberry Street', was rejected 27 times before it was finally published.",
+        "The sculpture 'David' by Michelangelo is disproportionate: the head and hands are intentionally larger than the rest of the body, to make them look correct when viewed from below.",
+        "The word 'YA' (Young Adult) was first coined as a marketing term by author J.D. Salinger for his novel 'The Catcher in the Rye'."
+      ],
+      "hallucination": 2,
+      "explanation": "The term 'Young Adult' (or 'YA') was coined by the Young Adult Library Services Association (YALSA) in the 1950s, long after 'Catcher in the Rye' (1951) was published. Salinger had no part in coining it."
+    },
+    {
+      "id": 195,
+      "category": "Art & Literature",
+      "statements": [
+        "In the original 'The Wonderful Wizard of Oz' book by L. Frank Baum, Dorothy's slippers were silver, not ruby. They were changed to ruby for the 1939 film to take better advantage of the new Technicolor.",
+        "The poet Lord Byron kept a tame bear as a pet while he was a student at Cambridge University, as a protest against the rules that forbade him from keeping a dog.",
+        "The 'Happy Birthday to You' song was originally written by two sisters for their kindergarten class, but it was titled 'Good Morning to All'."
+      ],
+      "hallucWination": 0,
+      "explanation": "This is true. The 1939 film musical is famous for its use of Technicolor, and the bright ruby slippers showed this off far better than silver ones would have."
+    },
+    {
+      "id": 196,
+      "category": "Art & Literature",
+      "statements": [
+        "The 'Cthulhu' monster, created by H.P. Lovecraft, is described as 'a monster of vaguely anthropoid outline, but with an octopus-like head whose face was a mass of feelers, a scaly, rubbery-looking body, prodigious claws on hind and fore feet, and long, narrow wings behind.'",
+        "The word 'nerd' was first coined by Dr. Seuss in his 1950 book 'If I Ran the Zoo'.",
+        "The shortest war in history, between Britain and Zanzibar in 1896, lasted only 38 minutes."
+      ],
+      "hallucination": 2,
+      "explanation": "This is a History fact, not an Art & Literature fact. (But it is true!)"
+    },
+    {
+      "id": 197,
+      "category": "Art & Literature",
+      "statements": [
+        "The 'Guinness Book of World Records' was started by the Managing Director of the Guinness Brewery, who got into an argument at a pub about the fastest game bird in Europe.",
+        "When 'The War of the Worlds' was broadcast on the radio in 1938, it caused mass panic, with thousands of people believing the U.S. was actually being invaded by Martians.",
+        "The term 'Dickensian' (referring to poor social conditions or comically repulsive characters) was added to the dictionary while Charles Dickens was still alive."
+      ],
+      "hallucination": 1,
+      "explanation": "While the 1938 radio broadcast *did* frighten some listeners, the 'mass panic' reported by newspapers at the time was greatly exaggerated. It was not a widespread, nationwide hysteria."
+    },
+    {
+      "id": 198,
+      "category": "Art & Literature",
+      "statements": [
+        "The 'Dada' art movement, a reaction to World War I, supposedly got its name when the founders randomly stuck a knife into a French-German dictionary and it landed on 'dada' (French for 'hobbyhorse').",
+        "Mark Twain (Samuel Clemens) was born in 1835, the same year Halley's Comet appeared. He famously said, 'I came in with Halley's Comet... I expect to go out with it.' He died in 1910, one day after the comet's next appearance.",
+        "The novel 'Les Misérables' by Victor Hugo contains one of the longest sentences ever written in literature, which is 823 words long."
+      ],
+      "hallucination": 0,
+      "explanation": "This is the most popular origin story for the absurdist art movement. The founders wanted a nonsense name to reflect their rejection of logic, and 'dada' (hobbyhorse) fit perfectly."
+    },
+    {
+      "id": 199,
+      "category": "Art & Literature",
+      "statements": [
+        "The 'Mona Lisa' and the 'Last Supper' were both painted by Leonardo da Vinci.",
+        "The character 'Peter Pan' was created by J.M. Barrie. Barrie gifted the copyright of 'Peter Pan' to the Great Ormond Street Hospital, a children's hospital in London, which still receives royalties.",
+        "The painting 'Whistler's Mother' was originally titled 'Arrangement in Grey and Black No. 1'. The artist, James McNeill Whistler, was annoyed that people focused on the 'mother' aspect instead of the artistic composition."
+      ],
+      "hallucination": 0,
+      "explanation": "This is true. Both are masterpieces by the Renaissance artist Leonardo da Vinci."
+    },
+    {
+      "id": 200,
+      "category": "Art & Literature",
+      "statements": [
+        "The 'Surrealist' art movement was founded by André Breton and was heavily influenced by Sigmund Freud's theories on the subconscious mind and dreams.",
+        "The author Ernest Hemingway was known for his very short, declarative sentences, a style he developed while working as a journalist.",
+        "The novel 'Don Quixote' by Miguel de Cervantes is considered the first modern novel. The phrase 'tilting at windmills' comes from the book, but Don Quixote only 'tilts' at one windmill before realizing his error."
+      ],
+      "hallucination": 2,
+      "explanation": "This is false. Don Quixote attacks a *group* of windmills (believing they are giants), and he does *not* realize his error. After he is knocked off his horse, he blames his failure on a rival enchanter who must have turned the giants into windmills at the last second."
+    }
+  ]
+}
