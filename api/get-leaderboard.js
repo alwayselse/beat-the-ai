@@ -8,14 +8,9 @@ const redis = new Redis({
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
-  }
-
-  if (req.method !== 'GET') {
-    return res.status(405).json({ error: 'Method not allowed' });
   }
 
   try {
@@ -35,41 +30,56 @@ export default async function handler(req, res) {
     }
 
     const leaderboard = [];
+    const seenPlayers = new Map(); // Track unique players by name+phone
     
     // Process the data (it comes as [member, score, member, score, ...])
     for (let i = 0; i < leaderboardData.length; i += 2) {
-      const playerKey = leaderboardData[i]; // This is now "player:name:phone"
+      const memberData = leaderboardData[i];
       const totalWins = leaderboardData[i + 1];
       
       try {
-        // Fetch the actual player data using the key
-        const playerData = await redis.get(playerKey);
+        let player;
         
-        if (!playerData) {
-          console.log('No data found for key:', playerKey);
-          continue;
+        // Check if it's a player key (new format) or JSON (old format)
+        if (typeof memberData === 'string' && memberData.startsWith('player:')) {
+          // New format: fetch from Redis
+          const playerData = await redis.get(memberData);
+          if (!playerData) continue;
+          player = typeof playerData === 'string' ? JSON.parse(playerData) : playerData;
+        } else {
+          // Old format: parse JSON directly
+          player = typeof memberData === 'string' ? JSON.parse(memberData) : memberData;
         }
-
-        const player = typeof playerData === 'string' 
-          ? JSON.parse(playerData) 
-          : playerData;
         
-        leaderboard.push({
-          rank: (i / 2) + 1,
-          name: player.name,
-          phone: player.phone || '',
-          totalWins: totalWins,
-          gamesPlayed: player.gamesPlayed || 0,
-          winRate: player.winRate || 0,
-          lastPlayed: player.lastPlayed || Date.now()
-        });
+        // Create unique key for player
+        const playerKey = `${player.name.toLowerCase()}:${player.phone || ''}`;
+        
+        // Only add if we haven't seen this player yet (keeps highest score)
+        if (!seenPlayers.has(playerKey)) {
+          seenPlayers.set(playerKey, true);
+          
+          leaderboard.push({
+            rank: leaderboard.length + 1,
+            name: player.name,
+            phone: player.phone || '',
+            totalWins: totalWins,
+            gamesPlayed: player.gamesPlayed || 0,
+            winRate: player.winRate || 0,
+            lastPlayed: player.lastPlayed || Date.now()
+          });
+        }
       } catch (parseError) {
-        console.error('Failed to parse player data for key:', playerKey, parseError);
+        console.error('Failed to parse player data:', memberData, parseError);
         continue;
       }
     }
 
-    console.log('Processed leaderboard players:', leaderboard.length);
+    // Re-rank after removing duplicates
+    leaderboard.forEach((player, index) => {
+      player.rank = index + 1;
+    });
+
+    console.log('Processed unique players:', leaderboard.length);
 
     res.status(200).json({ leaderboard });
   } catch (error) {
