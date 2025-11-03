@@ -21,8 +21,11 @@ export default async function handler(req, res) {
       token: process.env.beatai_KV_REST_API_TOKEN,
     });
 
+    console.log('Fetching global scores from Redis...');
     const humans = await redis.get('global:humans') || 0;
     const ai = await redis.get('global:ai') || 0;
+    
+    console.log('Global scores fetched:', { humans, ai });
 
     res.status(200).json({ humans: Number(humans), ai: Number(ai) });
   } catch (error) {
