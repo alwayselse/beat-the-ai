@@ -124,18 +124,31 @@ export const useGameStore = create<GameState>()(
       // Fetch global scores from API
       fetchGlobalScores: async () => {
         try {
+          console.log('Fetching global scores from API...');
+          
           const response = await fetch('/api/get-scores');
           
+          console.log('Response status:', response.status);
+          
           if (!response.ok) {
-            throw new Error('Failed to fetch scores');
+            console.error('Failed to fetch scores, status:', response.status);
+            // Set default values instead of throwing
+            set({ globalScore: { humans: 0, ai: 0 } });
+            return;
           }
-          
+
           const data = await response.json();
-          console.log('Fetched global scores:', data);
+          console.log('Received score data:', data);
           
-          set({ globalScore: { humans: data.humans || 0, ai: data.ai || 0 } });
+          set({ 
+            globalScore: { 
+              humans: data.humans || 0, 
+              ai: data.ai || 0 
+            } 
+          });
         } catch (error) {
-          console.error('Failed to fetch global scores:', error);
+          console.error('Error in fetchGlobalScores:', error);
+          // Always set default values on error
           set({ globalScore: { humans: 0, ai: 0 } });
         }
       },
@@ -152,14 +165,18 @@ export const useGameStore = create<GameState>()(
           });
           
           if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(errorData.error || 'Failed to update score');
+            console.error('Failed to increment score, status:', response.status);
+            return;
           }
           
           const data = await response.json();
           console.log('Global score updated:', data);
           
-          set({ globalScore: { humans: data.humans, ai: data.ai } });
+          // Update local state
+          set({ globalScore: { humans: data.humans || 0, ai: data.ai || 0 } });
+          
+          // Also fetch latest scores to ensure sync
+          get().fetchGlobalScores();
         } catch (error) {
           console.error('Failed to increment global score:', error);
         }
@@ -168,20 +185,31 @@ export const useGameStore = create<GameState>()(
       // Fetch leaderboard from API
       fetchLeaderboard: async () => {
         set({ leaderboardLoading: true });
+        
         try {
+          console.log('Fetching leaderboard...');
+          
           const response = await fetch('/api/get-leaderboard');
           
           if (!response.ok) {
-            throw new Error('Failed to fetch leaderboard');
+            console.error('Failed to fetch leaderboard, status:', response.status);
+            set({ leaderboard: [], leaderboardLoading: false });
+            return;
           }
-          
+
           const data = await response.json();
-          console.log('Fetched leaderboard:', data);
+          console.log('Received leaderboard data:', data);
           
-          set({ leaderboard: data.leaderboard || [], leaderboardLoading: false });
+          set({ 
+            leaderboard: data.leaderboard || [],
+            leaderboardLoading: false 
+          });
         } catch (error) {
           console.error('Failed to fetch leaderboard:', error);
-          set({ leaderboard: [], leaderboardLoading: false });
+          set({ 
+            leaderboard: [],
+            leaderboardLoading: false 
+          });
         }
       },
 
@@ -234,8 +262,8 @@ export const useGameStore = create<GameState>()(
           });
           
           if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(errorData.error || 'Failed to update leaderboard');
+            console.error('Failed to update leaderboard, status:', response.status);
+            return;
           }
           
           const data = await response.json();
