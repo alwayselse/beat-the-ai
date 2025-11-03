@@ -14,8 +14,8 @@ export default function Leaderboard() {
     fetchLeaderboard();
   }, [fetchGlobalScores, fetchLeaderboard]);
 
-  const totalGames = globalScore.humans + globalScore.ai;
-  const humanWinRate = totalGames > 0 ? ((globalScore.humans / totalGames) * 100).toFixed(1) : '0.0';
+  const totalGames = (globalScore.humans || 0) + (globalScore.ai || 0);
+  const humanWinRate = totalGames > 0 ? (((globalScore.humans || 0) / totalGames) * 100).toFixed(1) : '0.0';
 
   return (
     <div className="min-h-screen bg-yellow-400 py-8 px-4">
@@ -37,7 +37,7 @@ export default function Leaderboard() {
             <div className="bg-gradient-to-br from-blue-500 to-blue-600 border-4 border-black rounded-xl shadow-[8px_8px_0px_#000] p-8 text-center">
               <div className="text-white">
                 <p className="text-xl font-black mb-3">👥 HUMANS</p>
-                <p className="text-7xl font-black mb-2">{globalScore.humans}</p>
+                <p className="text-7xl font-black mb-2">{globalScore.humans || 0}</p>
                 <p className="text-sm font-bold opacity-90">VICTORIES</p>
               </div>
             </div>
@@ -46,7 +46,7 @@ export default function Leaderboard() {
             <div className="bg-gradient-to-br from-purple-500 to-purple-600 border-4 border-black rounded-xl shadow-[8px_8px_0px_#000] p-8 text-center">
               <div className="text-white">
                 <p className="text-xl font-black mb-3">🤖 AI</p>
-                <p className="text-7xl font-black mb-2">{globalScore.ai}</p>
+                <p className="text-7xl font-black mb-2">{globalScore.ai || 0}</p>
                 <p className="text-sm font-bold opacity-90">VICTORIES</p>
               </div>
             </div>
@@ -83,8 +83,8 @@ export default function Leaderboard() {
         {/* Info Box */}
         <div className="bg-white border-4 border-black rounded-xl shadow-[8px_8px_0px_#000] p-6 text-center mb-8">
           <p className="font-black text-lg mb-2">
-            {globalScore.humans > globalScore.ai ? '🎉 Humans are winning!' : 
-             globalScore.ai > globalScore.humans ? '🤖 AI is dominating!' : 
+            {(globalScore.humans || 0) > (globalScore.ai || 0) ? '🎉 Humans are winning!' : 
+             (globalScore.ai || 0) > (globalScore.humans || 0) ? '🤖 AI is dominating!' : 
              '⚖️ It\'s a tie!'}
           </p>
           <p className="text-gray-600 font-semibold text-sm">

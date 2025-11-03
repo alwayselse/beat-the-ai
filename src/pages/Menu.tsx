@@ -80,12 +80,12 @@ export default function Menu() {
         <div className="bg-white border-2 border-black rounded-xl shadow-[6px_6px_0px_#000] sm:shadow-[8px_8px_0px_#000] p-4 sm:p-6 mb-4 sm:mb-6">
           <div className="flex items-center justify-center gap-4 sm:gap-8">
             <div className="text-center">
-              <div className="text-4xl sm:text-5xl md:text-6xl font-black text-green-600 mb-1 sm:mb-2">{globalScore.humans}</div>
+              <div className="text-4xl sm:text-5xl md:text-6xl font-black text-green-600 mb-1 sm:mb-2">{globalScore.humans || 0}</div>
               <div className="text-xs sm:text-sm md:text-base font-bold text-black">HUMAN WINS</div>
             </div>
             <div className="text-3xl sm:text-4xl md:text-5xl font-black text-black">VS</div>
             <div className="text-center">
-              <div className="text-4xl sm:text-5xl md:text-6xl font-black text-red-600 mb-1 sm:mb-2">{globalScore.ai}</div>
+              <div className="text-4xl sm:text-5xl md:text-6xl font-black text-red-600 mb-1 sm:mb-2">{globalScore.ai || 0}</div>
               <div className="text-xs sm:text-sm md:text-base font-bold text-black">AI WINS</div>
             </div>
           </div>
