@@ -20,7 +20,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { playerName, playerPhone, totalWins, gamesPlayed, winRate } = req.body;
+    const { playerName, playerPhone, totalWins, gamesPlayed, winRate, lastPlayed } = req.body;
 
     // Validate input
     if (!playerName || totalWins === undefined) {
@@ -29,6 +29,8 @@ export default async function handler(req, res) {
         required: ['playerName', 'totalWins']
       });
     }
+
+    console.log('Received leaderboard update:', { playerName, totalWins, gamesPlayed, winRate });
 
     // Create unique member key to prevent exact duplicates
     // Using timestamp + random string ensures each game session is tracked
@@ -39,7 +41,7 @@ export default async function handler(req, res) {
       phone: playerPhone || '',
       gamesPlayed: gamesPlayed || 0,
       winRate: winRate || 0,
-      timestamp: Date.now(),
+      lastPlayed: lastPlayed || Date.now(),
       id: uniqueId
     });
 
@@ -48,6 +50,8 @@ export default async function handler(req, res) {
       score: totalWins,
       member: playerData
     });
+
+    console.log('Leaderboard updated for:', playerName);
 
     // Optional: Clean up old entries to prevent unlimited growth
     // Keep only top 1000 players
@@ -63,6 +67,7 @@ export default async function handler(req, res) {
     res.status(200).json({ 
       success: true,
       message: 'Leaderboard updated',
+      playerName,
       playerRank: rank !== null ? rank + 1 : null,
       totalWins
     });

@@ -110,6 +110,11 @@ export const useGameStore = create<GameState>()(
           },
         }));
 
+        console.log(`Game result recorded: ${game}, won: ${won}`);
+        
+        // Update global score
+        get().incrementGlobalScore(won ? 'human' : 'ai');
+        
         // Update leaderboard after recording the result
         if (won) {
           get().updateLeaderboard();
@@ -120,25 +125,43 @@ export const useGameStore = create<GameState>()(
       fetchGlobalScores: async () => {
         try {
           const response = await fetch('/api/get-scores');
+          
+          if (!response.ok) {
+            throw new Error('Failed to fetch scores');
+          }
+          
           const data = await response.json();
-          set({ globalScore: { humans: data.humans, ai: data.ai } });
+          console.log('Fetched global scores:', data);
+          
+          set({ globalScore: { humans: data.humans || 0, ai: data.ai || 0 } });
         } catch (error) {
           console.error('Failed to fetch global scores:', error);
+          set({ globalScore: { humans: 0, ai: 0 } });
         }
       },
 
       // Increment global score via API
       incrementGlobalScore: async (winner: 'human' | 'ai') => {
+        console.log(`Incrementing global score for: ${winner}`);
+        
         try {
           const response = await fetch('/api/update-score', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ winner }),
           });
+          
+          if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.error || 'Failed to update score');
+          }
+          
           const data = await response.json();
+          console.log('Global score updated:', data);
+          
           set({ globalScore: { humans: data.humans, ai: data.ai } });
         } catch (error) {
-          console.error('Failed to update global score:', error);
+          console.error('Failed to increment global score:', error);
         }
       },
 
@@ -147,11 +170,18 @@ export const useGameStore = create<GameState>()(
         set({ leaderboardLoading: true });
         try {
           const response = await fetch('/api/get-leaderboard');
+          
+          if (!response.ok) {
+            throw new Error('Failed to fetch leaderboard');
+          }
+          
           const data = await response.json();
+          console.log('Fetched leaderboard:', data);
+          
           set({ leaderboard: data.leaderboard || [], leaderboardLoading: false });
         } catch (error) {
           console.error('Failed to fetch leaderboard:', error);
-          set({ leaderboardLoading: false });
+          set({ leaderboard: [], leaderboardLoading: false });
         }
       },
 
@@ -160,7 +190,10 @@ export const useGameStore = create<GameState>()(
         const state = get();
         const { playerStats, playerName, playerPhone } = state;
         
-        if (!playerName) return;
+        if (!playerName) {
+          console.error('Cannot update leaderboard: No player name set');
+          return;
+        }
 
         const totalWins = 
           playerStats.twentyQuestionsWins +
@@ -178,20 +211,38 @@ export const useGameStore = create<GameState>()(
           ? parseFloat(((totalWins / gamesPlayed) * 100).toFixed(1))
           : 0;
 
+        console.log('Updating leaderboard with:', { 
+          playerName, 
+          playerPhone, 
+          totalWins, 
+          gamesPlayed, 
+          winRate 
+        });
+
         try {
-          await fetch('/api/update-leaderboard', {
+          const response = await fetch('/api/update-leaderboard', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
               playerName,
-              playerPhone,
+              playerPhone: playerPhone || '',
               totalWins,
               gamesPlayed,
               winRate,
+              lastPlayed: Date.now()
             }),
           });
+          
+          if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.error || 'Failed to update leaderboard');
+          }
+          
+          const data = await response.json();
+          console.log('Leaderboard updated successfully:', data);
+          
           // Refresh leaderboard after update
-          await state.fetchLeaderboard();
+          await get().fetchLeaderboard();
         } catch (error) {
           console.error('Failed to update leaderboard:', error);
         }
