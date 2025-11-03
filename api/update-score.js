@@ -1,18 +1,17 @@
 import { Redis } from '@upstash/redis';
 
+const redis = new Redis({
+  url: process.env.UPSTASH_REDIS_REST_URL,
+  token: process.env.UPSTASH_REDIS_REST_TOKEN,
+});
+
 export default async function handler(req, res) {
-  // Set CORS headers
-  res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST,OPTIONS');
-  res.setHeader(
-    'Access-Control-Allow-Headers',
-    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
-  );
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
   if (req.method === 'OPTIONS') {
-    res.status(200).end();
-    return;
+    return res.status(200).end();
   }
 
   if (req.method !== 'POST') {
@@ -20,27 +19,39 @@ export default async function handler(req, res) {
   }
 
   try {
-    const redis = new Redis({
-      url: process.env.beatai_KV_REST_API_URL,
-      token: process.env.beatai_KV_REST_API_TOKEN,
-    });
-
     const { winner } = req.body;
 
-    if (winner === 'human') {
-      await redis.incr('global:humans');
-    } else if (winner === 'ai') {
-      await redis.incr('global:ai');
-    } else {
-      return res.status(400).json({ error: 'Invalid winner value' });
+    if (!winner || (winner !== 'human' && winner !== 'ai')) {
+      return res.status(400).json({ error: 'Invalid winner specified' });
     }
 
+    console.log('Incrementing score for:', winner);
+
+    const key = winner === 'human' ? 'global:humans' : 'global:ai';
+    
+    // Increment the score
+    const newScore = await redis.incr(key);
+    
+    console.log('New score for', winner, ':', newScore);
+
+    // Get both scores to return
     const humans = await redis.get('global:humans');
     const ai = await redis.get('global:ai');
 
-    res.status(200).json({ humans: Number(humans), ai: Number(ai) });
+    const result = {
+      humans: humans !== null ? Number(humans) : 0,
+      ai: ai !== null ? Number(ai) : 0,
+      updated: winner
+    };
+
+    console.log('Returning scores:', result);
+
+    res.status(200).json(result);
   } catch (error) {
-    console.error('Redis Error:', error);
-    res.status(500).json({ error: 'Failed to update score', details: error.message });
+    console.error('Score update error:', error);
+    res.status(500).json({ 
+      error: 'Failed to update score',
+      details: error.message 
+    });
   }
 }

@@ -6,7 +6,6 @@ const redis = new Redis({
 });
 
 export default async function handler(req, res) {
-  // Enable CORS
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -20,66 +19,65 @@ export default async function handler(req, res) {
   }
 
   try {
-    console.log('Fetching leaderboard from Redis...');
+    console.log('Fetching leaderboard...');
     
-    // Get top 100 players from sorted set (highest scores first)
+    // Get top 100 players from the sorted set (highest scores first)
     const leaderboardData = await redis.zrange('leaderboard', 0, 99, {
       rev: true,
       withScores: true
     });
 
-    console.log('Raw leaderboard data length:', leaderboardData ? leaderboardData.length : 0);
+    console.log('Raw leaderboard data length:', leaderboardData?.length || 0);
 
     if (!leaderboardData || leaderboardData.length === 0) {
       console.log('No leaderboard data found');
-      return res.status(200).json({ 
-        leaderboard: [],
-        totalPlayers: 0,
-        lastUpdated: Date.now()
-      });
+      return res.status(200).json({ leaderboard: [] });
     }
 
-    // Format the response
-    // Redis returns: [member, score, member, score, ...]
-    const players = [];
+    const leaderboard = [];
+    
+    // Process the data (it comes as [member, score, member, score, ...])
     for (let i = 0; i < leaderboardData.length; i += 2) {
+      const playerKey = leaderboardData[i]; // This is now "player:name:phone"
+      const totalWins = leaderboardData[i + 1];
+      
       try {
-        const memberData = leaderboardData[i];
-        const score = leaderboardData[i + 1];
+        // Fetch the actual player data using the key
+        const playerData = await redis.get(playerKey);
         
-        // Parse the JSON member data
-        const playerData = typeof memberData === 'string' 
-          ? JSON.parse(memberData) 
-          : memberData;
+        if (!playerData) {
+          console.log('No data found for key:', playerKey);
+          continue;
+        }
+
+        const player = typeof playerData === 'string' 
+          ? JSON.parse(playerData) 
+          : playerData;
         
-        players.push({
+        leaderboard.push({
           rank: (i / 2) + 1,
-          name: playerData.name,
-          phone: playerData.phone || '',
-          totalWins: score,
-          gamesPlayed: playerData.gamesPlayed || 0,
-          winRate: playerData.winRate || 0,
-          lastPlayed: playerData.lastPlayed || playerData.timestamp || Date.now()
+          name: player.name,
+          phone: player.phone || '',
+          totalWins: totalWins,
+          gamesPlayed: player.gamesPlayed || 0,
+          winRate: player.winRate || 0,
+          lastPlayed: player.lastPlayed || Date.now()
         });
       } catch (parseError) {
-        console.error('Error parsing player data:', leaderboardData[i], parseError);
-        // Skip corrupted entries
+        console.error('Failed to parse player data for key:', playerKey, parseError);
         continue;
       }
     }
 
-    console.log('Processed leaderboard players:', players.length);
+    console.log('Processed leaderboard players:', leaderboard.length);
 
-    res.status(200).json({ 
-      leaderboard: players,
-      totalPlayers: players.length,
-      lastUpdated: Date.now()
-    });
+    res.status(200).json({ leaderboard });
   } catch (error) {
     console.error('Leaderboard fetch error:', error);
     res.status(500).json({ 
       error: 'Failed to fetch leaderboard',
-      message: error.message 
+      details: error.message,
+      leaderboard: []
     });
   }
 }

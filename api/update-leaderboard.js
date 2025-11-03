@@ -6,7 +6,6 @@ const redis = new Redis({
 });
 
 export default async function handler(req, res) {
-  // Enable CORS
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -22,60 +21,77 @@ export default async function handler(req, res) {
   try {
     const { playerName, playerPhone, totalWins, gamesPlayed, winRate, lastPlayed } = req.body;
 
-    // Validate input
-    if (!playerName || totalWins === undefined) {
-      return res.status(400).json({ 
-        error: 'Missing required fields',
-        required: ['playerName', 'totalWins']
-      });
+    if (!playerName) {
+      return res.status(400).json({ error: 'Player name is required' });
     }
 
-    console.log('Received leaderboard update:', { playerName, totalWins, gamesPlayed, winRate });
+    console.log('Updating leaderboard for:', playerName, { totalWins, gamesPlayed, winRate });
 
-    // Create unique member key to prevent exact duplicates
-    // Using timestamp + random string ensures each game session is tracked
-    const uniqueId = `${Date.now()}-${Math.random().toString(36).substring(7)}`;
+    // Create a unique key for the player (name + phone combination)
+    const playerKey = `player:${playerName.toLowerCase()}:${playerPhone || ''}`;
+
+    // Check if player already exists
+    const existingData = await redis.get(playerKey);
     
-    const playerData = JSON.stringify({
-      name: playerName,
-      phone: playerPhone || '',
-      gamesPlayed: gamesPlayed || 0,
-      winRate: winRate || 0,
-      lastPlayed: lastPlayed || Date.now(),
-      id: uniqueId
-    });
+    let updatedPlayerData;
+    
+    if (existingData) {
+      // Player exists - update their stats
+      console.log('Existing player found:', existingData);
+      const existing = typeof existingData === 'string' ? JSON.parse(existingData) : existingData;
+      
+      updatedPlayerData = {
+        name: playerName,
+        phone: playerPhone || existing.phone || '',
+        gamesPlayed: gamesPlayed,
+        winRate: winRate,
+        lastPlayed: lastPlayed || Date.now()
+      };
+    } else {
+      // New player
+      console.log('New player, creating entry');
+      updatedPlayerData = {
+        name: playerName,
+        phone: playerPhone || '',
+        gamesPlayed: gamesPlayed,
+        winRate: winRate,
+        lastPlayed: lastPlayed || Date.now()
+      };
+    }
 
-    // Add to sorted set (score = totalWins, higher is better)
+    // Store player data
+    await redis.set(playerKey, JSON.stringify(updatedPlayerData));
+
+    // Update sorted set with total wins as score
+    // Use playerKey as the member so we can update the same player
     await redis.zadd('leaderboard', {
       score: totalWins,
-      member: playerData
+      member: playerKey
     });
 
-    console.log('Leaderboard updated for:', playerName);
+    console.log('Leaderboard updated successfully for:', playerName, 'with', totalWins, 'wins');
 
-    // Optional: Clean up old entries to prevent unlimited growth
-    // Keep only top 1000 players
+    // Get player's rank
+    const rank = await redis.zrevrank('leaderboard', playerKey);
+
+    // Clean up old entries (keep only top 1000)
     const count = await redis.zcard('leaderboard');
     if (count > 1000) {
-      // Remove lowest scores (keep highest 1000)
       await redis.zremrangebyrank('leaderboard', 0, count - 1001);
     }
 
-    // Get player's current rank
-    const rank = await redis.zrevrank('leaderboard', playerData);
-
     res.status(200).json({ 
       success: true,
-      message: 'Leaderboard updated',
       playerName,
-      playerRank: rank !== null ? rank + 1 : null,
-      totalWins
+      rank: rank !== null ? rank + 1 : null,
+      totalWins,
+      updated: existingData ? true : false
     });
   } catch (error) {
     console.error('Leaderboard update error:', error);
     res.status(500).json({ 
       error: 'Failed to update leaderboard',
-      message: error.message 
+      details: error.message 
     });
   }
 }
