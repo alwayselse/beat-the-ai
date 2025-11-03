@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useGameStore } from '../../store/gameStore';
 
@@ -9,7 +9,8 @@ interface Message {
 
 export default function TwentyQuestions() {
   const navigate = useNavigate();
-  const { incrementGlobalScore } = useGameStore();
+  const { recordGameResult } = useGameStore();
+  const chatEndRef = useRef<HTMLDivElement>(null);
   
   const [gameState, setGameState] = useState<'setup' | 'playing' | 'finished'>('setup');
   const [secret, setSecret] = useState('');
@@ -18,6 +19,11 @@ export default function TwentyQuestions() {
   const [userResponse, setUserResponse] = useState('');
   const [loading, setLoading] = useState(false);
   const [playerWon, setPlayerWon] = useState(false);
+
+  // Auto-scroll to bottom when new messages arrive
+  useEffect(() => {
+    chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [history, loading]);
 
   const startGame = async () => {
     if (!secret.trim()) return;
@@ -76,11 +82,8 @@ export default function TwentyQuestions() {
         setPlayerWon(won);
         setGameState('finished');
         
-        if (won) {
-          incrementGlobalScore('human');
-        } else {
-          incrementGlobalScore('ai');
-        }
+        // Record the game result
+        recordGameResult('twentyQuestions', won);
       }
       
       setLoading(false);
@@ -174,76 +177,109 @@ export default function TwentyQuestions() {
   }
 
   return (
-    <div className="min-h-screen bg-cyan-300 py-8 px-4">
-      <div className="max-w-4xl mx-auto">
-        <div className="bg-white border-4 border-black shadow-[8px_8px_0px_#000] p-6 mb-6">
-          <div className="flex justify-between items-center">
-            <h1 className="text-3xl font-black">20 Questions</h1>
-            <div className="text-2xl font-black">
-              Question {questionCount}/10
-            </div>
+    <div className="min-h-screen bg-cyan-300 flex flex-col">
+      {/* Header - Fixed at top */}
+      <div className="bg-black text-white p-4 shadow-lg">
+        <div className="max-w-4xl mx-auto flex justify-between items-center">
+          <div>
+            <h1 className="text-2xl md:text-3xl font-black">🎯 20 Questions</h1>
+            <p className="text-sm md:text-base font-bold text-yellow-300">Your secret: {secret}</p>
           </div>
-          <div className="mt-2 text-lg font-bold text-gray-600">
-            Your secret: {secret}
+          <div className="text-right">
+            <div className="text-3xl md:text-4xl font-black text-yellow-300">{questionCount}/10</div>
+            <div className="text-xs md:text-sm font-bold">Questions</div>
           </div>
         </div>
+      </div>
 
-        {/* Chat History */}
-        <div className="bg-white border-4 border-black shadow-[8px_8px_0px_#000] p-6 mb-6 max-h-96 overflow-y-auto">
-          <div className="space-y-4">
-            {history.map((msg, index) => (
+      {/* Chat Container - Scrollable */}
+      <div className="flex-1 overflow-y-auto">
+        <div className="max-w-4xl mx-auto p-4 space-y-3">
+          {history.map((msg, index) => (
+            <div
+              key={index}
+              className={`flex ${msg.role === 'ai' ? 'justify-start' : 'justify-end'} animate-fadeIn`}
+            >
               <div
-                key={index}
-                className={`p-4 border-4 border-black ${
-                  msg.role === 'ai' 
-                    ? 'bg-blue-200 ml-0 mr-12' 
-                    : 'bg-green-200 ml-12 mr-0'
+                className={`max-w-[85%] md:max-w-[75%] p-4 border-4 border-black shadow-[4px_4px_0px_#000] ${
+                  msg.role === 'ai'
+                    ? 'bg-blue-200 rounded-tr-2xl rounded-br-2xl rounded-bl-2xl'
+                    : 'bg-green-200 rounded-tl-2xl rounded-bl-2xl rounded-br-2xl'
                 }`}
               >
-                <div className="font-black mb-1">
-                  {msg.role === 'ai' ? '🤖 AI' : '👤 You'}
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-xl">{msg.role === 'ai' ? '🤖' : '👤'}</span>
+                  <span className="font-black text-sm">{msg.role === 'ai' ? 'AI' : 'You'}</span>
                 </div>
-                <div className="font-bold">{msg.content}</div>
+                <div className="font-bold text-sm md:text-base break-words">{msg.content}</div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
+          
+          {/* Loading indicator */}
+          {loading && (
+            <div className="flex justify-start animate-fadeIn">
+              <div className="max-w-[85%] md:max-w-[75%] p-4 border-4 border-black shadow-[4px_4px_0px_#000] bg-blue-200 rounded-tr-2xl rounded-br-2xl rounded-bl-2xl">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-xl">🤖</span>
+                  <span className="font-black text-sm">AI</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="flex gap-1">
+                    <div className="w-2 h-2 bg-black rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
+                    <div className="w-2 h-2 bg-black rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
+                    <div className="w-2 h-2 bg-black rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+                  </div>
+                  <span className="font-bold text-sm">Thinking...</span>
+                </div>
+              </div>
+            </div>
+          )}
+          
+          {/* Scroll anchor */}
+          <div ref={chatEndRef} />
         </div>
+      </div>
 
-        {/* Response Input */}
-        {!loading && questionCount < 10 && (
-          <div className="bg-white border-4 border-black shadow-[8px_8px_0px_#000] p-6">
-            <label className="block text-lg font-black mb-3">
-              Your response (Yes/No/Maybe):
-            </label>
-            <div className="flex gap-3">
+      {/* Response Buttons - Fixed at bottom */}
+      {!loading && questionCount < 10 && (
+        <div className="bg-white border-t-4 border-black p-4 shadow-[0px_-4px_0px_#000]">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-3">
+              <p className="text-sm md:text-base font-black">Answer the AI's question:</p>
+            </div>
+            <div className="grid grid-cols-3 gap-2 md:gap-4">
               <button
-                onClick={() => { setUserResponse('Yes'); setTimeout(handleUserResponse, 100); }}
-                className="flex-1 bg-green-500 hover:bg-green-600 text-white font-black py-4 px-6 border-4 border-black shadow-[4px_4px_0px_#000] hover:shadow-[2px_2px_0px_#000] hover:translate-x-[2px] hover:translate-y-[2px] transition-all text-xl"
+                onClick={() => {
+                  setUserResponse('Yes');
+                  setTimeout(handleUserResponse, 100);
+                }}
+                className="bg-green-500 hover:bg-green-600 text-white font-black py-3 md:py-4 px-4 md:px-6 border-4 border-black shadow-[4px_4px_0px_#000] hover:shadow-[2px_2px_0px_#000] hover:translate-x-[2px] hover:translate-y-[2px] transition-all text-base md:text-xl rounded-lg active:scale-95"
               >
-                Yes
+                ✓ Yes
               </button>
               <button
-                onClick={() => { setUserResponse('No'); setTimeout(handleUserResponse, 100); }}
-                className="flex-1 bg-red-500 hover:bg-red-600 text-white font-black py-4 px-6 border-4 border-black shadow-[4px_4px_0px_#000] hover:shadow-[2px_2px_0px_#000] hover:translate-x-[2px] hover:translate-y-[2px] transition-all text-xl"
+                onClick={() => {
+                  setUserResponse('No');
+                  setTimeout(handleUserResponse, 100);
+                }}
+                className="bg-red-500 hover:bg-red-600 text-white font-black py-3 md:py-4 px-4 md:px-6 border-4 border-black shadow-[4px_4px_0px_#000] hover:shadow-[2px_2px_0px_#000] hover:translate-x-[2px] hover:translate-y-[2px] transition-all text-base md:text-xl rounded-lg active:scale-95"
               >
-                No
+                ✗ No
               </button>
               <button
-                onClick={() => { setUserResponse('Maybe / Sort of'); setTimeout(handleUserResponse, 100); }}
-                className="flex-1 bg-yellow-500 hover:bg-yellow-600 text-white font-black py-4 px-6 border-4 border-black shadow-[4px_4px_0px_#000] hover:shadow-[2px_2px_0px_#000] hover:translate-x-[2px] hover:translate-y-[2px] transition-all text-xl"
+                onClick={() => {
+                  setUserResponse('Maybe / Sort of');
+                  setTimeout(handleUserResponse, 100);
+                }}
+                className="bg-yellow-500 hover:bg-yellow-600 text-white font-black py-3 md:py-4 px-4 md:px-6 border-4 border-black shadow-[4px_4px_0px_#000] hover:shadow-[2px_2px_0px_#000] hover:translate-x-[2px] hover:translate-y-[2px] transition-all text-base md:text-xl rounded-lg active:scale-95"
               >
-                Maybe
+                ~ Maybe
               </button>
             </div>
           </div>
-        )}
-
-        {loading && (
-          <div className="bg-white border-4 border-black shadow-[8px_8px_0px_#000] p-8 text-center">
-            <div className="text-2xl font-black">AI is thinking...</div>
-          </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 }
