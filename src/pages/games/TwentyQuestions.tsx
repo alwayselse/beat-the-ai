@@ -16,7 +16,6 @@ export default function TwentyQuestions() {
   const [secret, setSecret] = useState('');
   const [history, setHistory] = useState<Message[]>([]);
   const [questionCount, setQuestionCount] = useState(0);
-  const [userResponse, setUserResponse] = useState('');
   const [loading, setLoading] = useState(false);
   const [playerWon, setPlayerWon] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -50,13 +49,12 @@ export default function TwentyQuestions() {
     }
   };
 
-  const handleUserResponse = async () => {
-    if (!userResponse.trim() || loading || isSubmitting) return;
+  const handleUserResponseWithAnswer = async (answer: string) => {
+    if (loading || isSubmitting) return;
     
     setIsSubmitting(true);
-    const newHistory = [...history, { role: 'user' as const, content: userResponse }];
+    const newHistory = [...history, { role: 'user' as const, content: answer }];
     setHistory(newHistory);
-    setUserResponse('');
     setLoading(true);
 
     try {
@@ -286,30 +284,21 @@ export default function TwentyQuestions() {
             </div>
             <div className="grid grid-cols-3 gap-2 md:gap-4">
               <button
-                onClick={() => {
-                  setUserResponse('Yes');
-                  setTimeout(handleUserResponse, 100);
-                }}
+                onClick={() => handleUserResponseWithAnswer('Yes')}
                 disabled={loading || isSubmitting}
                 className="bg-green-500 hover:bg-green-600 text-white font-black py-3 md:py-4 px-4 md:px-6 border-4 border-black shadow-[4px_4px_0px_#000] hover:shadow-[2px_2px_0px_#000] hover:translate-x-[2px] hover:translate-y-[2px] transition-all text-base md:text-xl rounded-lg active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 ✓ Yes
               </button>
               <button
-                onClick={() => {
-                  setUserResponse('No');
-                  setTimeout(handleUserResponse, 100);
-                }}
+                onClick={() => handleUserResponseWithAnswer('No')}
                 disabled={loading || isSubmitting}
                 className="bg-red-500 hover:bg-red-600 text-white font-black py-3 md:py-4 px-4 md:px-6 border-4 border-black shadow-[4px_4px_0px_#000] hover:shadow-[2px_2px_0px_#000] hover:translate-x-[2px] hover:translate-y-[2px] transition-all text-base md:text-xl rounded-lg active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 ✗ No
               </button>
               <button
-                onClick={() => {
-                  setUserResponse('Maybe / Sort of');
-                  setTimeout(handleUserResponse, 100);
-                }}
+                onClick={() => handleUserResponseWithAnswer('Maybe / Sort of')}
                 disabled={loading || isSubmitting}
                 className="bg-yellow-500 hover:bg-yellow-600 text-white font-black py-3 md:py-4 px-4 md:px-6 border-4 border-black shadow-[4px_4px_0px_#000] hover:shadow-[2px_2px_0px_#000] hover:translate-x-[2px] hover:translate-y-[2px] transition-all text-base md:text-xl rounded-lg active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
               >
