@@ -26,6 +26,7 @@ export default function TwoTruths() {
   const [questionNumber, setQuestionNumber] = useState(1);
   const [gameOver, setGameOver] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Load and shuffle game data on mount
   useEffect(() => {
@@ -62,7 +63,10 @@ export default function TwoTruths() {
   };
 
   const handleNext = async () => {
+    if (isSubmitting) return;
+    
     if (questionNumber >= 10) {
+      setIsSubmitting(true);
       // Game over
       setGameOver(true);
       
@@ -103,6 +107,7 @@ export default function TwoTruths() {
           console.error('Failed to update leaderboard:', error);
         }
       }
+      setIsSubmitting(false);
     } else {
       // Next question
       setQuestionNumber(questionNumber + 1);
@@ -221,7 +226,8 @@ export default function TwoTruths() {
           {showExplanation && (
             <button
               onClick={handleNext}
-              className="w-full bg-green-500 hover:bg-green-600 text-white font-black py-4 px-8 border-4 border-black shadow-[6px_6px_0px_#000] hover:shadow-[4px_4px_0px_#000] hover:translate-x-[2px] hover:translate-y-[2px] transition-all text-xl"
+              disabled={isSubmitting}
+              className="w-full bg-green-500 hover:bg-green-600 text-white font-black py-4 px-8 border-4 border-black shadow-[6px_6px_0px_#000] hover:shadow-[4px_4px_0px_#000] hover:translate-x-[2px] hover:translate-y-[2px] transition-all text-xl disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {questionNumber >= 10 ? 'See Results' : 'Next Question →'}
             </button>

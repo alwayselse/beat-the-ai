@@ -50,6 +50,7 @@ export default function LiteralGenie() {
   const [loading, setLoading] = useState(false);
   const [playerWon, setPlayerWon] = useState(false);
   const [rateLimit, setRateLimit] = useState<{ allowed: boolean; remaining: number; resetTime: string } | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     const limit = checkRateLimit('literalgenie', 15);
@@ -57,8 +58,9 @@ export default function LiteralGenie() {
   }, []);
 
   const handleSubmitWish = async () => {
-    if (!currentWish.trim() || loading || attempts.length >= 3) return;
+    if (!currentWish.trim() || loading || attempts.length >= 3 || isSubmitting) return;
     
+    setIsSubmitting(true);
     setLoading(true);
     const attemptNumber = attempts.length + 1;
 
@@ -154,9 +156,11 @@ export default function LiteralGenie() {
       }
       
       setLoading(false);
+      setIsSubmitting(false);
     } catch (error) {
       console.error('Failed to get genie response:', error);
       setLoading(false);
+      setIsSubmitting(false);
     }
   };
 
@@ -303,7 +307,7 @@ export default function LiteralGenie() {
             
             <button
               onClick={handleSubmitWish}
-              disabled={!currentWish.trim() || loading}
+              disabled={!currentWish.trim() || loading || isSubmitting}
               className="w-full bg-purple-500 hover:bg-purple-600 text-white font-black py-4 px-8 border-4 border-black shadow-[6px_6px_0px_#000] hover:shadow-[4px_4px_0px_#000] hover:translate-x-[2px] hover:translate-y-[2px] transition-all text-xl disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? 'Genie is thinking...' : 'Make Wish'}

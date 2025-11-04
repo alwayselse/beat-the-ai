@@ -19,6 +19,7 @@ export default function TwentyQuestions() {
   const [userResponse, setUserResponse] = useState('');
   const [loading, setLoading] = useState(false);
   const [playerWon, setPlayerWon] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Auto-scroll to bottom when new messages arrive
   useEffect(() => {
@@ -50,8 +51,9 @@ export default function TwentyQuestions() {
   };
 
   const handleUserResponse = async () => {
-    if (!userResponse.trim() || loading) return;
+    if (!userResponse.trim() || loading || isSubmitting) return;
     
+    setIsSubmitting(true);
     const newHistory = [...history, { role: 'user' as const, content: userResponse }];
     setHistory(newHistory);
     setUserResponse('');
@@ -119,9 +121,11 @@ export default function TwentyQuestions() {
       }
       
       setLoading(false);
+      setIsSubmitting(false);
     } catch (error) {
       console.error('Failed to get AI response:', error);
       setLoading(false);
+      setIsSubmitting(false);
     }
   };
 
@@ -286,7 +290,8 @@ export default function TwentyQuestions() {
                   setUserResponse('Yes');
                   setTimeout(handleUserResponse, 100);
                 }}
-                className="bg-green-500 hover:bg-green-600 text-white font-black py-3 md:py-4 px-4 md:px-6 border-4 border-black shadow-[4px_4px_0px_#000] hover:shadow-[2px_2px_0px_#000] hover:translate-x-[2px] hover:translate-y-[2px] transition-all text-base md:text-xl rounded-lg active:scale-95"
+                disabled={loading || isSubmitting}
+                className="bg-green-500 hover:bg-green-600 text-white font-black py-3 md:py-4 px-4 md:px-6 border-4 border-black shadow-[4px_4px_0px_#000] hover:shadow-[2px_2px_0px_#000] hover:translate-x-[2px] hover:translate-y-[2px] transition-all text-base md:text-xl rounded-lg active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 ✓ Yes
               </button>
@@ -295,7 +300,8 @@ export default function TwentyQuestions() {
                   setUserResponse('No');
                   setTimeout(handleUserResponse, 100);
                 }}
-                className="bg-red-500 hover:bg-red-600 text-white font-black py-3 md:py-4 px-4 md:px-6 border-4 border-black shadow-[4px_4px_0px_#000] hover:shadow-[2px_2px_0px_#000] hover:translate-x-[2px] hover:translate-y-[2px] transition-all text-base md:text-xl rounded-lg active:scale-95"
+                disabled={loading || isSubmitting}
+                className="bg-red-500 hover:bg-red-600 text-white font-black py-3 md:py-4 px-4 md:px-6 border-4 border-black shadow-[4px_4px_0px_#000] hover:shadow-[2px_2px_0px_#000] hover:translate-x-[2px] hover:translate-y-[2px] transition-all text-base md:text-xl rounded-lg active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 ✗ No
               </button>
@@ -304,7 +310,8 @@ export default function TwentyQuestions() {
                   setUserResponse('Maybe / Sort of');
                   setTimeout(handleUserResponse, 100);
                 }}
-                className="bg-yellow-500 hover:bg-yellow-600 text-white font-black py-3 md:py-4 px-4 md:px-6 border-4 border-black shadow-[4px_4px_0px_#000] hover:shadow-[2px_2px_0px_#000] hover:translate-x-[2px] hover:translate-y-[2px] transition-all text-base md:text-xl rounded-lg active:scale-95"
+                disabled={loading || isSubmitting}
+                className="bg-yellow-500 hover:bg-yellow-600 text-white font-black py-3 md:py-4 px-4 md:px-6 border-4 border-black shadow-[4px_4px_0px_#000] hover:shadow-[2px_2px_0px_#000] hover:translate-x-[2px] hover:translate-y-[2px] transition-all text-base md:text-xl rounded-lg active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 ~ Maybe
               </button>
