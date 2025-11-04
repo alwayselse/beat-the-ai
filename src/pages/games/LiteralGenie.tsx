@@ -42,7 +42,7 @@ const checkRateLimit = (gameKey: string, maxGames: number = 10): { allowed: bool
 
 export default function LiteralGenie() {
   const navigate = useNavigate();
-  const { incrementGlobalScore, recordGameResult } = useGameStore();
+  const { recordGameResult } = useGameStore();
   
   const [gameState, setGameState] = useState<'playing' | 'finished'>('playing');
   const [currentWish, setCurrentWish] = useState('');
@@ -85,12 +85,76 @@ export default function LiteralGenie() {
         setPlayerWon(true);
         setGameState('finished');
         recordGameResult('literalGenie', true);
-        incrementGlobalScore('human');
+        
+        // Call API to update score in Redis
+        try {
+          await fetch('/api/update-score', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ winner: 'human' }),
+          });
+        } catch (error) {
+          console.error('Failed to update global score:', error);
+        }
+        
+        // Call API to update leaderboard
+        const playerName = useGameStore.getState().playerName;
+        const playerPhone = useGameStore.getState().playerPhone;
+        if (playerName && playerPhone) {
+          try {
+            await fetch('/api/update-leaderboard', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                playerName,
+                playerPhone,
+                totalWins: useGameStore.getState().playerStats.literalGenieWins + 1,
+                gamesPlayed: useGameStore.getState().playerStats.literalGeniePlayed + 1,
+                winRate: 100,
+                lastPlayed: Date.now()
+              }),
+            });
+          } catch (error) {
+            console.error('Failed to update leaderboard:', error);
+          }
+        }
       } else if (attemptNumber >= 3) {
         setPlayerWon(false);
         setGameState('finished');
         recordGameResult('literalGenie', false);
-        incrementGlobalScore('ai');
+        
+        // Call API to update score in Redis
+        try {
+          await fetch('/api/update-score', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ winner: 'ai' }),
+          });
+        } catch (error) {
+          console.error('Failed to update global score:', error);
+        }
+        
+        // Call API to update leaderboard
+        const playerName = useGameStore.getState().playerName;
+        const playerPhone = useGameStore.getState().playerPhone;
+        if (playerName && playerPhone) {
+          try {
+            await fetch('/api/update-leaderboard', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                playerName,
+                playerPhone,
+                totalWins: useGameStore.getState().playerStats.literalGenieWins,
+                gamesPlayed: useGameStore.getState().playerStats.literalGeniePlayed + 1,
+                winRate: 0,
+                lastPlayed: Date.now()
+              }),
+            });
+          } catch (error) {
+            console.error('Failed to update leaderboard:', error);
+          }
+        }
       }
       
       setLoading(false);

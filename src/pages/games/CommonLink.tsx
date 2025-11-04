@@ -18,7 +18,7 @@ interface GameData {
 
 export default function CommonLink() {
   const navigate = useNavigate();
-  const { incrementGlobalScore, recordGameResult } = useGameStore();
+  const { recordGameResult } = useGameStore();
   
   const [gameData, setGameData] = useState<CommonLinkQuestion[]>([]);
   const [currentQuestion, setCurrentQuestion] = useState<CommonLinkQuestion | null>(null);
@@ -71,7 +71,7 @@ export default function CommonLink() {
     }
   };
 
-  const handleNext = () => {
+  const handleNext = async () => {
     if (questionNumber >= 10) {
       // Game over
       setGameOver(true);
@@ -82,11 +82,38 @@ export default function CommonLink() {
       // Record game result for leaderboard
       recordGameResult('commonLink', playerWon);
       
-      // Update global score
-      if (playerWon) {
-        incrementGlobalScore('human');
-      } else {
-        incrementGlobalScore('ai');
+      // Call API to update global score in Redis
+      const winner = playerWon ? 'human' : 'ai';
+      try {
+        await fetch('/api/update-score', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ winner }),
+        });
+      } catch (error) {
+        console.error('Failed to update global score:', error);
+      }
+      
+      // Call API to update leaderboard
+      const playerName = useGameStore.getState().playerName;
+      const playerPhone = useGameStore.getState().playerPhone;
+      if (playerName && playerPhone) {
+        try {
+          await fetch('/api/update-leaderboard', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              playerName,
+              playerPhone,
+              totalWins: useGameStore.getState().playerStats.commonLinkWins + (playerWon ? 1 : 0),
+              gamesPlayed: useGameStore.getState().playerStats.commonLinkPlayed + 1,
+              winRate: playerWon ? 100 : 0,
+              lastPlayed: Date.now()
+            }),
+          });
+        } catch (error) {
+          console.error('Failed to update leaderboard:', error);
+        }
       }
     } else {
       // Next question

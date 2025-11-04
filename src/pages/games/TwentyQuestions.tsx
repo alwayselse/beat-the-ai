@@ -84,6 +84,40 @@ export default function TwentyQuestions() {
         
         // Record the game result
         recordGameResult('twentyQuestions', won);
+        
+        // Call API to update score in Redis
+        const winner = won ? 'human' : 'ai';
+        try {
+          await fetch('/api/update-score', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ winner }),
+          });
+        } catch (error) {
+          console.error('Failed to update global score:', error);
+        }
+        
+        // Call API to update leaderboard
+        const playerName = useGameStore.getState().playerName;
+        const playerPhone = useGameStore.getState().playerPhone;
+        if (playerName && playerPhone) {
+          try {
+            await fetch('/api/update-leaderboard', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                playerName,
+                playerPhone,
+                totalWins: useGameStore.getState().playerStats.twentyQuestionsWins + (won ? 1 : 0),
+                gamesPlayed: useGameStore.getState().playerStats.twentyQuestionsPlayed + 1,
+                winRate: won ? 100 : 0,
+                lastPlayed: Date.now()
+              }),
+            });
+          } catch (error) {
+            console.error('Failed to update leaderboard:', error);
+          }
+        }
       }
       
       setLoading(false);
