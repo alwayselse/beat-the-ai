@@ -19,75 +19,74 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { playerName, playerPhone, totalWins, gamesPlayed, winRate, lastPlayed } = req.body;
+    const { name, phone, won, gameType } = req.body;
 
-    if (!playerName) {
-      return res.status(400).json({ error: 'Player name is required' });
+    if (!name || phone === undefined || won === undefined) {
+      console.error('Missing required fields:', { name, phone, won });
+      return res.status(400).json({ error: 'Missing required fields: name, phone, won' });
     }
 
-    console.log('Updating leaderboard for:', playerName, { totalWins, gamesPlayed, winRate });
+    console.log('Updating leaderboard for:', name, { won, gameType });
 
-    // Create a unique key for the player (name + phone combination)
-    const playerKey = `player:${playerName.toLowerCase()}:${playerPhone || ''}`;
+    // Create a unique key for the player
+    const playerKey = `player:${name}:${phone}`;
 
-    // Check if player already exists
-    const existingData = await redis.get(playerKey);
+    // Get existing player data
+    let playerData = await redis.get(playerKey);
     
     let updatedPlayerData;
     
-    if (existingData) {
+    if (playerData) {
       // Player exists - update their stats
-      console.log('Existing player found:', existingData);
-      const existing = typeof existingData === 'string' ? JSON.parse(existingData) : existingData;
+      const existing = typeof playerData === 'string' ? JSON.parse(playerData) : playerData;
+      
+      const newGamesPlayed = existing.gamesPlayed + 1;
+      const newWins = existing.wins + (won ? 1 : 0);
+      const newWinRate = Math.round((newWins / newGamesPlayed) * 100);
       
       updatedPlayerData = {
-        name: playerName,
-        phone: playerPhone || existing.phone || '',
-        gamesPlayed: gamesPlayed,
-        wins: totalWins,
-        winRate: winRate,
-        lastPlayed: lastPlayed || Date.now()
+        name,
+        phone,
+        gamesPlayed: newGamesPlayed,
+        wins: newWins,
+        winRate: newWinRate,
+        lastPlayed: Date.now()
       };
+      
+      console.log('Updated existing player:', name, updatedPlayerData);
     } else {
       // New player
-      console.log('New player, creating entry');
       updatedPlayerData = {
-        name: playerName,
-        phone: playerPhone || '',
-        gamesPlayed: gamesPlayed,
-        wins: totalWins,
-        winRate: winRate,
-        lastPlayed: lastPlayed || Date.now()
+        name,
+        phone,
+        gamesPlayed: 1,
+        wins: won ? 1 : 0,
+        winRate: won ? 100 : 0,
+        lastPlayed: Date.now()
       };
+      
+      console.log('Created new player:', name, updatedPlayerData);
     }
 
     // Store player data
     await redis.set(playerKey, JSON.stringify(updatedPlayerData));
 
     // Update sorted set with total wins as score
-    // Use playerKey as the member so we can update the same player
     await redis.zadd('leaderboard', {
-      score: totalWins,
+      score: updatedPlayerData.wins,
       member: playerKey
     });
 
-    console.log('Leaderboard updated successfully for:', playerName, 'with', totalWins, 'wins');
+    console.log('Leaderboard updated successfully for:', name, 'with', updatedPlayerData.wins, 'total wins');
 
     // Get player's rank
     const rank = await redis.zrevrank('leaderboard', playerKey);
 
-    // Clean up old entries (keep only top 1000)
-    const count = await redis.zcard('leaderboard');
-    if (count > 1000) {
-      await redis.zremrangebyrank('leaderboard', 0, count - 1001);
-    }
-
     res.status(200).json({ 
       success: true,
-      playerName,
+      playerName: name,
       rank: rank !== null ? rank + 1 : null,
-      totalWins,
-      updated: existingData ? true : false
+      playerStats: updatedPlayerData
     });
   } catch (error) {
     console.error('Leaderboard update error:', error);
