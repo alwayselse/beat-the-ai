@@ -50,7 +50,6 @@ interface GameState {
   fetchGlobalScores: () => Promise<void>;
   incrementGlobalScore: (winner: 'human' | 'ai') => Promise<void>;
   fetchLeaderboard: () => Promise<void>;
-  updateLeaderboard: () => Promise<void>;
 }
 
 export const useGameStore = create<GameState>()(
@@ -203,69 +202,6 @@ export const useGameStore = create<GameState>()(
             leaderboard: [],
             leaderboardLoading: false 
           });
-        }
-      },
-
-      // Update leaderboard with current player stats
-      updateLeaderboard: async () => {
-        const state = get();
-        const { playerStats, playerName, playerPhone } = state;
-        
-        if (!playerName) {
-          console.error('Cannot update leaderboard: No player name set');
-          return;
-        }
-
-        const totalWins = 
-          playerStats.twentyQuestionsWins +
-          playerStats.twoTruthsWins +
-          playerStats.literalGenieWins +
-          playerStats.commonLinkWins;
-
-        const gamesPlayed = 
-          playerStats.twentyQuestionsPlayed +
-          playerStats.twoTruthsPlayed +
-          playerStats.literalGeniePlayed +
-          playerStats.commonLinkPlayed;
-
-        const winRate = gamesPlayed > 0 
-          ? parseFloat(((totalWins / gamesPlayed) * 100).toFixed(1))
-          : 0;
-
-        console.log('Updating leaderboard with:', { 
-          playerName, 
-          playerPhone, 
-          totalWins, 
-          gamesPlayed, 
-          winRate 
-        });
-
-        try {
-          const response = await fetch('/api/update-leaderboard', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              playerName,
-              playerPhone: playerPhone || '',
-              totalWins,
-              gamesPlayed,
-              winRate,
-              lastPlayed: Date.now()
-            }),
-          });
-          
-          if (!response.ok) {
-            console.error('Failed to update leaderboard, status:', response.status);
-            return;
-          }
-          
-          const data = await response.json();
-          console.log('Leaderboard updated successfully:', data);
-          
-          // Refresh leaderboard after update
-          await get().fetchLeaderboard();
-        } catch (error) {
-          console.error('Failed to update leaderboard:', error);
         }
       },
     }),
