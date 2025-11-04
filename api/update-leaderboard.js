@@ -44,6 +44,7 @@ export default async function handler(req, res) {
         name: playerName,
         phone: playerPhone || existing.phone || '',
         gamesPlayed: gamesPlayed,
+        wins: totalWins,
         winRate: winRate,
         lastPlayed: lastPlayed || Date.now()
       };
@@ -54,6 +55,7 @@ export default async function handler(req, res) {
         name: playerName,
         phone: playerPhone || '',
         gamesPlayed: gamesPlayed,
+        wins: totalWins,
         winRate: winRate,
         lastPlayed: lastPlayed || Date.now()
       };
