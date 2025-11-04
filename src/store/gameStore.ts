@@ -97,7 +97,7 @@ export const useGameStore = create<GameState>()(
           },
         }),
 
-      // Record game result and update leaderboard
+      // Record game result (update local stats only)
       recordGameResult: (game, won) => {
         const playedKey = `${game}Played` as keyof PlayerStats;
         const winsKey = `${game}Wins` as keyof PlayerStats;
@@ -110,15 +110,8 @@ export const useGameStore = create<GameState>()(
           },
         }));
 
-        console.log(`Game result recorded: ${game}, won: ${won}`);
-        
-        // Update global score
-        get().incrementGlobalScore(won ? 'human' : 'ai');
-        
-        // Update leaderboard after recording the result
-        if (won) {
-          get().updateLeaderboard();
-        }
+        console.log(`Game result recorded locally: ${game}, won: ${won}`);
+        // API calls (incrementGlobalScore and updateLeaderboard) are now handled by the game files
       },
 
       // Fetch global scores from API
