@@ -106,12 +106,10 @@ export default function TwentyQuestions() {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({
-                playerName,
-                playerPhone,
-                totalWins: useGameStore.getState().playerStats.twentyQuestionsWins + (won ? 1 : 0),
-                gamesPlayed: useGameStore.getState().playerStats.twentyQuestionsPlayed + 1,
-                winRate: won ? 100 : 0,
-                lastPlayed: Date.now()
+                name: playerName,
+                phone: playerPhone,
+                won,
+                gameType: 'twentyQuestions',
               }),
             });
           } catch (error) {

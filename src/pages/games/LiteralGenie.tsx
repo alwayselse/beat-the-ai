@@ -106,12 +106,10 @@ export default function LiteralGenie() {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({
-                playerName,
-                playerPhone,
-                totalWins: useGameStore.getState().playerStats.literalGenieWins + 1,
-                gamesPlayed: useGameStore.getState().playerStats.literalGeniePlayed + 1,
-                winRate: 100,
-                lastPlayed: Date.now()
+                name: playerName,
+                phone: playerPhone,
+                won: true,
+                gameType: 'literalGenie',
               }),
             });
           } catch (error) {
@@ -143,12 +141,10 @@ export default function LiteralGenie() {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({
-                playerName,
-                playerPhone,
-                totalWins: useGameStore.getState().playerStats.literalGenieWins,
-                gamesPlayed: useGameStore.getState().playerStats.literalGeniePlayed + 1,
-                winRate: 0,
-                lastPlayed: Date.now()
+                name: playerName,
+                phone: playerPhone,
+                won: false,
+                gameType: 'literalGenie',
               }),
             });
           } catch (error) {

@@ -93,12 +93,10 @@ export default function TwoTruths() {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-              playerName,
-              playerPhone,
-              totalWins: useGameStore.getState().playerStats.twoTruthsWins + (playerWon ? 1 : 0),
-              gamesPlayed: useGameStore.getState().playerStats.twoTruthsPlayed + 1,
-              winRate: playerWon ? 100 : 0,
-              lastPlayed: Date.now()
+              name: playerName,
+              phone: playerPhone,
+              won: playerWon,
+              gameType: 'twoTruths',
             }),
           });
         } catch (error) {

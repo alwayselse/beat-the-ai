@@ -103,12 +103,10 @@ export default function CommonLink() {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-              playerName,
-              playerPhone,
-              totalWins: useGameStore.getState().playerStats.commonLinkWins + (playerWon ? 1 : 0),
-              gamesPlayed: useGameStore.getState().playerStats.commonLinkPlayed + 1,
-              winRate: playerWon ? 100 : 0,
-              lastPlayed: Date.now()
+              name: playerName,
+              phone: playerPhone,
+              won: playerWon,
+              gameType: 'commonLink',
             }),
           });
         } catch (error) {
