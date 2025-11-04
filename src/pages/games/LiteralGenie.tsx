@@ -95,6 +95,10 @@ export default function LiteralGenie() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ winner: 'human' }),
           });
+          
+          // Refresh global scores
+          const fetchGlobalScores = useGameStore.getState().fetchGlobalScores;
+          await fetchGlobalScores();
         } catch (error) {
           console.error('Failed to update global score:', error);
         }
@@ -114,6 +118,10 @@ export default function LiteralGenie() {
                 gameType: 'literalGenie',
               }),
             });
+            
+            // Refresh leaderboard
+            const fetchLeaderboard = useGameStore.getState().fetchLeaderboard;
+            await fetchLeaderboard();
           } catch (error) {
             console.error('Failed to update leaderboard:', error);
           }
@@ -130,25 +138,33 @@ export default function LiteralGenie() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ winner: 'ai' }),
           });
+          
+          // Refresh global scores
+          const fetchGlobalScores = useGameStore.getState().fetchGlobalScores;
+          await fetchGlobalScores();
         } catch (error) {
           console.error('Failed to update global score:', error);
         }
         
         // Call API to update leaderboard
-        const playerName = useGameStore.getState().playerName;
-        const playerPhone = useGameStore.getState().playerPhone;
-        if (playerName && playerPhone) {
+        const playerName2 = useGameStore.getState().playerName;
+        const playerPhone2 = useGameStore.getState().playerPhone;
+        if (playerName2 && playerPhone2) {
           try {
             await fetch('/api/update-leaderboard', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({
-                name: playerName,
-                phone: playerPhone,
+                name: playerName2,
+                phone: playerPhone2,
                 won: false,
                 gameType: 'literalGenie',
               }),
             });
+            
+            // Refresh leaderboard
+            const fetchLeaderboard = useGameStore.getState().fetchLeaderboard;
+            await fetchLeaderboard();
           } catch (error) {
             console.error('Failed to update leaderboard:', error);
           }

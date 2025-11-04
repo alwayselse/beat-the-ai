@@ -84,6 +84,10 @@ export default function TwoTruths() {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ winner }),
         });
+        
+        // Refresh global scores
+        const fetchGlobalScores = useGameStore.getState().fetchGlobalScores;
+        await fetchGlobalScores();
       } catch (error) {
         console.error('Failed to update global score:', error);
       }
@@ -103,6 +107,10 @@ export default function TwoTruths() {
               gameType: 'twoTruths',
             }),
           });
+          
+          // Refresh leaderboard
+          const fetchLeaderboard = useGameStore.getState().fetchLeaderboard;
+          await fetchLeaderboard();
         } catch (error) {
           console.error('Failed to update leaderboard:', error);
         }
