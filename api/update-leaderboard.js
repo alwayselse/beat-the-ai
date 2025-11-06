@@ -22,11 +22,8 @@ export default async function handler(req, res) {
     const { name, phone, won, gameType } = req.body;
 
     if (!name || phone === undefined || won === undefined) {
-      console.error('Missing required fields:', { name, phone, won });
       return res.status(400).json({ error: 'Missing required fields: name, phone, won' });
     }
-
-    console.log('Updating leaderboard for:', name, { won, gameType });
 
     // Create a unique key for the player
     const playerKey = `player:${name}:${phone}`;
@@ -52,8 +49,6 @@ export default async function handler(req, res) {
         winRate: newWinRate,
         lastPlayed: Date.now()
       };
-      
-      console.log('Updated existing player:', name, updatedPlayerData);
     } else {
       // New player
       updatedPlayerData = {
@@ -64,8 +59,6 @@ export default async function handler(req, res) {
         winRate: won ? 100 : 0,
         lastPlayed: Date.now()
       };
-      
-      console.log('Created new player:', name, updatedPlayerData);
     }
 
     // Store player data
@@ -76,8 +69,6 @@ export default async function handler(req, res) {
       score: updatedPlayerData.wins,
       member: playerKey
     });
-
-    console.log('Leaderboard updated successfully for:', name, 'with', updatedPlayerData.wins, 'total wins');
 
     // Get player's rank
     const rank = await redis.zrevrank('leaderboard', playerKey);

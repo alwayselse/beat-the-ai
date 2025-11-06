@@ -14,18 +14,13 @@ export default async function handler(req, res) {
   }
 
   try {
-    console.log('Fetching leaderboard...');
-    
     // Get top 100 players from the sorted set (highest scores first)
     const leaderboardData = await redis.zrange('leaderboard', 0, 99, {
       rev: true,
       withScores: true
     });
 
-    console.log('Raw leaderboard data length:', leaderboardData?.length || 0);
-
     if (!leaderboardData || leaderboardData.length === 0) {
-      console.log('No leaderboard data found');
       return res.status(200).json({ leaderboard: [] });
     }
 
@@ -69,7 +64,6 @@ export default async function handler(req, res) {
           });
         }
       } catch (parseError) {
-        console.error('Failed to parse player data:', memberData, parseError);
         continue;
       }
     }
@@ -79,14 +73,10 @@ export default async function handler(req, res) {
       player.rank = index + 1;
     });
 
-    console.log('Processed unique players:', leaderboard.length);
-
     res.status(200).json({ leaderboard });
   } catch (error) {
-    console.error('Leaderboard fetch error:', error);
     res.status(500).json({ 
       error: 'Failed to fetch leaderboard',
-      details: error.message,
       leaderboard: []
     });
   }

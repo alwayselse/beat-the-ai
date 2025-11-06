@@ -25,14 +25,10 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Invalid winner specified' });
     }
 
-    console.log('Incrementing score for:', winner);
-
     const key = winner === 'human' ? 'global:humans' : 'global:ai';
     
     // Increment the score
     const newScore = await redis.incr(key);
-    
-    console.log('New score for', winner, ':', newScore);
 
     // Get both scores to return
     const humans = await redis.get('global:humans');
@@ -43,8 +39,6 @@ export default async function handler(req, res) {
       ai: ai !== null ? Number(ai) : 0,
       updated: winner
     };
-
-    console.log('Returning scores:', result);
 
     res.status(200).json(result);
   } catch (error) {
