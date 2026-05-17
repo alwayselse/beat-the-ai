@@ -357,7 +357,6 @@ Gaps/opportunities:
 - Rate limits are client-side for game UX, not security.
 - `gemini-truths` and `gemini-commonlink` APIs exist but are not wired into current gameplay screens.
 - Repository currently has no license file despite prior README mention.
-- Baseline lint currently fails due to an existing unused variable in `src/pages/EnterName.tsx`.
 
 ## 16) Future Improvements
 
